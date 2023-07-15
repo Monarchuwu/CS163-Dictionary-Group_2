@@ -1,4 +1,7 @@
 #include <SFML/Graphics.hpp>
+#include"myButton.h"
+using namespace minh;
+
 
 int main()
 {
@@ -12,25 +15,6 @@ int main()
     title.setOrigin(400.0f, 50.0f);
     title.setPosition(800.0f, 80.0f);
     title.setFillColor(sf::Color::White);
-    
-    sf::RectangleShape ViewButton(sf::Vector2f(266.0f, 50.0f));
-    ViewButton.setFillColor(sf::Color::White);
-    ViewButton.setPosition(400.0f, 135.0f);
-    ViewButton.setOutlineThickness(2.0f);
-    ViewButton.setOutlineColor(sf::Color::Black);
-
-    sf::RectangleShape AddButton(sf::Vector2f(266.0f, 50.0f));
-    AddButton.setFillColor(sf::Color::White);
-    AddButton.setPosition(668.0f, 135.0f);
-    AddButton.setOutlineThickness(2.0f);
-    AddButton.setOutlineColor(sf::Color::Black);
-
-    sf::RectangleShape DeleteButton(sf::Vector2f(266.0f, 50.0f));
-    DeleteButton.setFillColor(sf::Color::White);
-    DeleteButton.setPosition(934.0f, 135.0f);
-    DeleteButton.setOutlineThickness(2.0f);
-    DeleteButton.setOutlineColor(sf::Color::Black);
-
 
 
     sf::Font font;
@@ -43,13 +27,16 @@ int main()
     textTitle.setPosition(610.0f, 50.0f);
     textTitle.setString("FAVOURITE LIST");
 
-    sf::Text textAdd;
-    textAdd.setFont(font);
-    textAdd.setCharacterSize(40);
-    textAdd.setFillColor(sf::Color::Black);
-    textAdd.setPosition(760.0f, 135.0f);
-    textAdd.setString("ADD");
+    minh::button ViewButton, AddButton, DeleteButton;
 
+    ViewButton.setButton(sf::Vector2f(266.0f,50.0f), 400.0f, 135.0f, sf::Color::White, 2.0f, sf::Color::Black);
+    ViewButton.setTextButton(490.0f, 135.0f, font, 40, "VIEW", sf::Color::Black);
+
+    AddButton.setButton(sf::Vector2f(266.0f, 50.0f), 668.0f, 135.0f, sf::Color::White, 2.0f, sf::Color::Black);
+    AddButton.setTextButton(760.0f, 135.0f, font, 40, "ADD", sf::Color::Black);
+
+    DeleteButton.setButton(sf::Vector2f(266.0f, 50.0f), 934.0f, 135.0f, sf::Color::White, 2.0f, sf::Color::Black);
+    DeleteButton.setTextButton(990.0f, 135.0f, font, 40, "DELETE", sf::Color::Black);
 
     while (favWindow.isOpen())
     {
@@ -65,14 +52,19 @@ int main()
                 
             }
         }
+
+
+        ViewButton.touchingButton(favWindow);
+        AddButton.touchingButton(favWindow);
+        DeleteButton.touchingButton(favWindow);
+
         favWindow.clear();
         favWindow.draw(Background);
         favWindow.draw(title);
-        favWindow.draw(ViewButton);
-        favWindow.draw(AddButton);
-        favWindow.draw(DeleteButton);
         favWindow.draw(textTitle);
-        favWindow.draw(textAdd);
+        AddButton.draw(favWindow);
+        ViewButton.draw(favWindow);
+        DeleteButton.draw(favWindow);
         favWindow.display();
     }
 }
