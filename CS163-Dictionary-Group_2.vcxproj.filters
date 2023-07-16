@@ -21,9 +21,15 @@
     <ClCompile Include="myButton.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="myBox.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="myBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

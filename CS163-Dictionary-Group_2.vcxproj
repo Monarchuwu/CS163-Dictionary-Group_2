@@ -140,9 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="favou.cpp" />
+    <ClCompile Include="myBox.cpp" />
     <ClCompile Include="myButton.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="myBox.h" />
     <ClInclude Include="myButton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
