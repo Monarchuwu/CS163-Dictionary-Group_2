@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Constant.h"
+#include "mainScreen/ScreenMain.h"
 
 class Application {
 public:
@@ -14,5 +15,5 @@ private:
 
 private:
     sf::RenderWindow mWindow;
-    std::string mString;
+    mainScreen::ScreenMain mScreenMain;
 };

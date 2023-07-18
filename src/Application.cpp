@@ -2,7 +2,8 @@
 #include <iostream>
 
 Application::Application()
-    : mWindow() {
+    : mWindow(),
+      mScreenMain() {
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
     mWindow.create(sf::VideoMode(1600, 900), "Dictionary - Group 2", sf::Style::Close, settings);
@@ -24,34 +25,20 @@ void Application::processEvents() {
             case sf::Event::Closed:
                 mWindow.close();
                 break;
-
-            case sf::Event::KeyReleased:
-                if (sf::Keyboard::A <= event.key.code && event.key.code <= sf::Keyboard::Z) {
-                    mString += char(event.key.code + 'a');
-                }
-                else if (event.key.code == sf::Keyboard::Delete) mString.pop_back();
-                break;
         }
+
+        mScreenMain.handleEvent(event);
     }
 }
 
 void Application::update() {
+    mScreenMain.update();
 }
 
 void Application::render() {
     mWindow.clear(sf::Color::Black);
 
-    sf::RectangleShape rect;
-    rect.setSize(sf::Vector2f(100, 100));
-    mWindow.draw(rect);
-
-    sf::Text mText;
-    mText.setFont(constant::fontArial);
-    mText.setStyle(sf::Text::Bold);
-    mText.setCharacterSize(30);
-    mText.setFillColor(sf::Color::Cyan);
-    mText.setString(mString);
-    mWindow.draw(mText);
+    mScreenMain.draw(mWindow);
 
     mWindow.display();
 }
