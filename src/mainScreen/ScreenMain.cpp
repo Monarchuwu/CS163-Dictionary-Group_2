@@ -61,11 +61,10 @@ namespace mainScreen {
         mModeButton[0].setPressed(true);
         mModeSelected = &mModeButton[0];
 
-        /*
         // plus icon button sprite
         {
             sf::Texture texture;
-            texture.loadFromFile("Resources/plus3-icon - Copy.png");
+            texture.loadFromFile("data/images/plus-icon.png");
             mPlusIcon.setTexture(texture);
             mPlusIcon.setPosition(sf::Vector2f(1200, 200));
 
@@ -77,7 +76,7 @@ namespace mainScreen {
         // favorite icon button sprite
         {
             sf::Texture texture;
-            texture.loadFromFile("Resources/star-icon - Copy.png");
+            texture.loadFromFile("data/images/star-icon.png");
             mFavoriteIcon.setTexture(texture);
             mFavoriteIcon.setPosition(sf::Vector2f(1250, 200));
 
@@ -89,7 +88,7 @@ namespace mainScreen {
         // history icon button sprite
         {
             sf::Texture texture;
-            texture.loadFromFile("Resources/book-icon - Copy.png");
+            texture.loadFromFile("data/images/book-icon.png");
             mHistoryIcon.setTexture(texture);
             mHistoryIcon.setPosition(sf::Vector2f(1300, 200));
 
@@ -101,7 +100,7 @@ namespace mainScreen {
         // set default icon button sprite
         {
             sf::Texture texture;
-            texture.loadFromFile("Resources/clean-icon - Copy.png");
+            texture.loadFromFile("data/images/broom-icon.png");
             mSetDefaultIcon.setTexture(texture);
             mSetDefaultIcon.setPosition(sf::Vector2f(1350, 200));
 
@@ -110,7 +109,6 @@ namespace mainScreen {
             mSetDefaultIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
             mSetDefaultIcon.setColor(mColor[2]);
         }
-        */
 
         // search line
         {
@@ -124,11 +122,10 @@ namespace mainScreen {
             mSearchLine.setAlignCenter(true);
         }
 
-        /*
         // magnifier icon button sprite
         {
             sf::Texture texture;
-            texture.loadFromFile("Resources/magnifier - Copy.png");
+            texture.loadFromFile("data/images/magnifier-icon.png");
             mMagnifierIcon.setTexture(texture);
             mMagnifierIcon.setPosition(sf::Vector2f(1030, 300));
 
@@ -137,7 +134,6 @@ namespace mainScreen {
             mMagnifierIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
             mMagnifierIcon.setColor(mColor[2]);
         }
-        */
 
         // game button
         {
