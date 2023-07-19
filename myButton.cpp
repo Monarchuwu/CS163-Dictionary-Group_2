@@ -38,7 +38,8 @@ namespace minh{
         else buttonText.setFillColor(sf::Color::Black);
     }
 
-    void button::draw(sf::RenderWindow &window) {
+    void button::draw(sf::RenderTarget &window) const
+    {
         window.draw(buttonRec);
         window.draw(buttonText);
     }

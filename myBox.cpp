@@ -1,5 +1,7 @@
 #include "myBox.h"
 #include <iostream>
+#include <fstream>
+#include <string>
 namespace minh
 {
 
@@ -49,7 +51,9 @@ namespace minh
         }
     }
 
-    void Box::draw(sf::RenderWindow& window)
+
+
+    void Box::draw(sf::RenderTarget& window) const
     {
         window.draw(boxRec);
         window.draw(boxText);

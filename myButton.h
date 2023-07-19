@@ -14,6 +14,6 @@ namespace minh {
 
         void touchingButton(sf::RenderWindow &window);
 
-        void draw(sf::RenderWindow &windowP);
+        void draw(sf::RenderTarget &window) const;
     };
 } // namespace minh

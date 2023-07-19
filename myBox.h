@@ -18,7 +18,7 @@ namespace minh
         
         void writing( sf::Event evnt, std::string& text_input);
 
-        void draw(sf::RenderWindow &window);
+        void draw(sf::RenderTarget &window) const;
 
         
     };

@@ -139,11 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="favou.cpp" />
+    <ClCompile Include="favouriteScreen!.cpp" />
+    <ClCompile Include="FavouriteScreen.cpp" />
+    <ClCompile Include="fileWork.cpp" />
     <ClCompile Include="myBox.cpp" />
     <ClCompile Include="myButton.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FavouriteScreen.h" />
+    <ClInclude Include="fileWork.h" />
     <ClInclude Include="myBox.h" />
     <ClInclude Include="myButton.h" />
   </ItemGroup>

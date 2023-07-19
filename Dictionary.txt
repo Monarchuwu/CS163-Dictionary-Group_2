@@ -1,0 +1,10 @@
+dog,Animal with 4 legs
+cat,An animal
+fish,An animal under water
+human,People on Earth
+pick,Take something
+computer,An electronic machine
+glass,A hard, transparent material, used to make windows, bottles
+black,Having the darkest colour there is
+red,Of the colour of fresh blood
+read,To look at words or symbols and understand what they mean

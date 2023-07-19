@@ -15,14 +15,20 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="favou.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="myButton.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="myBox.cpp">
       <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fileWork.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FavouriteScreen.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="favouriteScreen!.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -30,6 +36,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="myBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fileWork.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FavouriteScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
