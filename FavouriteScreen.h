@@ -13,6 +13,15 @@ namespace minh {
         ScreenFavou();
         void run();
 
+         // Event Handle
+        void handleEvent(const sf::Event& evnt);
+
+        // Update
+        void update();
+
+        // Render - Draw
+        void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
+
     private:
         //OBJECT ON THE SCREEN
         sf::RenderWindow favWindow;
@@ -23,19 +32,13 @@ namespace minh {
         sf::Text textTitle;
         sf::Text HeadWord;
         button ViewButton, AddButton, DeleteButton;
+        button getBack;
+        sf::Texture leftArrow;
         int option;
         Box AddBox, DefBox;
         std::string text_input, def_input, headword_input;
         sf::Text view[10];
         sf::Event evnt;
-        //Event Handle
-        void handleEvent(const sf::Event& evnt);
-
-        //Update
-        void update();
-
-        //Render - Draw 
-        void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
 
 	};
 } // namespace minh

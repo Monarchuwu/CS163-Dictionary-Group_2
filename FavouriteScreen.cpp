@@ -44,6 +44,15 @@ namespace minh
         DeleteButton.setButton(sf::Vector2f(266.0f, 50.0f), 934.0f, 135.0f, sf::Color::White, 2.0f, sf::Color::Black);
         DeleteButton.setTextButton(990.0f, 135.0f, font, 40, "DELETE", sf::Color::Black);
 
+        getBack.buttonRec.setSize(sf::Vector2f(100.0f, 100.0f));
+        getBack.buttonRec.setOutlineThickness(2.0f);
+        getBack.buttonRec.setOutlineColor(sf::Color::Black);
+        getBack.buttonRec.setPosition(1300.0f, 30.0f);
+        leftArrow.loadFromFile("black_arrow.png");
+        getBack.buttonRec.setTexture(&leftArrow);
+
+       
+
 
         AddBox.setTextBox(sf::Vector2f(266.0f, 50.0f), 668.0f, 200.0f, sf::Color::Transparent, 2.0f, sf::Color::Transparent);
         AddBox.setText(680.0f, 205.0f, font, 30, "", sf::Color::Transparent);
@@ -132,6 +141,10 @@ namespace minh
                         }
                     }
                 }
+                else if (getBack.isTouching(favWindow))
+                {
+                    std::cout << "Choosing Back to main Screen" <<std::endl;
+                }
             }
         }
 
@@ -191,9 +204,21 @@ namespace minh
 
     void ScreenFavou::update()
     {
+        sf::Vector2i mousePos     = sf::Mouse::getPosition(favWindow);
+        sf::FloatRect buttonBound = getBack.buttonRec.getGlobalBounds();
+        bool isOntheButton        = buttonBound.contains(sf::Vector2f(mousePos));
+        if (isOntheButton) {
+            leftArrow.loadFromFile("red_arrow.png");
+            getBack.buttonRec.setTexture(&leftArrow);
+        }
+        else {
+            leftArrow.loadFromFile("black_arrow.png");
+            getBack.buttonRec.setTexture(&leftArrow);
+        }
         ViewButton.touchingButton(favWindow);
         AddButton.touchingButton(favWindow);
         DeleteButton.touchingButton(favWindow);
+
     }
 
   void ScreenFavou::draw(sf::RenderTarget& favWindow, sf::RenderStates states) const
@@ -202,6 +227,7 @@ namespace minh
         favWindow.draw(Background);
         favWindow.draw(title);
         favWindow.draw(textTitle);
+        favWindow.draw(getBack.buttonRec);
         AddButton.draw(favWindow);
         ViewButton.draw(favWindow);
         DeleteButton.draw(favWindow);
