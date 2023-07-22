@@ -139,13 +139,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="favouriteScreen!.cpp" />
+    <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\Constant.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\mainScreen\Box.cpp" />
+    <ClCompile Include="src\mainScreen\Button.cpp" />
+    <ClCompile Include="src\mainScreen\ButtonSprite.cpp" />
+    <ClCompile Include="src\mainScreen\ContainMethod.cpp" />
+    <ClCompile Include="src\mainScreen\HideMethod.cpp" />
+    <ClCompile Include="src\mainScreen\LineEdit.cpp" />
+    <ClCompile Include="src\mainScreen\PressMethod.cpp" />
+    <ClCompile Include="src\mainScreen\ScreenMain.cpp" />
     <ClCompile Include="FavouriteScreen.cpp" />
     <ClCompile Include="fileWork.cpp" />
     <ClCompile Include="myBox.cpp" />
     <ClCompile Include="myButton.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Font Include="data\fonts\arial.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\Constant.h" />
+    <ClInclude Include="src\mainScreen\Box.h" />
+    <ClInclude Include="src\mainScreen\Button.h" />
+    <ClInclude Include="src\mainScreen\ButtonSprite.h" />
+    <ClInclude Include="src\mainScreen\ContainMethod.h" />
+    <ClInclude Include="src\mainScreen\HideMethod.h" />
+    <ClInclude Include="src\mainScreen\LineEdit.h" />
+    <ClInclude Include="src\mainScreen\PressMethod.h" />
+    <ClInclude Include="src\mainScreen\ScreenMain.h" />
     <ClInclude Include="FavouriteScreen.h" />
     <ClInclude Include="fileWork.h" />
     <ClInclude Include="myBox.h" />
