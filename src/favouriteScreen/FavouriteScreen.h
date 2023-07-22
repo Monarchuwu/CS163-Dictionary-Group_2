@@ -4,9 +4,10 @@
 #include "myBox.h"
 #include <iostream>
 #include "fileWork.h"
+#include "../Screen.h"
 namespace minh {
 
-    class ScreenFavou {
+    class ScreenFavou : public Screen {
 
     
     public:
@@ -14,13 +15,13 @@ namespace minh {
         void run();
 
          // Event Handle
-        void handleEvent(const sf::Event& evnt);
+        void handleEvent(const sf::Event& evnt) override;
 
         // Update
-        void update();
+        void update() override;
 
         // Render - Draw
-        void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
+        void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const override;
 
     private:
         //OBJECT ON THE SCREEN

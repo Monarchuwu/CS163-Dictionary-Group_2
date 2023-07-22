@@ -3,11 +3,14 @@
 
 Application::Application()
     : mWindow(),
-      mScreenMain() {
+      mScreenMain(),
+      screenfav() {
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
     mWindow.create(sf::VideoMode(1600, 900), "Dictionary - Group 2", sf::Style::Close, settings);
     mWindow.setPosition(sf::Vector2i(10, 10));
+
+    mScreen = &mScreenMain;
 }
 
 void Application::run() {
@@ -27,18 +30,37 @@ void Application::processEvents() {
                 break;
         }
 
-        mScreenMain.handleEvent(event);
+        mScreen->handleEvent(event);
+        //screenfav.handleEvent(event);
+        //mScreenMain.handleEvent(event);
     }
 }
 
 void Application::update() {
-    mScreenMain.update();
+    mScreen->update();
+
+    if (mScreen->getCallHome()) {
+        mScreen->setCallHome(false);
+        mScreen = &mScreenMain;
+        return;
+    }
+
+    if (mScreen->getCallFavoriteList()) {
+        mScreen->setCallFavoriteList(false);
+        mScreen = &screenfav;
+        return;
+    }
+
+    //screenfav.update();
+    //mScreenMain.update();
 }
 
 void Application::render() {
     mWindow.clear(sf::Color::Black);
 
-    mScreenMain.draw(mWindow);
+    mScreen->draw(mWindow);
+    //screenfav.draw(mWindow);
+    //mScreenMain.draw(mWindow);
 
     mWindow.display();
 }

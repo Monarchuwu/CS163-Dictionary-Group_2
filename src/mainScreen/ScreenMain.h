@@ -1,12 +1,13 @@
 #pragma once
 #include <iostream>
 #include "../Constant.h"
+#include "../Screen.h"
 #include "Button.h"
 #include "ButtonSprite.h"
 #include "LineEdit.h"
 
 namespace mainScreen {
-    class ScreenMain {
+    class ScreenMain : public Screen {
     public:
         // constructor
         ScreenMain();
@@ -15,13 +16,13 @@ namespace mainScreen {
         ~ScreenMain();
 
         // handle event
-        void handleEvent(const sf::Event& event);
+        void handleEvent(const sf::Event& event) override;
 
         // update
-        void update();
+        void update() override;
 
         // draw
-        void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const;
+        void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const override;
 
     private:
         // color set (darkest to lightest)

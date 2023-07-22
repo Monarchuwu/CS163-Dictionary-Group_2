@@ -126,7 +126,7 @@ using namespace minh;
                         std::cout << "Choosing view words" << std::endl;
                         for (int i = 0; i < 10; i++)
                         {
-                           std::string str = takeLine(i + 1, "favourite.txt");
+                           std::string str = takeLine(i + 1, "data/favourite.txt");
                            for (int j = 0; j < str.size(); j++)
                            {
                                if (str[j] == ',')
@@ -160,13 +160,13 @@ using namespace minh;
                         std::cout << "Add to favourite list: " << text_input << std::endl;
 
                         //HANDLE BACK END ADD TO FAVOURITE LIST
-                        std::string fileName = "Dictionary.txt";
+                        std::string fileName = "data/Dictionary.txt";
                         def_input = defOfWord(text_input, fileName);
                         if (!def_input.size()) def_input = "ERROR: Can not find this word";
                         else
                         {
-                            if (defOfWord(text_input, "favourite.txt") == "")// Not in the favourite.txt yet
-                            addToEndOfFile(text_input, "favourite.txt", fileName);
+                            if (defOfWord(text_input, "data/favourite.txt") == "")// Not in the data/favourite.txt yet
+                            addToEndOfFile(text_input, "data/favourite.txt", fileName);
                             else
                             {
                                 def_input = "Already in the favourite list";
@@ -182,12 +182,12 @@ using namespace minh;
                         std::cout << "Delete from favourite list: " << text_input << std::endl;
                        
                         //HANDLE BACK END DELETE FROM THE FAVOURITE LIST
-                        std::string fileName = "Dictionary.txt";
+                        std::string fileName = "data/Dictionary.txt";
                         def_input            = defOfWord(text_input, fileName);
                         if (!def_input.size()) def_input = "ERROR: Can not find this word";
                         else {
-                            if (defOfWord(text_input, "favourite.txt") != "") // In the favourite already
-                            clearFromFile(text_input, "favourite.txt");
+                            if (defOfWord(text_input, "data/favourite.txt") != "") // In the favourite already
+                            clearFromFile(text_input, "data/favourite.txt");
                             else {
                             def_input = "Not in the favourite list";
                             std::cout << "Word not already in the favourite list" << std::endl;

@@ -285,6 +285,7 @@ namespace mainScreen {
         // update favorite icon
         if (mFavoriteIcon.getPressed()) {
             mFavoriteIcon.setPressed(false);
+            setCallFavoriteList(true);
             std::cout << "[CALL] Run Favorite icon feature\n";
         }
         // update history icon

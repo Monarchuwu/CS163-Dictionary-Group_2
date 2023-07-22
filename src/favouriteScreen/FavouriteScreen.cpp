@@ -5,7 +5,7 @@ namespace minh
     ScreenFavou::ScreenFavou()
     {
         //Initialize Window
-        favWindow.create(sf::VideoMode(1600, 900), "Favourite List", sf::Style::Close);
+        //favWindow.create(sf::VideoMode(1600, 900), "Favourite List", sf::Style::Close);
      
         backgroundColor = sf::Color(102, 153, 255);
         Background.setSize(sf::Vector2f(1600.0f, 900.0f));
@@ -48,7 +48,7 @@ namespace minh
         getBack.buttonRec.setOutlineThickness(2.0f);
         getBack.buttonRec.setOutlineColor(sf::Color::Black);
         getBack.buttonRec.setPosition(1300.0f, 30.0f);
-        leftArrow.loadFromFile("black_arrow.png");
+        leftArrow.loadFromFile("data/images/black_arrow.png");
         getBack.buttonRec.setTexture(&leftArrow);
 
        
@@ -87,8 +87,10 @@ namespace minh
             favWindow.close();
 
         else if (evnt.type == sf::Event::MouseButtonPressed) {
+            sf::Vector2f mousePos(evnt.mouseButton.x, evnt.mouseButton.y);
+            
             if (evnt.mouseButton.button == sf::Mouse::Left) {
-                if (AddButton.isTouching(favWindow)) {
+                if (AddButton.isTouching(mousePos)) {
                     std::cout << "Choosing add a new word" << std::endl;
                     AddBox.setTextBox(sf::Vector2f(266.0f, 50.0f), 668.0f, 200.0f, sf::Color::White, 2.0f, sf::Color::Black);
                     for (int i = 0; i < 10; i++) {
@@ -103,7 +105,7 @@ namespace minh
                     option           = 1;
                 }
 
-                else if (DeleteButton.isTouching(favWindow)) {
+                else if (DeleteButton.isTouching(mousePos)) {
                     std::cout << "Choosing delete a word" << std::endl;
                     AddBox.setTextBox(sf::Vector2f(266.0f, 50.0f), 668.0f, 200.0f, sf::Color::White, 2.0f, sf::Color::Black);
                     text_input = "";
@@ -118,7 +120,7 @@ namespace minh
                     option           = -1;
                 }
 
-                else if (ViewButton.isTouching(favWindow)) {
+                else if (ViewButton.isTouching(mousePos)) {
                     text_input     = "";
                     def_input      = "";
                     headword_input = "";
@@ -128,7 +130,7 @@ namespace minh
 
                     std::cout << "Choosing view words" << std::endl;
                     for (int i = 0; i < 10; i++) {
-                        std::string str = takeLine(i + 1, "favourite.txt");
+                        std::string str = takeLine(i + 1, "data/favourite.txt");
                         for (int j = 0; j < str.size(); j++) {
                             if (str[j] == ',') {
                                 std::string word = str.substr(0, j);
@@ -141,8 +143,9 @@ namespace minh
                         }
                     }
                 }
-                else if (getBack.isTouching(favWindow))
+                else if (getBack.isTouching(mousePos))
                 {
+                    setCallHome(true);
                     std::cout << "Choosing Back to main Screen" <<std::endl;
                 }
             }
@@ -161,12 +164,12 @@ namespace minh
                     std::cout << "Add to favourite list: " << text_input << std::endl;
 
                     // HANDLE BACK END ADD TO FAVOURITE LIST
-                    std::string fileName = "Dictionary.txt";
+                    std::string fileName = "data/Dictionary.txt";
                     def_input            = defOfWord(text_input, fileName);
                     if (!def_input.size()) def_input = "ERROR: Can not find this word";
                     else {
-                        if (defOfWord(text_input, "favourite.txt") == "") // Not in the favourite.txt yet
-                            addToEndOfFile(text_input, "favourite.txt", fileName);
+                        if (defOfWord(text_input, "data/favourite.txt") == "") // Not in the data/favourite.txt yet
+                            addToEndOfFile(text_input, "data/favourite.txt", fileName);
                         else {
                             def_input = "Already in the favourite list";
                             std::cout << "Word already in the favourite list" << std::endl;
@@ -179,12 +182,12 @@ namespace minh
                     std::cout << "Delete from favourite list: " << text_input << std::endl;
 
                     // HANDLE BACK END DELETE FROM THE FAVOURITE LIST
-                    std::string fileName = "Dictionary.txt";
+                    std::string fileName = "data/Dictionary.txt";
                     def_input            = defOfWord(text_input, fileName);
                     if (!def_input.size()) def_input = "ERROR: Can not find this word";
                     else {
-                        if (defOfWord(text_input, "favourite.txt") != "") // In the favourite already
-                            clearFromFile(text_input, "favourite.txt");
+                        if (defOfWord(text_input, "data/favourite.txt") != "") // In the favourite already
+                            clearFromFile(text_input, "data/favourite.txt");
                         else {
                             def_input = "Not in the favourite list";
                             std::cout << "Word not already in the favourite list" << std::endl;
@@ -208,11 +211,11 @@ namespace minh
         sf::FloatRect buttonBound = getBack.buttonRec.getGlobalBounds();
         bool isOntheButton        = buttonBound.contains(sf::Vector2f(mousePos));
         if (isOntheButton) {
-            leftArrow.loadFromFile("red_arrow.png");
+            leftArrow.loadFromFile("data/images/red_arrow.png");
             getBack.buttonRec.setTexture(&leftArrow);
         }
         else {
-            leftArrow.loadFromFile("black_arrow.png");
+            leftArrow.loadFromFile("data/images/black_arrow.png");
             getBack.buttonRec.setTexture(&leftArrow);
         }
         ViewButton.touchingButton(favWindow);

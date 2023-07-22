@@ -3,9 +3,8 @@
 
 namespace minh{
 
-    bool button::isTouching(sf::RenderWindow &window)
+    bool button::isTouching(sf::Vector2f mousePos)
     {
-        sf::Vector2i mousePos     = sf::Mouse::getPosition(window);
         sf::FloatRect buttonBound = buttonRec.getGlobalBounds();
         bool isOntheButton        = buttonBound.contains(sf::Vector2f(mousePos));
         if (isOntheButton) return true;

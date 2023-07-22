@@ -141,6 +141,11 @@
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Constant.cpp" />
+    <ClCompile Include="src\favouriteScreen\favou.cpp" />
+    <ClCompile Include="src\favouriteScreen\FavouriteScreen.cpp" />
+    <ClCompile Include="src\favouriteScreen\fileWork.cpp" />
+    <ClCompile Include="src\favouriteScreen\myBox.cpp" />
+    <ClCompile Include="src\favouriteScreen\myButton.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\mainScreen\Box.cpp" />
     <ClCompile Include="src\mainScreen\Button.cpp" />
@@ -150,10 +155,7 @@
     <ClCompile Include="src\mainScreen\LineEdit.cpp" />
     <ClCompile Include="src\mainScreen\PressMethod.cpp" />
     <ClCompile Include="src\mainScreen\ScreenMain.cpp" />
-    <ClCompile Include="FavouriteScreen.cpp" />
-    <ClCompile Include="fileWork.cpp" />
-    <ClCompile Include="myBox.cpp" />
-    <ClCompile Include="myButton.cpp" />
+    <ClCompile Include="src\Screen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="data\fonts\arial.ttf" />
@@ -161,6 +163,10 @@
   <ItemGroup>
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Constant.h" />
+    <ClInclude Include="src\favouriteScreen\FavouriteScreen.h" />
+    <ClInclude Include="src\favouriteScreen\fileWork.h" />
+    <ClInclude Include="src\favouriteScreen\myBox.h" />
+    <ClInclude Include="src\favouriteScreen\myButton.h" />
     <ClInclude Include="src\mainScreen\Box.h" />
     <ClInclude Include="src\mainScreen\Button.h" />
     <ClInclude Include="src\mainScreen\ButtonSprite.h" />
@@ -169,10 +175,7 @@
     <ClInclude Include="src\mainScreen\LineEdit.h" />
     <ClInclude Include="src\mainScreen\PressMethod.h" />
     <ClInclude Include="src\mainScreen\ScreenMain.h" />
-    <ClInclude Include="FavouriteScreen.h" />
-    <ClInclude Include="fileWork.h" />
-    <ClInclude Include="myBox.h" />
-    <ClInclude Include="myButton.h" />
+    <ClInclude Include="src\Screen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
