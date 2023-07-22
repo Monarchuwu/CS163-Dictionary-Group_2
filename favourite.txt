@@ -1,0 +1,6 @@
+glass,A hard, transparent material, used to make windows, bottles
+red,Of the colour of fresh blood
+computer,An electronic machine
+dog,Animal with 4 legs
+fish,An animal under water
+cat,An animal

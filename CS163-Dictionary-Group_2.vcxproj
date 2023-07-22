@@ -150,6 +150,10 @@
     <ClCompile Include="src\mainScreen\LineEdit.cpp" />
     <ClCompile Include="src\mainScreen\PressMethod.cpp" />
     <ClCompile Include="src\mainScreen\ScreenMain.cpp" />
+    <ClCompile Include="FavouriteScreen.cpp" />
+    <ClCompile Include="fileWork.cpp" />
+    <ClCompile Include="myBox.cpp" />
+    <ClCompile Include="myButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="data\fonts\arial.ttf" />
@@ -165,6 +169,10 @@
     <ClInclude Include="src\mainScreen\LineEdit.h" />
     <ClInclude Include="src\mainScreen\PressMethod.h" />
     <ClInclude Include="src\mainScreen\ScreenMain.h" />
+    <ClInclude Include="FavouriteScreen.h" />
+    <ClInclude Include="fileWork.h" />
+    <ClInclude Include="myBox.h" />
+    <ClInclude Include="myButton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
