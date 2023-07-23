@@ -12,8 +12,6 @@ namespace minh {
 
         void setTextButton(float x, float y, sf::Font &font, int sizeChar, sf::String str, sf::Color fillColor);
 
-        void touchingButton(sf::RenderWindow &window);
-
         void draw(sf::RenderTarget &window) const;
     };
 } // namespace minh

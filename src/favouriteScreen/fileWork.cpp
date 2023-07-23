@@ -19,7 +19,7 @@ namespace minh
             for (int i = 0; i <= word.size() - 1; i++)
             {
                 if (def[i] != word[i]) break;
-                if (i == word.size() - 1 && def[i + 1] == 44)
+                if (i == word.size() - 1 && def[i + 1] == 9)
                 {
                     find = 1;
                     def  = def.substr(k + 1);
@@ -48,7 +48,7 @@ namespace minh
                 return;
             }
             if (defOfWord(word, filename) == "")
-                fout << word << "," << defOfWord(word, rootfilename) << std::endl;
+                fout << word << "\t" << defOfWord(word, rootfilename) << std::endl;
             else std::cout << "Word have already been added to favourite list" << std::endl;
             fout.close();
             return;
@@ -95,7 +95,7 @@ namespace minh
                 for (int i = 0; i <= word.size() - 1; i++) 
                 {
                     if (str[i] != word[i]) break;
-                    if (i == word.size() - 1 && str[i + 1] == 44)
+                    if (i == word.size() - 1 && str[i + 1] == 9)
                     {
                         find = 1;
                         break;

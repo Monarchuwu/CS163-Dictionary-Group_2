@@ -27,15 +27,6 @@ namespace minh{
         buttonText.setString(str);
     }
 
-    void button::touchingButton(sf::RenderWindow &window) {
-        sf::Vector2i mousePos     = sf::Mouse::getPosition(window);
-        sf::FloatRect buttonBound = buttonRec.getGlobalBounds();
-        bool isOntheButton        = buttonBound.contains(sf::Vector2f(mousePos));
-        if (isOntheButton) {
-            buttonText.setFillColor(sf::Color::Red);
-        }
-        else buttonText.setFillColor(sf::Color::Black);
-    }
 
     void button::draw(sf::RenderTarget &window) const
     {

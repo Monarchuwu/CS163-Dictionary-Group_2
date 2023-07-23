@@ -15,18 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="myButton.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="myBox.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="fileWork.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FavouriteScreen.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -58,6 +46,27 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\mainScreen\ScreenMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\favouriteScreen\favou.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\favouriteScreen\FavouriteScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\favouriteScreen\fileWork.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\favouriteScreen\myBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\favouriteScreen\myButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Screen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\BUILDING TRIE\ConsoleApplication1\Mytrie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -97,18 +106,22 @@
     <ClInclude Include="src\mainScreen\ScreenMain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="myButton.h">
+    <ClInclude Include="src\favouriteScreen\FavouriteScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="myBox.h">
+    <ClInclude Include="src\favouriteScreen\fileWork.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="fileWork.h">
+    <ClInclude Include="src\favouriteScreen\myBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FavouriteScreen.h">
+    <ClInclude Include="src\favouriteScreen\myButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Screen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\BUILDING TRIE\ConsoleApplication1\MyTrie.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

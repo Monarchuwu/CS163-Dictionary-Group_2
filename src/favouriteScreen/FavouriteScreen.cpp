@@ -85,6 +85,32 @@ namespace minh
     {
         if (evnt.type == sf::Event::Closed)
             favWindow.close();
+        else if (evnt.type == sf::Event::MouseMoved)
+        {
+            int XMouse = evnt.mouseMove.x;
+            int YMouse = evnt.mouseMove.y;
+            if (AddButton.isTouching(sf::Vector2f(XMouse, YMouse))) AddButton.buttonText.setFillColor(sf::Color::Red);
+            else AddButton.buttonText.setFillColor(sf::Color::Black);
+
+            if (ViewButton.isTouching(sf::Vector2f(XMouse, YMouse))) ViewButton.buttonText.setFillColor(sf::Color::Red);
+            else ViewButton.buttonText.setFillColor(sf::Color::Black);
+
+            if (DeleteButton.isTouching(sf::Vector2f(XMouse, YMouse))) DeleteButton.buttonText.setFillColor(sf::Color::Red);
+            else DeleteButton.buttonText.setFillColor(sf::Color::Black);
+
+            if (getBack.isTouching(sf::Vector2f(XMouse, YMouse)))
+            {
+                leftArrow.loadFromFile("data/images/red_arrow.png");
+                getBack.buttonRec.setTexture(&leftArrow);
+            }
+            else
+            {
+                leftArrow.loadFromFile("data/images/black_arrow.png");
+                getBack.buttonRec.setTexture(&leftArrow);
+            
+            }
+            
+        }
 
         else if (evnt.type == sf::Event::MouseButtonPressed) {
             sf::Vector2f mousePos(evnt.mouseButton.x, evnt.mouseButton.y);
@@ -132,7 +158,7 @@ namespace minh
                     for (int i = 0; i < 10; i++) {
                         std::string str = takeLine(i + 1, "data/favourite.txt");
                         for (int j = 0; j < str.size(); j++) {
-                            if (str[j] == ',') {
+                            if (str[j] == '\t') {
                                 std::string word = str.substr(0, j);
                                 std::string def  = str.substr(j + 1);
                                 str              = word + " : " + def;
@@ -151,7 +177,7 @@ namespace minh
             }
         }
 
-        if (evnt.type == sf::Event::TextEntered) {
+        if (evnt.type == sf::Event::TextEntered && option != 0) {
             if (AddBox.writeThis && !DefBox.writeThis) AddBox.writing(evnt, text_input);
             if (AddBox.writeThis == false && DefBox.writeThis == false) {
                 sf::Color headColor(255, 80, 80);
@@ -207,21 +233,7 @@ namespace minh
 
     void ScreenFavou::update()
     {
-        sf::Vector2i mousePos     = sf::Mouse::getPosition(favWindow);
-        sf::FloatRect buttonBound = getBack.buttonRec.getGlobalBounds();
-        bool isOntheButton        = buttonBound.contains(sf::Vector2f(mousePos));
-        if (isOntheButton) {
-            leftArrow.loadFromFile("data/images/red_arrow.png");
-            getBack.buttonRec.setTexture(&leftArrow);
-        }
-        else {
-            leftArrow.loadFromFile("data/images/black_arrow.png");
-            getBack.buttonRec.setTexture(&leftArrow);
-        }
-        ViewButton.touchingButton(favWindow);
-        AddButton.touchingButton(favWindow);
-        DeleteButton.touchingButton(favWindow);
-
+       
     }
 
   void ScreenFavou::draw(sf::RenderTarget& favWindow, sf::RenderStates states) const
