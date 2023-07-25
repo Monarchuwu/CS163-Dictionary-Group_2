@@ -1,0 +1,8 @@
+#1	Number one
+(N)	Thumbs down (MSN)
+:D	Happy
+:)	Happy
+K	OK
+:(	Unhappy
+:(	Sad
+:')	Crying with joy

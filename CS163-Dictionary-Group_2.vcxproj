@@ -139,7 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\BUILDING TRIE\ConsoleApplication1\Mytrie.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Constant.cpp" />
     <ClCompile Include="src\favouriteScreen\favou.cpp" />
@@ -147,6 +146,7 @@
     <ClCompile Include="src\favouriteScreen\fileWork.cpp" />
     <ClCompile Include="src\favouriteScreen\myBox.cpp" />
     <ClCompile Include="src\favouriteScreen\myButton.cpp" />
+    <ClCompile Include="src\favouriteScreen\Mytrie.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\mainScreen\Box.cpp" />
     <ClCompile Include="src\mainScreen\Button.cpp" />
@@ -162,13 +162,13 @@
     <Font Include="data\fonts\arial.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\BUILDING TRIE\ConsoleApplication1\MyTrie.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Constant.h" />
     <ClInclude Include="src\favouriteScreen\FavouriteScreen.h" />
     <ClInclude Include="src\favouriteScreen\fileWork.h" />
     <ClInclude Include="src\favouriteScreen\myBox.h" />
     <ClInclude Include="src\favouriteScreen\myButton.h" />
+    <ClInclude Include="src\favouriteScreen\MyTrie.h" />
     <ClInclude Include="src\mainScreen\Box.h" />
     <ClInclude Include="src\mainScreen\Button.h" />
     <ClInclude Include="src\mainScreen\ButtonSprite.h" />
