@@ -15,15 +15,20 @@ public:
 
     // set call home
     void setCallHome(bool callHome);
+    // set call add word screen
+    void setCallAddWordScreen(bool callAddWordScreen);
     // set call favorite list
     void setCallFavoriteList(bool callFavoriteList);
 
     // get call home
     bool getCallHome() const;
+    // get call add word screen
+    bool getCallAddWordScreen() const;
     // get call favorite list
     bool getCallFavoriteList() const;
 
 private:
     bool mCallHome;
+    bool mCallAddWordScreen;
     bool mCallFavoriteList;
 };

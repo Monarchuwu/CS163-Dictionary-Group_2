@@ -80,9 +80,9 @@ public:
         return text.str();
     }
 
-    void drawTo(sf::RenderWindow& window) {
-        window.draw(textbox);
-        window.draw(sprite);
+    void drawTo(sf::RenderTarget& target) const {
+        target.draw(textbox);
+        target.draw(sprite);
     }
 
     void typedOn(sf::Event input) {

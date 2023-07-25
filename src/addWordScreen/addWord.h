@@ -1,4 +1,5 @@
 #pragma once
+#include "../Screen.h"
 #include "Trie.h"
 #include "Button.h"
 #include "Textbox.h"
@@ -8,9 +9,8 @@
 #define ENTER_KEY 13
 #define ESCAPE_KEY 27
 
-class screen_addWord {
+class screen_addWord : public Screen {
 public:
-    sf::RenderWindow window;
     sf::RectangleShape head;
 
     sf::Font roboto;
@@ -61,11 +61,10 @@ public:
     sf::Sprite lang1;
     sf::Sprite lang2;
 
+    sf::RectangleShape background;
+
     //constructor
-    screen_addWord() {
-        //Window
-        window.create(sf::VideoMode(1600, 900), "SFML works!");
-       
+    screen_addWord() : background(sf::Vector2f(1600, 900)) {
         //Head
         head.setSize(sf::Vector2f(1600, 80));
         head.setFillColor(sf::Color::Color(247, 251, 250));
@@ -172,88 +171,86 @@ public:
         sprite_lang_v = { engs, vns };
         sprite_tmp = sprite_v[0];
         color_tmp = color_v[0];
+        background.setFillColor(color_tmp);
         changeLang(0, sprite_lang_v, lang1, lang2);
     }
 
     //handle event
-    void handleEvent() {
-        sf::Event event;
-        while (window.isOpen()) {
-            while (window.pollEvent(event)) {
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-                    lr++;
-                    if (lr > 4) lr = 0;
-                    sprite_tmp = sprite_v[lr];
-                    color_tmp = color_v[lr];
-                    changeLang(lr, sprite_lang_v, lang1, lang2);
-                    changeText(btnWord, lr);
-                    nameDict = nameDict_v[lr];
-                    total.setContent(std::to_string(cnt_v[lr]));
-                    recent.setContent(recentword_v[lr]);
-                }
+    void handleEvent(const sf::Event& event) override {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+            setCallHome(true);
+        }
 
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-                    lr--;
-                    if (lr < 0) lr = 4;
-                    sprite_tmp = sprite_v[lr];
-                    color_tmp = color_v[lr];
-                    changeLang(lr, sprite_lang_v, lang1, lang2);
-                    changeText(btnWord, lr);
-                    nameDict = nameDict_v[lr];
-                    total.setContent(std::to_string(cnt_v[lr]));
-                    recent.setContent(recentword_v[lr]);
-                }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+            lr++;
+            if (lr > 4) lr = 0;
+            sprite_tmp = sprite_v[lr];
+            color_tmp  = color_v[lr];
+            background.setFillColor(color_tmp);
+            changeLang(lr, sprite_lang_v, lang1, lang2);
+            changeText(btnWord, lr);
+            nameDict = nameDict_v[lr];
+            total.setContent(std::to_string(cnt_v[lr]));
+            recent.setContent(recentword_v[lr]);
+        }
 
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-                    tmp = &textbox2;
-                    textbox1.setTextColor(sf::Color::Color(162, 162, 162));
-                    textbox2.setTextColor(sf::Color::White);
-                    btnWord.content.setFillColor(sf::Color::Color(162, 162, 162));
-                    btnDef.content.setFillColor(sf::Color::White);
-                }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+            lr--;
+            if (lr < 0) lr = 4;
+            sprite_tmp = sprite_v[lr];
+            color_tmp  = color_v[lr];
+            background.setFillColor(color_tmp);
+            changeLang(lr, sprite_lang_v, lang1, lang2);
+            changeText(btnWord, lr);
+            nameDict = nameDict_v[lr];
+            total.setContent(std::to_string(cnt_v[lr]));
+            recent.setContent(recentword_v[lr]);
+        }
 
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-                    tmp = &textbox1;
-                    textbox2.setTextColor(sf::Color::Color(162, 162, 162));
-                    textbox1.setTextColor(sf::Color::White);
-                    btnDef.content.setFillColor(sf::Color::Color(162, 162, 162));
-                    btnWord.content.setFillColor(sf::Color::White);
-                }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+            tmp = &textbox2;
+            textbox1.setTextColor(sf::Color::Color(162, 162, 162));
+            textbox2.setTextColor(sf::Color::White);
+            btnWord.content.setFillColor(sf::Color::Color(162, 162, 162));
+            btnDef.content.setFillColor(sf::Color::White);
+        }
 
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
-                    inputFile(root, nameDict, textbox1.getText(), textbox2.getText(), cnt_v[lr], recentword_v[lr]);
-                    total.setContent(std::to_string(cnt_v[lr]));
-                    recent.setContent(recentword_v[lr]);
-                }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+            tmp = &textbox1;
+            textbox2.setTextColor(sf::Color::Color(162, 162, 162));
+            textbox1.setTextColor(sf::Color::White);
+            btnDef.content.setFillColor(sf::Color::Color(162, 162, 162));
+            btnWord.content.setFillColor(sf::Color::White);
+        }
 
-                switch (event.type) {
-                case sf::Event::Closed:
-                    window.close();
-                    break;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+            inputFile(root, nameDict, textbox1.getText(), textbox2.getText(), cnt_v[lr], recentword_v[lr]);
+            total.setContent(std::to_string(cnt_v[lr]));
+            recent.setContent(recentword_v[lr]);
+        }
 
-                case sf::Event::TextEntered:
-                    tmp->typedOn(event);
-                    break;
-                }
-            }
-            draw();
+        switch (event.type) {
+            case sf::Event::TextEntered:
+                tmp->typedOn(event);
+                break;
         }
     }
 
-    void draw() {
-        window.clear(color_tmp);
-        window.draw(head);
-        window.draw(sprite_tmp);
-        window.draw(lang1);
-        window.draw(lang2);
-        window.draw(homes);
-        textbox1.drawTo(window);
-        textbox2.drawTo(window);
-        btn1.drawTo(window);
-        btnWord.drawTo(window);
-        btnDef.drawTo(window);
-        total.drawTo(window);
-        recent.drawTo(window);
-        window.display();
+    void update() override {}
+
+    void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const override {
+        target.draw(background);
+        target.draw(head);
+        target.draw(sprite_tmp);
+        target.draw(lang1);
+        target.draw(lang2);
+        target.draw(homes);
+        textbox1.drawTo(target);
+        textbox2.drawTo(target);
+        btn1.drawTo(target);
+        btnWord.drawTo(target);
+        btnDef.drawTo(target);
+        total.drawTo(target);
+        recent.drawTo(target);
     }
 };

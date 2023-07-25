@@ -45,6 +45,12 @@ void Application::update() {
         return;
     }
 
+    if (mScreen->getCallAddWordScreen()) {
+        mScreen->setCallAddWordScreen(false);
+        mScreen = &screenAddWord;
+        return;
+    }
+
     if (mScreen->getCallFavoriteList()) {
         mScreen->setCallFavoriteList(false);
         mScreen = &screenfav;

@@ -87,10 +87,10 @@ public:
         button.setSize(size);
     }
 
-    void drawTo(sf::RenderWindow& window) {
-        window.draw(button);
-        window.draw(text);
-        window.draw(content);
+    void drawTo(sf::RenderTarget& target) const {
+        target.draw(button);
+        target.draw(text);
+        target.draw(content);
     }
 
     bool isMouseOver(sf::RenderWindow& window) {
