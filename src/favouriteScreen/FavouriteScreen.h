@@ -11,6 +11,7 @@ namespace minh {
 
     
     public:
+        std::string dic_type;
         ScreenFavou();
         void run();
 

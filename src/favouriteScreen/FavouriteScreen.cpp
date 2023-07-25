@@ -6,7 +6,7 @@ namespace minh
     {
         //Initialize Window
         //favWindow.create(sf::VideoMode(1600, 900), "Favourite List", sf::Style::Close);
-     
+        dic_type        = "slang";
         backgroundColor = sf::Color(102, 153, 255);
         Background.setSize(sf::Vector2f(1600.0f, 900.0f));
         Background.setFillColor(backgroundColor);
@@ -156,7 +156,8 @@ namespace minh
 
                     std::cout << "Choosing view words" << std::endl;
                     for (int i = 0; i < 10; i++) {
-                        std::string str = takeLine(i + 1, "data/favourite.txt");
+                        std::string name = "data/" + dic_type + "/favourite.txt";
+                        std::string str = takeLine(i + 1, name);
                         for (int j = 0; j < str.size(); j++) {
                             if (str[j] == '\t') {
                                 std::string word = str.substr(0, j);
@@ -190,12 +191,12 @@ namespace minh
                     std::cout << "Add to favourite list: " << text_input << std::endl;
 
                     // HANDLE BACK END ADD TO FAVOURITE LIST
-                    std::string fileName = "data/Dictionary.txt";
+                    std::string fileName = "data/" + dic_type + "/data.txt";
                     def_input            = defOfWord(text_input, fileName);
                     if (!def_input.size()) def_input = "ERROR: Can not find this word";
                     else {
-                        if (defOfWord(text_input, "data/favourite.txt") == "") // Not in the data/favourite.txt yet
-                            addToEndOfFile(text_input, "data/favourite.txt", fileName);
+                        if (defOfWord(text_input, "data/slang/favourite.txt") == "") // Not in the data/favourite.txt yet
+                            addToEndOfFile(text_input, "data/slang/favourite.txt", fileName);
                         else {
                             def_input = "Already in the favourite list";
                             std::cout << "Word already in the favourite list" << std::endl;
