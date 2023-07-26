@@ -12,7 +12,7 @@ namespace minh {
 
     
     public:
-        Trie Tree;
+        TrieWord Tree;
         std::string dic_type;
         ScreenFavou();
         void run();

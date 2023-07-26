@@ -56,7 +56,7 @@ public:
         }
     }
 };
-class Trie
+class TrieWord
 {
 	struct Node
 	{
@@ -71,7 +71,7 @@ private:
 public:
  
     Words Dic;
-	Trie()
+    TrieWord()
 	{
 		root = new Node;
 	}
