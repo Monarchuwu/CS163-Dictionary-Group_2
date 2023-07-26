@@ -2,8 +2,7 @@
 #include"fileWork.h"
 
 
-void Trie::addWord(int k)
-{
+void TrieWord::addWord(int k) {
 	Words::Word tu = Dic.v[k];
 	Node* cur = root;
 	for (int i = 0; i < tu.word.size(); i++)
@@ -18,8 +17,7 @@ void Trie::addWord(int k)
 	cur->id = k;
 }
 
-int Trie::searchWord(std::string str)
-{
+int TrieWord::searchWord(std::string str) {
 	Node* cur = root;
 	for (int i = 0; i < str.size(); i++)
 	{
@@ -33,8 +31,7 @@ int Trie::searchWord(std::string str)
 	return cur->id;
 }
 
-void Trie::addNewWord(std::string str, std::string def)
-{
+void TrieWord::addNewWord(std::string str, std::string def) {
 	Words::Word newWord;
 	newWord.definitions.push_back(def);
 	newWord.word = str;
@@ -44,8 +41,7 @@ void Trie::addNewWord(std::string str, std::string def)
 	addWord(k);
 }
 
-void Trie::deleteWord(std::string str)
-{
+void TrieWord::deleteWord(std::string str) {
 	Node* cur = root;
 	for (int i = 0; i < str.size(); i++)
 	{
