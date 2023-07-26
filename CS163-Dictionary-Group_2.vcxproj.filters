@@ -66,7 +66,7 @@
     <ClCompile Include="src\Screen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\BUILDING TRIE\ConsoleApplication1\Mytrie.cpp">
+    <ClCompile Include="src\favouriteScreen\Mytrie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\function.cpp">
@@ -141,7 +141,7 @@
     <ClInclude Include="src\Screen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\BUILDING TRIE\ConsoleApplication1\MyTrie.h">
+    <ClInclude Include="src\favouriteScreen\MyTrie.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

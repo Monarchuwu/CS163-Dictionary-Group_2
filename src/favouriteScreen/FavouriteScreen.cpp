@@ -4,9 +4,15 @@ namespace minh
 {
     ScreenFavou::ScreenFavou()
     {
+        //Picking the dictionary type
+         dic_type = "test";
+        //Setup Trie Go at here
+        Tree.Dic.loadFile("data/test/data.txt");
+        for (int i = 0; i < Tree.Dic.v.size();i++)
+        {
+            Tree.addWord(i);
+        }
         //Initialize Window
-        //favWindow.create(sf::VideoMode(1600, 900), "Favourite List", sf::Style::Close);
-        dic_type        = "slang";
         backgroundColor = sf::Color(102, 153, 255);
         Background.setSize(sf::Vector2f(1600.0f, 900.0f));
         Background.setFillColor(backgroundColor);
@@ -68,8 +74,8 @@ namespace minh
     }
 
     void ScreenFavou::run()
-    {
-        sf::Event event;
+    {  
+        sf::Event evnt;
         sf::RenderStates state;
         while (favWindow.isOpen()) {
             while (favWindow.pollEvent(evnt)) {
@@ -191,12 +197,14 @@ namespace minh
                     std::cout << "Add to favourite list: " << text_input << std::endl;
 
                     // HANDLE BACK END ADD TO FAVOURITE LIST
-                    std::string fileName = "data/" + dic_type + "/data.txt";
-                    def_input            = defOfWord(text_input, fileName);
-                    if (!def_input.size()) def_input = "ERROR: Can not find this word";
+                    std::string fileName = "data/" + dic_type + "/favourite.txt";
+                    //def_input            = defOfWord(text_input, fileName);
+                    int tu = Tree.searchWord(text_input);
+                    if (tu == -1) def_input = "ERROR: Can not find this word";
                     else {
-                        if (defOfWord(text_input, "data/slang/favourite.txt") == "") // Not in the data/favourite.txt yet
-                            addToEndOfFile(text_input, "data/slang/favourite.txt", fileName);
+                        def_input = Tree.Dic.v[tu].definitions[0];
+                        if (defOfWord(text_input, fileName) == "") // Not in the data/favourite.txt yet
+                            addToEndOfFile(tu, fileName,Tree.Dic.v);
                         else {
                             def_input = "Already in the favourite list";
                             std::cout << "Word already in the favourite list" << std::endl;
@@ -209,12 +217,14 @@ namespace minh
                     std::cout << "Delete from favourite list: " << text_input << std::endl;
 
                     // HANDLE BACK END DELETE FROM THE FAVOURITE LIST
-                    std::string fileName = "data/Dictionary.txt";
-                    def_input            = defOfWord(text_input, fileName);
-                    if (!def_input.size()) def_input = "ERROR: Can not find this word";
+                    std::string fileName = "data/" + dic_type + "/data.txt";
+                    int tu               = Tree.searchWord(text_input);
+                    if (tu == -1) def_input = "ERROR: Can not find this word";
                     else {
-                        if (defOfWord(text_input, "data/favourite.txt") != "") // In the favourite already
-                            clearFromFile(text_input, "data/favourite.txt");
+                        def_input = Tree.Dic.v[tu].definitions[0];
+                        fileName  = "data/" + dic_type + "/favourite.txt";
+                        if (defOfWord(text_input, fileName) != "") // In the favourite already
+                            clearFromFile(text_input, fileName);
                         else {
                             def_input = "Not in the favourite list";
                             std::cout << "Word not already in the favourite list" << std::endl;

@@ -5,12 +5,14 @@
 #include <iostream>
 #include "fileWork.h"
 #include "../Screen.h"
+#include"myTrie.h"
 namespace minh {
 
     class ScreenFavou : public Screen {
 
     
     public:
+        Trie Tree;
         std::string dic_type;
         ScreenFavou();
         void run();
@@ -26,6 +28,7 @@ namespace minh {
 
     private:
         //OBJECT ON THE SCREEN
+      
         sf::RenderWindow favWindow;
         sf::RectangleShape Background;
         sf::Color backgroundColor;
