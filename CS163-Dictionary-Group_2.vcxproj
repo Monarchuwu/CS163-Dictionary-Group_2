@@ -139,6 +139,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+
+    <ClCompile Include="src\addWordScreen\function.cpp" />
+
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Constant.cpp" />
     <ClCompile Include="src\favouriteScreen\favou.cpp" />
@@ -162,6 +165,13 @@
     <Font Include="data\fonts\arial.ttf" />
   </ItemGroup>
   <ItemGroup>
+
+    <ClInclude Include="src\addWordScreen\addWord.h" />
+    <ClInclude Include="src\addWordScreen\Button.h" />
+    <ClInclude Include="src\addWordScreen\function.h" />
+    <ClInclude Include="src\addWordScreen\Textbox.h" />
+    <ClInclude Include="src\addWordScreen\Trie.h" />
+
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Constant.h" />
     <ClInclude Include="src\favouriteScreen\FavouriteScreen.h" />

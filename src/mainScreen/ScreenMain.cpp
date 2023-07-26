@@ -5,10 +5,10 @@ namespace mainScreen {
         std::cout << "[INFO] ScreenMain created\n";
 
         // init color set
-        mColor[0] = sf::Color(0, 28, 48);
-        mColor[1] = sf::Color(23, 107, 135);
-        mColor[2] = sf::Color(100, 204, 197);
-        mColor[3] = sf::Color(218, 255, 251);
+        mColor[0] = sf::Color(74, 85, 162);
+        mColor[1] = sf::Color(120, 149, 203);
+        mColor[2] = sf::Color(160, 191, 224);
+        mColor[3] = sf::Color(197, 223, 248);
 
         // background
         mBackground.setSize(sf::Vector2f(1600, 900));
@@ -280,6 +280,7 @@ namespace mainScreen {
         // update plus icon
         if (mPlusIcon.getPressed()) {
             mPlusIcon.setPressed(false);
+            setCallAddWordScreen(true);
             std::cout << "[CALL] Run Plus icon feature\n";
         }
         // update favorite icon

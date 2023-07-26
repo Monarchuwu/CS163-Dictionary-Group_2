@@ -4,6 +4,7 @@
 #include "Screen.h"
 #include "mainScreen/ScreenMain.h"
 #include "favouriteScreen/FavouriteScreen.h"
+#include "addWordScreen/addWord.h"
 using namespace minh;
 
 class Application {
@@ -20,5 +21,6 @@ private:
     sf::RenderWindow mWindow;
     mainScreen::ScreenMain mScreenMain;
     minh::ScreenFavou screenfav;
+    screen_addWord screenAddWord;
     Screen* mScreen;
 };
