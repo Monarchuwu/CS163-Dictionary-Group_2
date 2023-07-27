@@ -63,6 +63,14 @@ class TrieWord
 		Node* child[128] = { 0 };
 		int id = -1;
 		//std::string str;
+
+        ~Node() {
+            for (int i = 0; i < 128; ++i) {
+                if (child[i] != 0) {
+                    delete child[i];
+                }
+            }
+        }
 	};
 
 private:
@@ -75,6 +83,9 @@ public:
 	{
 		this->Dic = dic;
 		root = new Node;
+	}
+    ~TrieWord() {
+		delete root;
 	}
 	//	void createNode();
 	void addWord(int k);// k is the id in the Words.  Need to read k from Words to do addWord
