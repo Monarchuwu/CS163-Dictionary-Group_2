@@ -4,119 +4,153 @@ namespace mainScreen {
     ScreenMain::ScreenMain() {
         std::cout << "[INFO] ScreenMain created\n";
 
-        // init color set
-        mColor[0] = sf::Color(74, 85, 162);
-        mColor[1] = sf::Color(120, 149, 203);
-        mColor[2] = sf::Color(160, 191, 224);
-        mColor[3] = sf::Color(197, 223, 248);
+        /// init color set
+        {
+            // EN-EN
+            mColorBackground[0][0] = sf::Color(113, 114, 115);
+            mColorBackground[0][1] = sf::Color(1, 49, 116);
+            // EN-VN
+            mColorBackground[1][0] = sf::Color(195, 44, 48);
+            mColorBackground[1][1] = sf::Color(16, 13, 8);
+            // VN-EN
+            mColorBackground[2][0] = sf::Color(113, 114, 115);
+            mColorBackground[2][1] = sf::Color(96, 13, 198);
+            // SLANG
+            mColorBackground[3][0] = sf::Color(113, 114, 115);
+            mColorBackground[3][1] = sf::Color(238, 102, 3);
+            // EMOJI
+            mColorBackground[4][0] = sf::Color(113, 114, 115);
+            mColorBackground[4][1] = sf::Color(52, 171, 153);
+        }
 
         // background
         mBackground.setSize(sf::Vector2f(1600, 900));
-        mBackground.setFillColor(mColor[0]);
+        mBackground.setFillColor(sf::Color::White);
 
-        // dataset block buttons [200..1400, 100..150]
+        mBackground2.setSize(sf::Vector2f(1600, 325));
+        mBackground2.setFillColor(mColorBackground[0][0]);
+
+        mBackground3.setSize(sf::Vector2f(1600, 225));
+        mBackground3.setFillColor(mColorBackground[0][1]);
+
+        mBackground4.setSize(sf::Vector2f(150, 205));
+        mBackground4.setPosition(10, 10);
+        mBackground4.setFillColor(sf::Color(255, 255, 255, 160));
+
+        // dataset block buttons [200..1400, 50..100]
         {
-            sf::Vector2f firstPos(200, 100);
+            sf::Vector2f firstPos(200, 75);
             sf::Vector2f size(1200 / 5, 50);
             for (int i = 0; i < 5; ++i) {
                 mDatasetButton[i].setSize(sf::Vector2f(size.x - 1, size.y));
                 mDatasetButton[i].setPosition(sf::Vector2f(firstPos.x + size.x * i, firstPos.y));
-                mDatasetButton[i].setFillColor(mColor[1]);
+                mDatasetButton[i].setFillColor(sf::Color(255, 255, 255, 80));
 
-                mDatasetButton[i].setFont(constant::fontArial);
+                mDatasetButton[i].setFont(constant::fontOpenSans);
                 mDatasetButton[i].setStyle(sf::Text::Bold);
                 mDatasetButton[i].setCharacterSize(30);
-                mDatasetButton[i].setTextColor(sf::Color::Black);
+                mDatasetButton[i].setTextColor(sf::Color::White);
                 mDatasetButton[i].setAlignCenter(true);
             }
 
-            mDatasetButton[0].setText("EngEng");
-            mDatasetButton[1].setText("EngVie");
-            mDatasetButton[2].setText("VieEng");
-            mDatasetButton[3].setText("Slang");
-            mDatasetButton[4].setText("Emoji");
+            mDatasetButton[0].setText("EN-EN");
+            mDatasetButton[1].setText("EN-VN");
+            mDatasetButton[2].setText("VN-EN");
+            mDatasetButton[3].setText("SLANG");
+            mDatasetButton[4].setText("EMOJI");
         }
         mDatasetButton[0].setPressed(true);
         mDatasetSelected = &mDatasetButton[0];
 
         // mode search block buttons [500..1100, 200..250]
         {
-            sf::Vector2f firstPos(500, 200);
-            sf::Vector2f size(600 / 2, 50);
+            sf::Vector2f firstPos(530, 250);
+            sf::Vector2f size(540 / 2, 50);
             for (int i = 0; i < 2; ++i) {
                 mModeButton[i].setSize(sf::Vector2f(size.x - 1, size.y));
                 mModeButton[i].setPosition(sf::Vector2f(firstPos.x + size.x * i, firstPos.y));
-                mModeButton[i].setFillColor(mColor[1]);
+                mModeButton[i].setFillColor(sf::Color(255, 255, 255, 80));
 
-                mModeButton[i].setFont(constant::fontArial);
+                mModeButton[i].setFont(constant::fontOpenSans);
                 mModeButton[i].setStyle(sf::Text::Bold);
                 mModeButton[i].setCharacterSize(30);
-                mModeButton[i].setTextColor(sf::Color::Black);
+                mModeButton[i].setTextColor(sf::Color::White);
                 mModeButton[i].setAlignCenter(true);
             }
 
-            mModeButton[0].setText("Search Word");
-            mModeButton[1].setText("Search by Definition");
+            mModeButton[0].setText("Word");
+            mModeButton[1].setText("Definition");
         }
         mModeButton[0].setPressed(true);
         mModeSelected = &mModeButton[0];
 
+        // 3 dashes icon button sprite
+        {
+            sf::Texture texture;
+            texture.loadFromFile("data/images/3dashes-removebg.png");
+            m3DashIcon.setTexture(texture);
+            m3DashIcon.setPosition(mBackground4.getPosition() + sf::Vector2f(50, 20));
+
+            sf::Vector2u size = texture.getSize();
+            sf::Vector2f targetSize(50, 50);
+            m3DashIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
+        }
         // plus icon button sprite
         {
             sf::Texture texture;
-            texture.loadFromFile("data/images/plus-icon.png");
+            texture.loadFromFile("data/images/plus-removebg.png");
             mPlusIcon.setTexture(texture);
-            mPlusIcon.setPosition(sf::Vector2f(1200, 200));
+            mPlusIcon.setPosition(mBackground4.getPosition() + sf::Vector2f(20, 80));
 
             sf::Vector2u size = texture.getSize();
             sf::Vector2f targetSize(50, 50);
             mPlusIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
-            mPlusIcon.setColor(mColor[2]);
+            //mPlusIcon.setColor(sf::Color(200, 200, 200));
         }
         // favorite icon button sprite
         {
             sf::Texture texture;
-            texture.loadFromFile("data/images/star-icon.png");
+            texture.loadFromFile("data/images/star-removebg.png");
             mFavoriteIcon.setTexture(texture);
-            mFavoriteIcon.setPosition(sf::Vector2f(1250, 200));
+            mFavoriteIcon.setPosition(mBackground4.getPosition() + sf::Vector2f(80, 80));
 
             sf::Vector2u size = texture.getSize();
             sf::Vector2f targetSize(50, 50);
             mFavoriteIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
-            mFavoriteIcon.setColor(mColor[2]);
+            //mFavoriteIcon.setColor(sf::Color(200, 200, 200));
         }
         // history icon button sprite
         {
             sf::Texture texture;
-            texture.loadFromFile("data/images/book-icon.png");
+            texture.loadFromFile("data/images/clock-removebg.png");
             mHistoryIcon.setTexture(texture);
-            mHistoryIcon.setPosition(sf::Vector2f(1300, 200));
+            mHistoryIcon.setPosition(mBackground4.getPosition() + sf::Vector2f(20, 140));
 
             sf::Vector2u size = texture.getSize();
             sf::Vector2f targetSize(50, 50);
             mHistoryIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
-            mHistoryIcon.setColor(mColor[2]);
+            //mHistoryIcon.setColor(sf::Color(200, 200, 200));
         }
         // set default icon button sprite
         {
             sf::Texture texture;
-            texture.loadFromFile("data/images/broom-icon.png");
+            texture.loadFromFile("data/images/reverse-removebg.png");
             mSetDefaultIcon.setTexture(texture);
-            mSetDefaultIcon.setPosition(sf::Vector2f(1350, 200));
+            mSetDefaultIcon.setPosition(mBackground4.getPosition() + sf::Vector2f(80, 140));
 
             sf::Vector2u size = texture.getSize();
             sf::Vector2f targetSize(50, 50);
             mSetDefaultIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
-            mSetDefaultIcon.setColor(mColor[2]);
+            //mSetDefaultIcon.setColor(sf::Color(200, 200, 200));
         }
 
         // search line
         {
             mSearchLine.setSize(sf::Vector2f(500, 50));
-            mSearchLine.setPosition(sf::Vector2f(520, 300));
-            mSearchLine.setFillColor(mColor[1]);
-            mSearchLine.setFont(constant::fontArial);
-            mSearchLine.setStyle(sf::Text::Bold);
+            mSearchLine.setPosition(sf::Vector2f(550, 150));
+            mSearchLine.setFillColor(sf::Color::White);
+            mSearchLine.setFont(constant::fontOpenSans);
+            //mSearchLine.setStyle(sf::Text::Bold);
             mSearchLine.setCharacterSize(30);
             mSearchLine.setTextColor(sf::Color::Black);
             mSearchLine.setAlignCenter(true);
@@ -125,28 +159,32 @@ namespace mainScreen {
         // magnifier icon button sprite
         {
             sf::Texture texture;
-            texture.loadFromFile("data/images/magnifier-icon.png");
+            texture.loadFromFile("data/images/magnifier-removebg.png");
             mMagnifierIcon.setTexture(texture);
-            mMagnifierIcon.setPosition(sf::Vector2f(1030, 300));
+            mMagnifierIcon.setPosition(sf::Vector2f(1060, 150));
 
             sf::Vector2u size = texture.getSize();
             sf::Vector2f targetSize(50, 50);
             mMagnifierIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
-            mMagnifierIcon.setColor(mColor[2]);
+            //mMagnifierIcon.setColor(sf::Color(200, 200, 200));
         }
 
         // game button
         {
-            mGameButton.setSize(sf::Vector2f(500, 300));
-            mGameButton.setPosition(sf::Vector2f(550, 450));
-            mGameButton.setFillColor(mColor[1]);
+            for (int i = 0; i < 3; ++i) {
+                mGameButton[i].setSize(sf::Vector2f(400, 450));
+                mGameButton[i].setFillColor(sf::Color(222, 222, 222));
 
-            mGameButton.setFont(constant::fontArial);
-            mGameButton.setStyle(sf::Text::Bold);
-            mGameButton.setCharacterSize(40);
-            mGameButton.setTextColor(sf::Color::Black);
-            mGameButton.setAlignCenter(true);
-            mGameButton.setText("Game");
+                mGameButton[i].setFont(constant::fontOpenSans);
+                mGameButton[i].setStyle(sf::Text::Bold);
+                mGameButton[i].setCharacterSize(40);
+                mGameButton[i].setTextColor(sf::Color::White);
+                mGameButton[i].setAlignCenter(true);
+                mGameButton[i].setText("Game");
+            }
+            mGameButton[0].setPosition(sf::Vector2f(150, 375));
+            mGameButton[1].setPosition(sf::Vector2f(600, 375));
+            mGameButton[2].setPosition(sf::Vector2f(1050, 375));
         }
     }
 
@@ -181,25 +219,32 @@ namespace mainScreen {
                     }
                 }
 
-                // change plus icon status
-                if (mPlusIcon.isContain(mouse.x, mouse.y)) {
-                    mPlusIcon.setPressed(true);
-                    std::cout << "[INFO] Plus icon is clicked\n";
+                // change 3 dashes icon status
+                if (m3DashIcon.isContain(mouse.x, mouse.y)) {
+                    m3DashIcon.setPressed(!m3DashIcon.getPressed());
+                    std::cout << "[INFO] 3 dashes icon is clicked\n";
                 }
-                // change favorite icon status
-                if (mFavoriteIcon.isContain(mouse.x, mouse.y)) {
-                    mFavoriteIcon.setPressed(true);
-                    std::cout << "[INFO] Favorite icon is clicked\n";
-                }
-                // change history icon status
-                if (mHistoryIcon.isContain(mouse.x, mouse.y)) {
-                    mHistoryIcon.setPressed(true);
-                    std::cout << "[INFO] History icon is clicked\n";
-                }
-                // change set default icon status
-                if (mSetDefaultIcon.isContain(mouse.x, mouse.y)) {
-                    mSetDefaultIcon.setPressed(true);
-                    std::cout << "[INFO] Set default icon is clicked\n";
+                if (m3DashIcon.getPressed()) {
+                    // change plus icon status
+                    if (mPlusIcon.isContain(mouse.x, mouse.y)) {
+                        mPlusIcon.setPressed(true);
+                        std::cout << "[INFO] Plus icon is clicked\n";
+                    }
+                    // change favorite icon status
+                    if (mFavoriteIcon.isContain(mouse.x, mouse.y)) {
+                        mFavoriteIcon.setPressed(true);
+                        std::cout << "[INFO] Favorite icon is clicked\n";
+                    }
+                    // change history icon status
+                    if (mHistoryIcon.isContain(mouse.x, mouse.y)) {
+                        mHistoryIcon.setPressed(true);
+                        std::cout << "[INFO] History icon is clicked\n";
+                    }
+                    // change set default icon status
+                    if (mSetDefaultIcon.isContain(mouse.x, mouse.y)) {
+                        mSetDefaultIcon.setPressed(true);
+                        std::cout << "[INFO] Set default icon is clicked\n";
+                    }
                 }
 
                 // change search line status
@@ -264,47 +309,55 @@ namespace mainScreen {
         // update dataset block buttons
         for (int i = 0; i < 5; ++i) {
             if (mDatasetButton[i].getPressed()) {
-                mDatasetButton[i].setFillColor(mColor[2]);
+                mDatasetButton[i].setFillColor(sf::Color(255, 255, 255, 140));
+
+                mBackground2.setSize(sf::Vector2f(1600, 325));
+                mBackground2.setFillColor(mColorBackground[i][0]);
+
+                mBackground3.setSize(sf::Vector2f(1600, 225));
+                mBackground3.setFillColor(mColorBackground[i][1]);
             }
-            else mDatasetButton[i].setFillColor(mColor[1]);
+            else mDatasetButton[i].setFillColor(sf::Color(255, 255, 255, 80));
         }
 
         // update mode search block buttons
         for (int i = 0; i < 2; ++i) {
             if (mModeButton[i].getPressed()) {
-                mModeButton[i].setFillColor(mColor[2]);
+                mModeButton[i].setFillColor(sf::Color(255, 255, 255, 140));
             }
-            else mModeButton[i].setFillColor(mColor[1]);
+            else mModeButton[i].setFillColor(sf::Color(255, 255, 255, 80));
         }
 
-        // update plus icon
-        if (mPlusIcon.getPressed()) {
-            mPlusIcon.setPressed(false);
-            setCallAddWordScreen(true);
-            std::cout << "[CALL] Run Plus icon feature\n";
-        }
-        // update favorite icon
-        if (mFavoriteIcon.getPressed()) {
-            mFavoriteIcon.setPressed(false);
-            setCallFavoriteList(true);
-            std::cout << "[CALL] Run Favorite icon feature\n";
-        }
-        // update history icon
-        if (mHistoryIcon.getPressed()) {
-            mHistoryIcon.setPressed(false);
-            std::cout << "[CALL] Run History icon feature\n";
-        }
-        // update set default icon
-        if (mSetDefaultIcon.getPressed()) {
-            mSetDefaultIcon.setPressed(false);
-            std::cout << "[CALL] Run Set default icon feature\n";
+        if (m3DashIcon.getPressed()) {
+            // update plus icon
+            if (mPlusIcon.getPressed()) {
+                mPlusIcon.setPressed(false);
+                setCallAddWordScreen(true);
+                std::cout << "[CALL] Run Plus icon feature\n";
+            }
+            // update favorite icon
+            if (mFavoriteIcon.getPressed()) {
+                mFavoriteIcon.setPressed(false);
+                setCallFavoriteList(true);
+                std::cout << "[CALL] Run Favorite icon feature\n";
+            }
+            // update history icon
+            if (mHistoryIcon.getPressed()) {
+                mHistoryIcon.setPressed(false);
+                std::cout << "[CALL] Run History icon feature\n";
+            }
+            // update set default icon
+            if (mSetDefaultIcon.getPressed()) {
+                mSetDefaultIcon.setPressed(false);
+                std::cout << "[CALL] Run Set default icon feature\n";
+            }
         }
 
         // update search line
         if (mSearchLine.getPressed()) {
-            mSearchLine.setFillColor(mColor[2]);
+            mSearchLine.setFillColor(sf::Color(222, 222, 222));
         }
-        else mSearchLine.setFillColor(mColor[1]);
+        else mSearchLine.setFillColor(sf::Color::White);
 
         // update magnifier icon
         if (mMagnifierIcon.getPressed()) {
@@ -317,6 +370,10 @@ namespace mainScreen {
     void ScreenMain::draw(sf::RenderTarget& target, sf::RenderStates states) const {
         // background
         target.draw(mBackground);
+        target.draw(mBackground2);
+        target.draw(mBackground3);
+        if (m3DashIcon.getPressed())
+            target.draw(mBackground4);
 
         // dataset block buttons
         for (int i = 0; i < 5; ++i) {
@@ -329,10 +386,13 @@ namespace mainScreen {
         }
 
         // 4 icon button (features)
-        target.draw(mPlusIcon);
-        target.draw(mFavoriteIcon);
-        target.draw(mHistoryIcon);
-        target.draw(mSetDefaultIcon);
+        target.draw(m3DashIcon);
+        if (m3DashIcon.getPressed()) {
+            target.draw(mPlusIcon);
+            target.draw(mFavoriteIcon);
+            target.draw(mHistoryIcon);
+            target.draw(mSetDefaultIcon);
+        }
 
         // search line
         target.draw(mSearchLine);
@@ -341,6 +401,7 @@ namespace mainScreen {
         target.draw(mMagnifierIcon);
 
         // game button
-        target.draw(mGameButton);
+        for (int i = 0; i < 3; ++i)
+            target.draw(mGameButton[i]);
     }
 } // namespace mainScreen
