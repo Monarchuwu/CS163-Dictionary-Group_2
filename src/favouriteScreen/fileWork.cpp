@@ -1,6 +1,7 @@
 #include"fileWork.h"
 namespace minh
 {
+
     std::string defOfWord(std::string word, const std::string& fileName)
     {
         std::ifstream fin;
@@ -37,18 +38,16 @@ namespace minh
             fin.close();
             return "";
     }
-
-       void addToEndOfFile(std::string word, const std::string& filename, const std::string &rootfilename)
-    {
+     void addToEndOfFile(int id, const std::string& filename, std::vector<Words::Word> v) {
             std::ofstream fout(filename, std::ios::app);
-            if (!fout.is_open())
-            {
-                std::cout << "Can not open file" << std::endl;
-                fout.close();
-                return;
+            if (!fout.is_open()) {
+            std::cout << "Can not open file" << std::endl;
+            fout.close();
+            return;
             }
-            if (defOfWord(word, filename) == "")
-                fout << word << "\t" << defOfWord(word, rootfilename) << std::endl;
+            if (defOfWord(v[id].word, filename) == "")
+            for (int i = 0; i < v[id].definitions.size(); i++)
+                fout << v[id].word << "\t" << v[id].definitions[i] << std::endl;
             else std::cout << "Word have already been added to favourite list" << std::endl;
             fout.close();
             return;
@@ -70,10 +69,12 @@ namespace minh
             {
                 std::getline(fin, str);
             }
-
+            fin.close();
             //std::cout << str << std::endl;
             return str;   
         }
+
+      
 
         void clearFromFile(const std::string word, const std::string& filename)
         {
