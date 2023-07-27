@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "TrieWord/TrieWord.h"
 
 class DataManager {
 public:
@@ -61,4 +62,8 @@ private:
     int mModeSearch;
 
     // store the data of dictionary
+    Words mDictionary;
+
+    // trie word
+    TrieWord mTrieWord;
 };

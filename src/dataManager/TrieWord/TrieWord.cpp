@@ -3,7 +3,7 @@
 
 
 void TrieWord::addWord(int k) {
-	Words::Word tu = Dic.v[k];
+	Words::Word tu = Dic->v[k];
 	Node* cur = root;
 	for (int i = 0; i < tu.word.size(); i++)
 	{
@@ -36,8 +36,8 @@ void TrieWord::addNewWord(std::string str, std::string def) {
 	newWord.definitions.push_back(def);
 	newWord.word = str;
 
-	Dic.v.push_back(newWord);
-	int k = Dic.v.size() - 1;
+	Dic->v.push_back(newWord);
+	int k = Dic->v.size() - 1;
 	addWord(k);
 }
 

@@ -1,7 +1,9 @@
 #include <iostream>
 #include "DataManager.h"
 
-DataManager::DataManager() {
+DataManager::DataManager()
+    : mDictionary(),
+      mTrieWord(&mDictionary) {
     mDataset = mModeSearch = 0;
 }
 DataManager::~DataManager() {}

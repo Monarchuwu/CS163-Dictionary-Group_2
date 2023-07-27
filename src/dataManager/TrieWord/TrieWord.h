@@ -70,9 +70,10 @@ private:
 
 public:
  
-    Words Dic;
-    TrieWord()
+    Words* Dic;
+    TrieWord(Words* dic)
 	{
+		this->Dic = dic;
 		root = new Node;
 	}
 	//	void createNode();
