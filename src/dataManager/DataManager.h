@@ -53,11 +53,11 @@ public:
     /* ----- handle word query ----- */
     //// return the class Word pointer if found
     //// return nullptr if not found
-    //Word* searchWord(const std::string& word);
+    Words::Word* searchWord(const std::string& word);
     //// return the class Word pointer of the new word
-    //Word* addWord(const std::string& word);
+    Words::Word* addWord(const std::string& word);
     //// remove the word from dictionary
-    //void removeWord(const std::string& word);
+    void removeWord(const std::string& word);
 
     /* ----- handle search definition query ----- */
 

@@ -78,21 +78,18 @@ private:
 
 public:
  
-    Words* Dic;
-    TrieWord(Words* dic)
-	{
-		this->Dic = dic;
+    TrieWord() {
 		root = new Node;
 	}
     ~TrieWord() {
 		delete root;
 	}
 	//	void createNode();
-	void addWord(int k);// k is the id in the Words.  Need to read k from Words to do addWord
+	void addWord(std::string str, int k);// k is the id in the Words.  Need to read k from Words to do addWord
 
 	int searchWord(std::string str);// if there is none return -1.
 
-	void addNewWord(std::string str, std::string def);// Use searchWord to know whether it is already in the Trie( Words) or not before using this
+	//void addNewWord(std::string str, std::string def);// Use searchWord to know whether it is already in the Trie( Words) or not before using this
 
 	void deleteWord(std::string str);
 

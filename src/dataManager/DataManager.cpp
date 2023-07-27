@@ -2,8 +2,7 @@
 #include "DataManager.h"
 
 DataManager::DataManager()
-    : mDictionary(),
-      mTrieWord(&mDictionary) {
+    : mDictionary() {
     mDataset = mModeSearch = 0;
 }
 DataManager::~DataManager() {}
@@ -70,4 +69,24 @@ void DataManager::loadDatasetInternal(const std::string& dirDataset) {
 }
 
 void DataManager::saveDatasetInternal(const std::string& dirDataset) {
+}
+
+Words::Word* DataManager::searchWord(const std::string& word) {
+    int index = mTrieWord.searchWord(word);
+    if (index == -1) return nullptr;
+    return &mDictionary.v[index];
+}
+Words::Word* DataManager::addWord(const std::string& word) {
+    int index = mTrieWord.searchWord(word);
+    if (index != -1) return &mDictionary.v[index];
+
+    Words::Word newWord;
+    newWord.word = word;
+    mDictionary.v.push_back(newWord);
+    mTrieWord.addWord(word, (int)mDictionary.v.size() - 1);
+ 
+    return &mDictionary.v.back();
+}
+void DataManager::removeWord(const std::string& word) {
+    mTrieWord.deleteWord(word);
 }

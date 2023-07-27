@@ -2,12 +2,11 @@
 //#include"fileWork.h"
 
 
-void TrieWord::addWord(int k) {
-	Words::Word tu = Dic->v[k];
+void TrieWord::addWord(std::string word, int k) {
 	Node* cur = root;
-	for (int i = 0; i < tu.word.size(); i++)
+	for (int i = 0; i < word.size(); i++)
 	{
-		int index = tu.word[i];
+		int index = word[i];
 		if (!cur->child[index])
 		{
 			cur->child[index] = new Node;
@@ -31,15 +30,15 @@ int TrieWord::searchWord(std::string str) {
 	return cur->id;
 }
 
-void TrieWord::addNewWord(std::string str, std::string def) {
-	Words::Word newWord;
-	newWord.definitions.push_back(def);
-	newWord.word = str;
-
-	Dic->v.push_back(newWord);
-	int k = Dic->v.size() - 1;
-	addWord(k);
-}
+//void TrieWord::addNewWord(std::string str, std::string def) {
+//	Words::Word newWord;
+//	newWord.definitions.push_back(def);
+//	newWord.word = str;
+//
+//	Dic->v.push_back(newWord);
+//	int k = Dic->v.size() - 1;
+//	addWord(k);
+//}
 
 void TrieWord::deleteWord(std::string str) {
 	Node* cur = root;
