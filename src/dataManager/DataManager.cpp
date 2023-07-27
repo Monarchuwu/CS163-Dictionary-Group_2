@@ -56,14 +56,13 @@ void DataManager::resetData() {
 
 void DataManager::loadDatasetInternal(const std::string& dirDataset) {
     // load data from file
+    mDictionary.loadFile(dirDataset);
 
     // build TrieWord
-    // Example:
-    //delete mTrieSearchByWord;
-    //mTrieSearchByWord = new searchByWord::Trie();
-    //for (int i = 0; i < mWords.size(); ++i) {
-    //    mTrieSearchByWord->addWord(mWords[i].mWord, i);
-    //}
+    // delete mTrieSearchByWord;
+    for (int i = 0; i < mDictionary.v.size(); ++i) {
+        mTrieWord.addWord(mDictionary.v[i].word, i);
+    }
 
     // build TrieDefinition
 }
