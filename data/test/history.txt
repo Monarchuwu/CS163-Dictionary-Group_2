@@ -1,0 +1,11 @@
+:)	Happy
+:*	Kiss
+:-(	Sad
+:-)	Smile
+:-*	Kiss
+:-D	Laughing
+:-D	Big Smile
+:-P	Sticking Their Tongue Out
+:/	Sarcasm
+:0	Surprised
+:0	Shocked

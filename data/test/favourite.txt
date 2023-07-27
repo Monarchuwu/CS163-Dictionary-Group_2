@@ -3,6 +3,14 @@
 :D	Happy
 :)	Happy
 K	OK
+:')	Crying with joy
+J	Joking
+ASAP	As Soon As Possible
 :(	Unhappy
 :(	Sad
-:')	Crying with joy
+LOL	Laughing Out Loud
+:'(	Crying
+CC	Credit Card
+CC	Carbon Copy
+CC	Crowd Control
+CC	Country Code

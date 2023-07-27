@@ -5,20 +5,15 @@
 #include <iostream>
 #include "fileWork.h"
 #include "../Screen.h"
-#include"myTrie.h"
+
 namespace minh {
-
-    class ScreenFavou : public Screen {
-
-    
+    class ScreenHis : public Screen {
     public:
-        TrieWord Tree;
         std::string dic_type;
-
-        ScreenFavou();
+        ScreenHis();
         void run();
 
-         // Event Handle
+        // Event Handle
         void handleEvent(const sf::Event& evnt) override;
 
         // Update
@@ -28,27 +23,24 @@ namespace minh {
         void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const override;
 
     private:
-        //OBJECT ON THE SCREEN
-      
-        sf::RenderWindow favWindow;
+        // OBJECT ON THE SCREEN
+
+        sf::RenderWindow hisWindow;
         sf::RectangleShape Background;
-        sf::RectangleShape subBackground1;
-        sf::RectangleShape subBackground2;
         sf::Color backgroundColor;
         sf::RectangleShape title;
         sf::Font font;
         sf::Text textTitle;
         sf::Text HeadWord;
-        button ViewButton, AddButton, DeleteButton;
+        button ViewButton; //, AddButton, DeleteButton;
         button getBack;
         sf::Texture leftArrow;
         int option;
-        int page;
-        bool isView = 0;
-        Box AddBox, DefBox;
-        std::string text_input, def_input, headword_input;
-        sf::Text view[11];
+        Box DefBox;
+        // Box AddBox, DefBox;
+        std::string text_input, def_input;
+        sf::Text view[10];
         sf::Event evnt;
 
-	};
+    }; // namespace minh
 } // namespace minh

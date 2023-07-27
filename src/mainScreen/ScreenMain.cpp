@@ -292,6 +292,7 @@ namespace mainScreen {
         // update history icon
         if (mHistoryIcon.getPressed()) {
             mHistoryIcon.setPressed(false);
+            setCallHistory(true);
             std::cout << "[CALL] Run History icon feature\n";
         }
         // update set default icon

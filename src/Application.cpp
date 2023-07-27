@@ -57,6 +57,11 @@ void Application::update() {
         return;
     }
 
+    if (mScreen->getCallHistoryList()) {
+        mScreen->setCallHistory(false);
+        mScreen = &screenhis;
+        return;
+    }
     //screenfav.update();
     //mScreenMain.update();
 }

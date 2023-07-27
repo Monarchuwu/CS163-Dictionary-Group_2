@@ -19,6 +19,8 @@ public:
     void setCallAddWordScreen(bool callAddWordScreen);
     // set call favorite list
     void setCallFavoriteList(bool callFavoriteList);
+    //set call history
+    void setCallHistory(bool callHistory);
 
     // get call home
     bool getCallHome() const;
@@ -26,9 +28,12 @@ public:
     bool getCallAddWordScreen() const;
     // get call favorite list
     bool getCallFavoriteList() const;
+    //get call history list
+    bool getCallHistoryList() const;
 
 private:
     bool mCallHome;
     bool mCallAddWordScreen;
     bool mCallFavoriteList;
+    bool mCallHistoryList;
 };
