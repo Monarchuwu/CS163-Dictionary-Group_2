@@ -1,5 +1,5 @@
-#include "MyTrie.h"
-#include"fileWork.h"
+#include "TrieWord.h"
+//#include"fileWork.h"
 
 
 void TrieWord::addWord(int k) {

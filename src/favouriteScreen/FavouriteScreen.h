@@ -3,16 +3,16 @@
 #include"myButton.h"
 #include "myBox.h"
 #include <iostream>
-#include "fileWork.h"
+//#include "fileWork.h"
 #include "../Screen.h"
-#include"myTrie.h"
+//#include"myTrie.h"
 namespace minh {
 
     class ScreenFavou : public Screen {
 
     
     public:
-        TrieWord Tree;
+        //TrieWord Tree;
         std::string dic_type;
         ScreenFavou();
         void run();

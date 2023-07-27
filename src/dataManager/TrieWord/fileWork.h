@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 #include <queue>
-#include "MyTrie.h"
+#include "TrieWord.h"
 
 namespace minh
 {
