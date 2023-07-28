@@ -24,9 +24,12 @@ namespace minh {
 
     private:
         // OBJECT ON THE SCREEN
-
+        int page    = 0;
+        bool isView = 0;
         sf::RenderWindow hisWindow;
         sf::RectangleShape Background;
+        sf::RectangleShape subBackground1;
+        sf::RectangleShape subBackground2;
         sf::Color backgroundColor;
         sf::RectangleShape title;
         sf::Font font;
@@ -39,7 +42,7 @@ namespace minh {
         Box DefBox;
         // Box AddBox, DefBox;
         std::string text_input, def_input;
-        sf::Text view[10];
+        sf::Text view[11];
         sf::Event evnt;
 
     }; // namespace minh
