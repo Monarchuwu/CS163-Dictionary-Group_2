@@ -46,8 +46,6 @@ public:
         }
     };
 
-    //void saveFile(std::string& nameDict);
-
     void printOut() {
         for (auto i : v) {
             std::cout << i.word << " ";
@@ -84,6 +82,22 @@ public:
 
 	void deleteWord(std::string str);
 
+    void recursive(TrieWord::Node* cur, std::ofstream& ft) {
+	    for (int i = 0; i < 128; i++) {
+	        if (cur->child[i]) {
+	            if (cur->child[i]->id != -1) {
+	                for (auto j : Dic.v[cur->child[i]->id].definitions) ft << Dic.v[cur->child[i]->id].word << "\t" << j << "\n";
+	            }
+	            recursive(cur->child[i], ft);
+	        }
+	    }
+	}
 
+	void saveData(std::string nameDict, TrieWord* trie) {
+	    std::ofstream ft(nameDict, std::fstream::app);
 
+	    TrieWord::Node* cur = trie->root;
+
+	    recursive(cur, ft);
+	}
 };
