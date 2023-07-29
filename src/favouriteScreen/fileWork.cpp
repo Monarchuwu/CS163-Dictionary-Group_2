@@ -67,6 +67,11 @@ namespace minh
             
             for (int i = 0; i < n;i++)
             {
+                if (fin.eof()) 
+                {
+                str = "";
+                break;
+                }
                 std::getline(fin, str);
             }
             fin.close();

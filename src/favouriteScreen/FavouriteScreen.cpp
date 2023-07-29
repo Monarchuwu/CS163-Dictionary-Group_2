@@ -6,6 +6,8 @@ namespace minh
     {
         //Picking the dictionary type
          dic_type = "test";
+         //
+         page = 0;
         //Setup Trie Go at here
         Tree.Dic.loadFile("data/test/data.txt");
         for (int i = 0; i < Tree.Dic.v.size();i++)
@@ -13,9 +15,14 @@ namespace minh
             Tree.addWord(i);
         }
         //Initialize Window
-        backgroundColor = sf::Color(102, 153, 255);
+        backgroundColor = sf::Color(113, 114, 115);
         Background.setSize(sf::Vector2f(1600.0f, 900.0f));
-        Background.setFillColor(backgroundColor);
+        Background.setFillColor(sf::Color::White);
+        subBackground1.setSize(sf::Vector2f(1600.0f, 255.0f));
+        subBackground1.setFillColor(backgroundColor);
+        subBackground2.setSize(sf::Vector2f(1600.0f, 200.0f));
+        subBackground2.setFillColor(sf::Color(1,49,116));
+      
         //Setup font + object
         title.setSize(sf::Vector2f(800.0f, 100.0f));
         title.setOutlineThickness(2.0f);
@@ -60,13 +67,13 @@ namespace minh
        
 
 
-        AddBox.setTextBox(sf::Vector2f(266.0f, 50.0f), 668.0f, 200.0f, sf::Color::Transparent, 2.0f, sf::Color::Transparent);
+        AddBox.setTextBox(sf::Vector2f(266.0f, 50.0f), 668.0f, 220.0f, sf::Color::Transparent, 2.0f, sf::Color::Transparent);
         AddBox.setText(680.0f, 205.0f, font, 30, "", sf::Color::Transparent);
 
-        DefBox.setTextBox(sf::Vector2f(1400, 620.0f), 100.0f, 260.0f, sf::Color::White, 2.0f, sf::Color::Black);
+        DefBox.setTextBox(sf::Vector2f(1400, 620.0f), 100.0f, 260.0f, sf::Color(222,222,222),2.0f, sf::Color::Transparent);
         DefBox.setText(130.0f, 350.0f, font, 40, "", sf::Color::Transparent);
 
-         for (int i = 0; i < 10; i++) {
+         for (int i = 0; i < 11; i++) {
             view[i].setPosition(150.0f, 300.0f + i * 50.0f);
             view[i].setFillColor(sf::Color::Black);
             view[i].setFont(font);
@@ -95,14 +102,33 @@ namespace minh
         {
             int XMouse = evnt.mouseMove.x;
             int YMouse = evnt.mouseMove.y;
-            if (AddButton.isTouching(sf::Vector2f(XMouse, YMouse))) AddButton.buttonText.setFillColor(sf::Color::Red);
-            else AddButton.buttonText.setFillColor(sf::Color::Black);
+            if (AddButton.isTouching(sf::Vector2f(XMouse, YMouse))) {
+                AddButton.buttonText.setFillColor(sf::Color::Red);
+                AddButton.buttonRec.setFillColor(sf::Color(222, 222, 222));
+            }
+            else {
+                AddButton.buttonText.setFillColor(sf::Color::Black);
+                AddButton.buttonRec.setFillColor(sf::Color::White);
+            }
 
-            if (ViewButton.isTouching(sf::Vector2f(XMouse, YMouse))) ViewButton.buttonText.setFillColor(sf::Color::Red);
-            else ViewButton.buttonText.setFillColor(sf::Color::Black);
 
-            if (DeleteButton.isTouching(sf::Vector2f(XMouse, YMouse))) DeleteButton.buttonText.setFillColor(sf::Color::Red);
-            else DeleteButton.buttonText.setFillColor(sf::Color::Black);
+            if (ViewButton.isTouching(sf::Vector2f(XMouse, YMouse))) {
+                ViewButton.buttonText.setFillColor(sf::Color::Red);
+                ViewButton.buttonRec.setFillColor(sf::Color(222, 222, 222));
+            }
+            else {
+                ViewButton.buttonText.setFillColor(sf::Color::Black);
+                ViewButton.buttonRec.setFillColor(sf::Color:: White);
+            }
+
+            if (DeleteButton.isTouching(sf::Vector2f(XMouse, YMouse))) {
+                DeleteButton.buttonText.setFillColor(sf::Color::Red);
+                DeleteButton.buttonRec.setFillColor(sf::Color(222, 222, 222));
+            }
+            else { 
+                DeleteButton.buttonText.setFillColor(sf::Color::Black); 
+                DeleteButton.buttonRec.setFillColor(sf::Color::White);
+            }
 
             if (getBack.isTouching(sf::Vector2f(XMouse, YMouse)))
             {
@@ -118,14 +144,44 @@ namespace minh
             
         }
 
-        else if (evnt.type == sf::Event::MouseButtonPressed) {
+        else if (evnt.type == sf::Event::KeyReleased && isView) {
+            if (evnt.key.code == sf::Keyboard::Left )
+                if (page > 0) page--;
+            if (evnt.key.code == sf::Keyboard::Right) {
+                // std::cout << "Click Right";
+                std::string name = "data/" + dic_type + "/favourite.txt";
+                std::string str  = takeLine(1 + 10 * (page + 1), name);
+                if (str.size())
+                page++;
+            }
+            for (int i = 0; i < 10; i++) {
+                std::string name = "data/" + dic_type + "/favourite.txt";
+                std::string str  = takeLine(i + 1 + 10 * page, name);
+                for (int j = 0; j < str.size(); j++) {
+                    if (str[j] == '\t') {
+                        std::string word = str.substr(0, j);
+                        std::string def  = str.substr(j + 1);
+                        str              = word + " : " + def;
+                        // std::cout << str << std::endl;
+
+                        break;
+                    }
+                }
+                view[i].setString(str);
+            }
+            std::string pageNum = std::to_string(page + 1);
+            view[10].setString("PAGE: " + pageNum + " (Use Right/Left arrow to move between pages)");
+            view[10].setFillColor(sf::Color(1,49,116));
+        }
+
+        else if (evnt.type == sf::Event::MouseButtonReleased) {
             sf::Vector2f mousePos(evnt.mouseButton.x, evnt.mouseButton.y);
             
             if (evnt.mouseButton.button == sf::Mouse::Left) {
                 if (AddButton.isTouching(mousePos)) {
                     std::cout << "Choosing add a new word" << std::endl;
                     AddBox.setTextBox(sf::Vector2f(266.0f, 50.0f), 668.0f, 200.0f, sf::Color::White, 2.0f, sf::Color::Black);
-                    for (int i = 0; i < 10; i++) {
+                    for (int i = 0; i < 11; i++) {
                         view[i].setString("");
                     }
                     text_input = "";
@@ -135,6 +191,7 @@ namespace minh
                     DefBox.boxText.setString(def_input);
                     AddBox.writeThis = true;
                     option           = 1;
+                    isView           = 0;
                 }
 
                 else if (DeleteButton.isTouching(mousePos)) {
@@ -142,7 +199,8 @@ namespace minh
                     AddBox.setTextBox(sf::Vector2f(266.0f, 50.0f), 668.0f, 200.0f, sf::Color::White, 2.0f, sf::Color::Black);
                     text_input = "";
                     def_input  = "";
-                    for (int i = 0; i < 10; i++) {
+                    isView     = 0;
+                    for (int i = 0; i < 11; i++) {
                         view[i].setString("");
                     }
                     HeadWord.setString("");
@@ -159,22 +217,27 @@ namespace minh
                     HeadWord.setString("");
                     AddBox.boxText.setString(text_input);
                     DefBox.boxText.setString(def_input);
-
+                    isView = 1;
+                    option = 0;
                     std::cout << "Choosing view words" << std::endl;
                     for (int i = 0; i < 10; i++) {
                         std::string name = "data/" + dic_type + "/favourite.txt";
-                        std::string str = takeLine(i + 1, name);
+                        std::string str  = takeLine(i + 1 + 10*page, name);
                         for (int j = 0; j < str.size(); j++) {
                             if (str[j] == '\t') {
                                 std::string word = str.substr(0, j);
                                 std::string def  = str.substr(j + 1);
                                 str              = word + " : " + def;
                                 // std::cout << str << std::endl;
-                                view[i].setString(str);
+                                
                                 break;
                             }
                         }
+                        view[i].setString(str);
                     }
+                    std::string pageNum = std::to_string(page + 1);
+                    view[10].setString("PAGE: " + pageNum + " (Use Right/Left arrow to move between pages)");
+                    view[10].setFillColor(sf::Color(1,49,116));
                 }
                 else if (getBack.isTouching(mousePos))
                 {
@@ -251,6 +314,8 @@ namespace minh
     {
         favWindow.clear();
         favWindow.draw(Background);
+        favWindow.draw(subBackground1);
+        favWindow.draw(subBackground2);
         favWindow.draw(title);
         favWindow.draw(textTitle);
         favWindow.draw(getBack.buttonRec);
@@ -260,7 +325,7 @@ namespace minh
         AddBox.draw(favWindow);
         DefBox.draw(favWindow);
         favWindow.draw(HeadWord);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 11; i++) {
             favWindow.draw(view[i]);
         }
     }
