@@ -285,12 +285,15 @@ namespace mainScreen {
                     std::string text = mSearchLine.getText();
                     std::cout << "[CALL] Search text: " << text << "\n";
                 }
+
+                break;
             }
 
             case sf::Event::TextEntered: {
                 // change search line text
                 // add a char
-                if ('a' <= event.text.unicode && event.text.unicode <= 'z' || event.text.unicode == ' ') {
+                /// [32, 126] is the range of ASCII code of printable characters
+                if (32 <= event.text.unicode && event.text.unicode <= 126) {
                     if (mSearchLine.getPressed()) {
                         mSearchLine.addChar(event.text.unicode);
                         std::cout << "[INFO] Search line adds a char"
