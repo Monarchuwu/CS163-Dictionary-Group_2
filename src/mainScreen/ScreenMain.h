@@ -25,11 +25,13 @@ namespace mainScreen {
         void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const override;
 
     private:
-        // color set (darkest to lightest)
-        sf::Color mColor[4];
+        sf::Color mColorBackground[5][2];
 
         // background
         sf::RectangleShape mBackground;
+        sf::RectangleShape mBackground2;
+        sf::RectangleShape mBackground3;
+        sf::RectangleShape mBackground4;
 
         // dataset block buttons
         Button mDatasetButton[5];
@@ -40,6 +42,7 @@ namespace mainScreen {
         Button* mModeSelected;
 
         // 4 icon buttons (features)
+        ButtonSprite m3DashIcon;
         ButtonSprite mPlusIcon;
         ButtonSprite mFavoriteIcon;
         ButtonSprite mHistoryIcon;
@@ -51,7 +54,7 @@ namespace mainScreen {
         // magnifier icon sprite
         ButtonSprite mMagnifierIcon;
 
-        // game button
-        Button mGameButton;
+        /// game buttons
+        Button mGameButton[3];
     };
 } // namespace mainScreen
