@@ -55,6 +55,7 @@ void DataManager::resetData() {
 }
 
 void DataManager::loadDatasetInternal(const std::string& dirDataset) {
+    std::cout << "[INFO] Loading dataset" << std::endl;
     // load data from file
     mDictionary.loadFile(dirDataset);
 
@@ -68,6 +69,8 @@ void DataManager::loadDatasetInternal(const std::string& dirDataset) {
 }
 
 void DataManager::saveDatasetInternal(const std::string& dirDataset) {
+    std::cout << "[INFO] Saving dataset" << std::endl;
+	// save data to file
 }
 
 Words::Word* DataManager::searchWord(const std::string& word) {

@@ -5,6 +5,7 @@
 #include "mainScreen/ScreenMain.h"
 #include "favouriteScreen/FavouriteScreen.h"
 #include "addWordScreen/addWord.h"
+#include "../src/dataManager/DataManager.h"
 using namespace minh;
 
 class Application {
@@ -23,4 +24,6 @@ private:
     minh::ScreenFavou screenfav;
     screen_addWord screenAddWord;
     Screen* mScreen;
+
+    DataManager mDataManager;
 };

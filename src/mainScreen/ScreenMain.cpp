@@ -235,17 +235,19 @@ namespace mainScreen {
                 if (event.key.code == sf::Keyboard::Enter) {
                     if (mSearchLine.getPressed()) {
                         mSearchLine.setPressed(false);
+                        mMagnifierIcon.setPressed(true);
                         std::cout << "[INFO] Search line is not selected\n";
                     }
                     std::string text = mSearchLine.getText();
                     std::cout << "[CALL] Search text: " << text << "\n";
                 }
+                break;
             }
 
             case sf::Event::TextEntered: {
                 // change search line text
                 // add a char
-                if ('a' <= event.text.unicode && event.text.unicode <= 'z' || event.text.unicode == ' ') {
+                if (32 <= event.text.unicode && event.text.unicode <= 126) {
                     if (mSearchLine.getPressed()) {
                         mSearchLine.addChar(event.text.unicode);
                         std::cout << "[INFO] Search line adds a char"
@@ -309,6 +311,7 @@ namespace mainScreen {
         // update magnifier icon
         if (mMagnifierIcon.getPressed()) {
             std::string text = mSearchLine.getText();
+            setCallSearchText(true, text);
             std::cout << "[CALL] Search text: " << text << "\n";
             mMagnifierIcon.setPressed(false);
         }

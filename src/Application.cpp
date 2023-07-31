@@ -10,6 +10,10 @@ Application::Application()
     mWindow.create(sf::VideoMode(1600, 900), "Dictionary - Group 2", sf::Style::Close, settings);
     mWindow.setPosition(sf::Vector2i(10, 10));
 
+    mDataManager.setDataset(DataManager::Dataset::Slang);
+    mDataManager.setModeSearch(DataManager::ModeSearch::SearchByWord);
+    mDataManager.loadData();
+
     mScreen = &mScreenMain;
 }
 
@@ -42,6 +46,20 @@ void Application::update() {
     if (mScreen->getCallHome()) {
         mScreen->setCallHome(false);
         mScreen = &mScreenMain;
+        return;
+    }
+
+    if (mScreen->getCallSearchText()) {
+        std::string word = mScreen->getString1();
+        mScreen->setCallSearchText(false);
+        // go to word screen if word exists
+        Words::Word* cur = mDataManager.searchWord(word);
+        if (cur != nullptr) {
+            std::cout << "Found word\n";
+		}
+        else {
+            std::cout << "Not found word\n";
+        }
         return;
     }
 
