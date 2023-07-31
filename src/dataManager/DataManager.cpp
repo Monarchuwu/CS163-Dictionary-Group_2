@@ -5,7 +5,9 @@ DataManager::DataManager()
     : mDictionary() {
     mDataset = mModeSearch = 0;
 }
-DataManager::~DataManager() {}
+DataManager::~DataManager() {
+    saveData();
+}
 
 void DataManager::setDataset(int dataset) {
     mDataset = dataset;
@@ -71,6 +73,7 @@ void DataManager::loadDatasetInternal(const std::string& dirDataset) {
 void DataManager::saveDatasetInternal(const std::string& dirDataset) {
     std::cout << "[INFO] Saving dataset" << std::endl;
 	// save data to file
+    mTrieWord.saveData(dirDataset, mDictionary);
 }
 
 Words::Word* DataManager::searchWord(const std::string& word) {
