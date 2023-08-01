@@ -148,25 +148,26 @@ namespace minh
             if (evnt.key.code == sf::Keyboard::Left )
                 if (page > 0) page--;
             if (evnt.key.code == sf::Keyboard::Right) {
-                // std::cout << "Click Right";
-                std::string name = "data/" + dic_type + "/favourite.txt";
-                std::string str  = takeLine(1 + 10 * (page + 1), name);
-                if (str.size())
-                page++;
+                std::cout << "Click Right";
+                //std::string name = "data/" + dic_type + "/favourite.txt";
+                //std::string str  = takeLine(1 + 10 * (page + 1), name);
+                //if (str.size())
+                //page++;
             }
             for (int i = 0; i < 10; i++) {
-                std::string name = "data/" + dic_type + "/favourite.txt";
-                std::string str  = takeLine(i + 1 + 10 * page, name);
-                for (int j = 0; j < str.size(); j++) {
-                    if (str[j] == '\t') {
-                        std::string word = str.substr(0, j);
-                        std::string def  = str.substr(j + 1);
-                        str              = word + " : " + def;
-                        // std::cout << str << std::endl;
+                //std::string name = "data/" + dic_type + "/favourite.txt";
+                //std::string str  = takeLine(i + 1 + 10 * page, name);
+                //for (int j = 0; j < str.size(); j++) {
+                //    if (str[j] == '\t') {
+                //        std::string word = str.substr(0, j);
+                //        std::string def  = str.substr(j + 1);
+                //        str              = word + " : " + def;
+                //        // std::cout << str << std::endl;
 
-                        break;
-                    }
-                }
+                //        break;
+                //    }
+                //}
+                std::string str = "";
                 view[i].setString(str);
             }
             std::string pageNum = std::to_string(page + 1);

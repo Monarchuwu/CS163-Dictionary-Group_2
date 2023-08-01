@@ -3,7 +3,7 @@
 #include"myButton.h"
 #include "myBox.h"
 #include <iostream>
-#include "fileWork.h"
+//#include "fileWork.h"
 #include "../Screen.h"
 
 namespace minh {

@@ -107,7 +107,4 @@ public:
 
 		recursive(root, Dic, ft);
 	}
-
-	    recursive(cur, ft);
-	}
 };
