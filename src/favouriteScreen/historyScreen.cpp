@@ -21,7 +21,7 @@ namespace minh {
         title.setPosition(800.0f, 80.0f);
         title.setFillColor(sf::Color::White);
 
-        font.loadFromFile("arial.ttf");
+        font.loadFromFile("data/fonts/Open_Sans/OpenSans.ttf");
 
         textTitle.setFont(font);
         textTitle.setCharacterSize(50);
