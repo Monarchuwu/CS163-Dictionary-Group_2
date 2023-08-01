@@ -9,11 +9,11 @@ namespace minh
          //
          page = 0;
         //Setup Trie Go at here
-        Tree.Dic.loadFile("data/test/data.txt");
-        for (int i = 0; i < Tree.Dic.v.size();i++)
-        {
-            Tree.addWord(i);
-        }
+        //Tree.Dic.loadFile("data/test/data.txt");
+        //for (int i = 0; i < Tree.Dic.v.size();i++)
+        //{
+        //    Tree.addWord(i);
+        //}
         //Initialize Window
         backgroundColor = sf::Color(113, 114, 115);
         Background.setSize(sf::Vector2f(1600.0f, 900.0f));
@@ -220,24 +220,20 @@ namespace minh
                     isView = 1;
                     option = 0;
                     std::cout << "Choosing view words" << std::endl;
-                    for (int i = 0; i < 10; i++) {
-                        std::string name = "data/" + dic_type + "/favourite.txt";
-                        std::string str  = takeLine(i + 1 + 10*page, name);
-                        for (int j = 0; j < str.size(); j++) {
-                            if (str[j] == '\t') {
-                                std::string word = str.substr(0, j);
-                                std::string def  = str.substr(j + 1);
-                                str              = word + " : " + def;
-                                // std::cout << str << std::endl;
-                                
-                                break;
-                            }
-                        }
-                        view[i].setString(str);
-                    }
-                    std::string pageNum = std::to_string(page + 1);
-                    view[10].setString("PAGE: " + pageNum + " (Use Right/Left arrow to move between pages)");
-                    view[10].setFillColor(sf::Color(1,49,116));
+                    //for (int i = 0; i < 10; i++) {
+                    //    std::string name = "data/" + dic_type + "/favourite.txt";
+                    //    std::string str = takeLine(i + 1, name);
+                    //    for (int j = 0; j < str.size(); j++) {
+                    //        if (str[j] == '\t') {
+                    //            std::string word = str.substr(0, j);
+                    //            std::string def  = str.substr(j + 1);
+                    //            str              = word + " : " + def;
+                    //            // std::cout << str << std::endl;
+                    //            view[i].setString(str);
+                    //            break;
+                    //        }
+                    //    }
+                    //}
                 }
                 else if (getBack.isTouching(mousePos))
                 {
@@ -259,19 +255,21 @@ namespace minh
                 if (option > 0) {
                     std::cout << "Add to favourite list: " << text_input << std::endl;
 
+                    /* in comments all below to fix the conflicts */
                     // HANDLE BACK END ADD TO FAVOURITE LIST
-                    std::string fileName = "data/" + dic_type + "/favourite.txt";
+                    //std::string fileName = "data/" + dic_type + "/favourite.txt";
                     //def_input            = defOfWord(text_input, fileName);
-                    int tu = Tree.searchWord(text_input);
+                    //int tu = Tree.searchWord(text_input);
+                    int tu = -1;
                     if (tu == -1) def_input = "ERROR: Can not find this word";
                     else {
-                        def_input = Tree.Dic.v[tu].definitions[0];
-                        if (defOfWord(text_input, fileName) == "") // Not in the data/favourite.txt yet
-                            addToEndOfFile(tu, fileName,Tree.Dic.v);
-                        else {
-                            def_input = "Already in the favourite list";
-                            std::cout << "Word already in the favourite list" << std::endl;
-                        }
+                        //def_input = Tree.Dic.v[tu].definitions[0];
+                        //if (defOfWord(text_input, fileName) == "") // Not in the data/favourite.txt yet
+                        //    addToEndOfFile(tu, fileName,Tree.Dic.v);
+                        //else {
+                        //    def_input = "Already in the favourite list";
+                        //    std::cout << "Word already in the favourite list" << std::endl;
+                        //}
                     }
                     option = 0;
                 }
@@ -280,18 +278,19 @@ namespace minh
                     std::cout << "Delete from favourite list: " << text_input << std::endl;
 
                     // HANDLE BACK END DELETE FROM THE FAVOURITE LIST
-                    std::string fileName = "data/" + dic_type + "/data.txt";
-                    int tu               = Tree.searchWord(text_input);
+                    //std::string fileName = "data/" + dic_type + "/data.txt";
+                    //int tu               = Tree.searchWord(text_input);
+                    int tu = -1;
                     if (tu == -1) def_input = "ERROR: Can not find this word";
                     else {
-                        def_input = Tree.Dic.v[tu].definitions[0];
-                        fileName  = "data/" + dic_type + "/favourite.txt";
-                        if (defOfWord(text_input, fileName) != "") // In the favourite already
-                            clearFromFile(text_input, fileName);
-                        else {
-                            def_input = "Not in the favourite list";
-                            std::cout << "Word not already in the favourite list" << std::endl;
-                        }
+                        //def_input = Tree.Dic.v[tu].definitions[0];
+                        //fileName  = "data/" + dic_type + "/favourite.txt";
+                        //if (defOfWord(text_input, fileName) != "") // In the favourite already
+                        //    clearFromFile(text_input, fileName);
+                        //else {
+                        //    def_input = "Not in the favourite list";
+                        //    std::cout << "Word not already in the favourite list" << std::endl;
+                        //}
                     }
                     option = 0;
                 }

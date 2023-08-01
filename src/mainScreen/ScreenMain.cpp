@@ -280,6 +280,7 @@ namespace mainScreen {
                 if (event.key.code == sf::Keyboard::Enter) {
                     if (mSearchLine.getPressed()) {
                         mSearchLine.setPressed(false);
+                        mMagnifierIcon.setPressed(true);
                         std::cout << "[INFO] Search line is not selected\n";
                     }
                     std::string text = mSearchLine.getText();
@@ -366,6 +367,7 @@ namespace mainScreen {
         // update magnifier icon
         if (mMagnifierIcon.getPressed()) {
             std::string text = mSearchLine.getText();
+            setCallSearchText(true, text);
             std::cout << "[CALL] Search text: " << text << "\n";
             mMagnifierIcon.setPressed(false);
         }

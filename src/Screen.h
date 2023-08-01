@@ -15,6 +15,9 @@ public:
 
     // set call home
     void setCallHome(bool callHome);
+    // set call search text
+    // string in String1
+    void setCallSearchText(bool callSearchText, const std::string& string = "");
     // set call add word screen
     void setCallAddWordScreen(bool callAddWordScreen);
     // set call favorite list
@@ -24,6 +27,8 @@ public:
 
     // get call home
     bool getCallHome() const;
+    // get call search text
+    bool getCallSearchText() const;
     // get call add word screen
     bool getCallAddWordScreen() const;
     // get call favorite list
@@ -31,9 +36,14 @@ public:
     //get call history list
     bool getCallHistoryList() const;
 
+    // get string 1
+    std::string getString1() const;
+
 private:
     bool mCallHome;
+    bool mCallSearchText;
     bool mCallAddWordScreen;
     bool mCallFavoriteList;
     bool mCallHistoryList;
+    std::string mString1;
 };
