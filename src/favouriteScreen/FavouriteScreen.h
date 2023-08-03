@@ -21,6 +21,8 @@ namespace minh {
 
         void addAWord(std::string word);
 
+        void deleteAWord(std::string word);
+
         bool inTheFile(std::string word);
 
         void run();

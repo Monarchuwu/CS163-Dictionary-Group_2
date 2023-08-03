@@ -38,7 +38,7 @@ namespace minh {
         getBack.buttonRec.setSize(sf::Vector2f(100.0f, 100.0f));
         getBack.buttonRec.setOutlineThickness(2.0f);
         getBack.buttonRec.setOutlineColor(sf::Color::Black);
-        getBack.buttonRec.setPosition(1300.0f, 30.0f);
+        getBack.buttonRec.setPosition(1450.0f, 30.0f);
         leftArrow.loadFromFile("data/images/black_arrow.png");
         getBack.buttonRec.setTexture(&leftArrow);
 
@@ -53,6 +53,20 @@ namespace minh {
             view[i].setFont(font);
         }
 
+    }
+
+    void ScreenHis::addAWord(std::string word)
+    {
+        std::string fileToAdd = "data/" + dic_type + "/history.txt";
+        std::ofstream fout(fileToAdd, std::ios::app);
+        if (!fout.is_open()) {
+            std::cout << "Can not open file" << std::endl;
+            fout.close();
+            return;
+        }
+        fout << word << std::endl;
+        fout.close();
+        return;
     }
 
     void ScreenHis::run() 
@@ -115,17 +129,17 @@ namespace minh {
             for (int i = 0; i < 10; i++) {
                 std::string name = "data/" + dic_type + "/history.txt";
                 std::string str  = takeLine(i + 1 + 10 * page, name);
-                //for (int j = 0; j < str.size(); j++) {
-                //    if (str[j] == '\t') {
-                //        std::string word = str.substr(0, j);
-                //        std::string def  = str.substr(j + 1);
-                //        str              = word + " : " + def;
+                for (int j = 0; j < str.size(); j++) {
+                    if (str[j] == '\t') {
+                        std::string word = str.substr(0, j);
+                        std::string def  = str.substr(j + 1);
+                        str              = word;
                    
 
-                //        break;
-                //    }
-                //}
-                //std::string str = "";
+                        break;
+                    }
+                }
+                
                 view[i].setString(str);
             }
             std::string pageNum = std::to_string(page + 1);
@@ -149,17 +163,17 @@ namespace minh {
                     for (int i = 0; i < 10; i++) {
                         std::string name = "data/" + dic_type + "/history.txt";
                         std::string str  = takeLine(i + 1 + 10 * page, name);
-                        //for (int j = 0; j < str.size(); j++) {
-                        //    if (str[j] == '\t') {
-                        //        std::string word = str.substr(0, j);
-                        //        std::string def  = str.substr(j + 1);
-                        //        str              = word + " : " + def;
-                        //        // std::cout << str << std::endl;
+                        for (int j = 0; j < str.size(); j++) {
+                            if (str[j] == '\t') {
+                                std::string word = str.substr(0, j);
+                                std::string def  = str.substr(j + 1);
+                                str              = word ;
+                               
 
-                        //        break;
-                        //    }
-                        //}
-                        //std::string str = "";
+                                break;
+                            }
+                        }
+                       
                         view[i].setString(str);
                     }
                     std::string pageNum = std::to_string(page + 1);
@@ -169,6 +183,10 @@ namespace minh {
                 else if (getBack.isTouching(mousePos)) {
                     setCallHome(true);
                     std::cout << "Choosing Back to main Screen" << std::endl;
+                    for (int i = 0; i < 11; i++)
+                    {
+                        view[i].setString("");
+                    }
                 }
             }
         }

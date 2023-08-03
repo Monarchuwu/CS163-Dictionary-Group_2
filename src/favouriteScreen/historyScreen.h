@@ -12,6 +12,9 @@ namespace minh {
     public:
         std::string dic_type;
         ScreenHis();
+
+        void addAWord(std::string word);
+
         void run();
 
         // Event Handle
