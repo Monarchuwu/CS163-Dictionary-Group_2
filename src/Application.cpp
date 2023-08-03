@@ -14,6 +14,7 @@ Application::Application()
     mDataManager.setModeSearch(constant::ModeSearch::SearchByWord);
     mDataManager.loadData();
     screenfav.changeDir(constant::Dataset::Slang);
+    screenhis.changeDir(constant::Dataset::Slang);
 
     mScreen = &mScreenMain;
 }
