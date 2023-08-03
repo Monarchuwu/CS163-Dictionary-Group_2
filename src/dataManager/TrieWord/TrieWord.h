@@ -27,6 +27,8 @@ public:
     Words() {}
 
     void loadFile(std::string nameDict) {
+        v.clear();
+
         std::ifstream fin(nameDict);
         std::string word = "";
         std::string def = "";

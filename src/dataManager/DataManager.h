@@ -3,11 +3,6 @@
 #include "../Constant.h"
 #include "TrieWord/TrieWord.h"
 
-/*
-- handle word query
-- load/save dataset functions
-*/
-
 class DataManager {
 public:
     // constructor
@@ -64,5 +59,5 @@ private:
     Words mDictionary;
 
     // trie word
-    TrieWord mTrieWord;
+    TrieWord* mTrieWord;
 };

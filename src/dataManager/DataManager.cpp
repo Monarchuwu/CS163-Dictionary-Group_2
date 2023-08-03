@@ -4,6 +4,7 @@
 DataManager::DataManager()
     : mDictionary() {
     mDataset = mModeSearch = 0;
+    mTrieWord = new TrieWord();
 }
 DataManager::~DataManager() {
     saveData();
@@ -62,9 +63,10 @@ void DataManager::loadDatasetInternal(const std::string& dirDataset) {
     mDictionary.loadFile(dirDataset);
 
     // build TrieWord
-    // delete mTrieSearchByWord;
+    delete mTrieWord;
+    mTrieWord = new TrieWord();
     for (int i = 0; i < mDictionary.v.size(); ++i) {
-        mTrieWord.addWord(mDictionary.v[i].word, i);
+        mTrieWord->addWord(mDictionary.v[i].word, i);
     }
 
     // build TrieDefinition
@@ -73,25 +75,25 @@ void DataManager::loadDatasetInternal(const std::string& dirDataset) {
 void DataManager::saveDatasetInternal(const std::string& dirDataset) {
     std::cout << "[INFO] Saving dataset" << std::endl;
 	// save data to file
-    mTrieWord.saveData(dirDataset, mDictionary);
+    mTrieWord->saveData(dirDataset, mDictionary);
 }
 
 Words::Word* DataManager::searchWord(const std::string& word) {
-    int index = mTrieWord.searchWord(word);
+    int index = mTrieWord->searchWord(word);
     if (index == -1) return nullptr;
     return &mDictionary.v[index];
 }
 Words::Word* DataManager::addWord(const std::string& word) {
-    int index = mTrieWord.searchWord(word);
+    int index = mTrieWord->searchWord(word);
     if (index != -1) return &mDictionary.v[index];
 
     Words::Word newWord;
     newWord.word = word;
     mDictionary.v.push_back(newWord);
-    mTrieWord.addWord(word, (int)mDictionary.v.size() - 1);
+    mTrieWord->addWord(word, (int)mDictionary.v.size() - 1);
  
     return &mDictionary.v.back();
 }
 void DataManager::removeWord(const std::string& word) {
-    mTrieWord.deleteWord(word);
+    mTrieWord->deleteWord(word);
 }
