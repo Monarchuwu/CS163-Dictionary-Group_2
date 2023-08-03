@@ -60,7 +60,7 @@ namespace minh
         getBack.buttonRec.setSize(sf::Vector2f(100.0f, 100.0f));
         getBack.buttonRec.setOutlineThickness(2.0f);
         getBack.buttonRec.setOutlineColor(sf::Color::Black);
-        getBack.buttonRec.setPosition(1300.0f, 30.0f);
+        getBack.buttonRec.setPosition(1450.0f, 30.0f);
         leftArrow.loadFromFile("data/images/black_arrow.png");
         getBack.buttonRec.setTexture(&leftArrow);
 
@@ -77,6 +77,7 @@ namespace minh
             view[i].setPosition(150.0f, 300.0f + i * 50.0f);
             view[i].setFillColor(sf::Color::Black);
             view[i].setFont(font);
+            //view[i].setString("");
         }
     }
 
@@ -93,6 +94,45 @@ namespace minh
         return;
     }
 
+    void ScreenFavou::deleteAWord(std::string word)
+    {
+        std::string fileToDelete = "data/" + dic_type + "/favourite.txt";
+        std::queue<std::string> lines;
+
+        std::ifstream fin;
+        fin.open(fileToDelete);
+        if (!fin.is_open()) {
+        std::cout << "Can not open file";
+        fin.close();
+        return;
+        }
+        std::string str;
+
+        while (std::getline(fin, str))
+        {
+        // std::cout << def << std::endl;
+        if (str != word)
+        
+         lines.push(str);
+        }
+
+        std::ofstream fout(fileToDelete, std::ios::trunc);
+
+        if (!fout.is_open()) {
+        std::cout << "Can not open file";
+        fin.close();
+        fout.close();
+        return;
+        }
+        while (lines.size()) {
+        fout << lines.front() << std::endl;
+        lines.pop();
+        }
+        fin.close();
+        return;
+    
+    }
+
     bool ScreenFavou::inTheFile(std::string word) {
         std::ifstream fin;
         std::string fileToCheck = "data/" + dic_type + "/favourite.txt";
@@ -105,15 +145,12 @@ namespace minh
         std::string line;
         while (std::getline(fin, line))
         {
-            for (int i = 0; i < word.size();i++)
-            {
-            if (line[i] != word[i]) break;
-                if (i == word.size()) return true;
-            }
+        if (line == word) return true; 
         }
         return false;
-
     }
+
+
     void ScreenFavou::run()
     {  
         sf::Event evnt;
@@ -268,11 +305,18 @@ namespace minh
                                 break;
                             }
                         }
+                        std::string pageNum = std::to_string(page + 1);
+                        view[10].setString("PAGE: " + pageNum + " (Use Right/Left arrow to move between pages)");
+                        view[10].setFillColor(sf::Color(1, 49, 116));
                     }
                 }
                 else if (getBack.isTouching(mousePos))
                 {
                     setCallHome(true);
+                    for (int i = 0; i < 11; i++)
+                    {
+                        view[i].setString("");
+                    }
                     std::cout << "Choosing Back to main Screen" <<std::endl;
                 }
             }
@@ -295,7 +339,9 @@ namespace minh
                     std::string fileName = "data/" + dic_type + "/favourite.txt";
                     //def_input            = defOfWord(text_input, fileName);
                     //int tu = Tree.searchWord(text_input);
-                    if(!inTheFile(text_input))addAWord(text_input);
+                    if (!inTheFile(text_input)) addAWord(text_input);
+                    else
+                        def_input = "Already in the favourite list!";
                     option = 0;
                 }
 
@@ -304,10 +350,11 @@ namespace minh
 
                     // HANDLE BACK END DELETE FROM THE FAVOURITE LIST
                     std::string fileName = "data/" + dic_type + "/data.txt";
+                    if (inTheFile(text_input)) deleteAWord(text_input);
+                    else
+                        def_input = "Not in the favourite list yet!";
                     // int tu               = Tree.searchWord(text_input);
-                    int tu = -1;
-                    if (tu == -1) def_input = "ERROR: Can not find this word";
-                    else {
+                    
                         //def_input = Tree.Dic.v[tu].definitions[0];
                         //fileName  = "data/" + dic_type + "/favourite.txt";
                         //if (defOfWord(text_input, fileName) != "") // In the favourite already
@@ -316,7 +363,7 @@ namespace minh
                         //    def_input = "Not in the favourite list";
                         //    std::cout << "Word not already in the favourite list" << std::endl;
                         //}
-                    }
+                    
                     option = 0;
                 }
 
