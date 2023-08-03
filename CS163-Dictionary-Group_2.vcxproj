@@ -143,10 +143,10 @@
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Constant.cpp" />
     <ClCompile Include="src\dataManager\DataManager.cpp" />
-    <ClCompile Include="src\dataManager\TrieWord\fileWork.cpp" />
     <ClCompile Include="src\dataManager\TrieWord\TrieWord.cpp" />
     <ClCompile Include="src\favouriteScreen\favou.cpp" />
     <ClCompile Include="src\favouriteScreen\FavouriteScreen.cpp" />
+    <ClCompile Include="src\favouriteScreen\fileWork.cpp" />
     <ClCompile Include="src\favouriteScreen\historyScreen.cpp" />
     <ClCompile Include="src\favouriteScreen\myBox.cpp" />
     <ClCompile Include="src\favouriteScreen\myButton.cpp" />
@@ -174,9 +174,9 @@
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Constant.h" />
     <ClInclude Include="src\dataManager\DataManager.h" />
-    <ClInclude Include="src\dataManager\TrieWord\fileWork.h" />
     <ClInclude Include="src\dataManager\TrieWord\TrieWord.h" />
     <ClInclude Include="src\favouriteScreen\FavouriteScreen.h" />
+    <ClInclude Include="src\favouriteScreen\fileWork.h" />
     <ClInclude Include="src\favouriteScreen\historyScreen.h" />
     <ClInclude Include="src\favouriteScreen\myBox.h" />
     <ClInclude Include="src\favouriteScreen\myButton.h" />

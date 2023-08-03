@@ -38,20 +38,20 @@ namespace minh
             fin.close();
             return "";
     }
-     void addToEndOfFile(int id, const std::string& filename, std::vector<Words::Word> v) {
-            std::ofstream fout(filename, std::ios::app);
-            if (!fout.is_open()) {
-            std::cout << "Can not open file" << std::endl;
-            fout.close();
-            return;
-            }
-            if (defOfWord(v[id].word, filename) == "")
-            for (int i = 0; i < v[id].definitions.size(); i++)
-                fout << v[id].word << "\t" << v[id].definitions[i] << std::endl;
-            else std::cout << "Word have already been added to favourite list" << std::endl;
-            fout.close();
-            return;
-    }
+    // void addToEndOfFile(int id, const std::string& filename, std::vector<Words::Word> v) {
+    //        std::ofstream fout(filename, std::ios::app);
+    //        if (!fout.is_open()) {
+    //        std::cout << "Can not open file" << std::endl;
+    //        fout.close();
+    //        return;
+    //        }
+    //        if (defOfWord(v[id].word, filename) == "")
+    //        for (int i = 0; i < v[id].definitions.size(); i++)
+    //            fout << v[id].word << "\t" << v[id].definitions[i] << std::endl;
+    //        else std::cout << "Word have already been added to favourite list" << std::endl;
+    //        fout.close();
+    //        return;
+    //}
 
         std::string takeLine(int n, const std::string &filename) 
        {

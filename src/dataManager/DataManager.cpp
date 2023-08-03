@@ -24,7 +24,7 @@ int DataManager::getModeSearch() {
 
 void DataManager::loadData() {
     switch (mDataset) {
-        case Dataset::Slang:
+        case constant::Dataset::Slang :
             loadDatasetInternal("data/slang/data.txt");
             break;
 
@@ -35,7 +35,7 @@ void DataManager::loadData() {
 }
 void DataManager::saveData() {
     switch (mDataset) {
-        case Dataset::Slang:
+        case constant::Dataset::Slang :
             saveDatasetInternal("data/slang/data.txt");
             break;
 
@@ -46,7 +46,7 @@ void DataManager::saveData() {
 }
 void DataManager::resetData() {
     switch (mDataset) {
-        case Dataset::Slang:
+        case constant::Dataset::Slang:
             loadDatasetInternal("data/slang/backup.txt");
             break;
 

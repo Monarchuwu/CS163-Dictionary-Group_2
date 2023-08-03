@@ -3,9 +3,11 @@
 #include"myButton.h"
 #include "myBox.h"
 #include <iostream>
-//#include "fileWork.h"
+#include "fileWork.h"
 #include "../Screen.h"
-//#include"myTrie.h"
+#include "../Constant.h"
+#include "../dataManager/DataManager.h" // include to use enum Dataset
+
 namespace minh {
 
     class ScreenFavou : public Screen {
@@ -26,6 +28,9 @@ namespace minh {
 
         // Render - Draw
         void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const override;
+
+        // Set type dictionary
+        void changeDir(int dataset);
 
     private:
         //OBJECT ON THE SCREEN

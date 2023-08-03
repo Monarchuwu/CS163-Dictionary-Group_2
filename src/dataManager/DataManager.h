@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "../Constant.h"
 #include "TrieWord/TrieWord.h"
 
 /*
@@ -8,20 +9,6 @@
 */
 
 class DataManager {
-public:
-    static enum Dataset {
-        EngEng,
-        EngVie,
-        VieEng,
-        Slang,
-        Emoji
-    };
-
-    static enum ModeSearch {
-        SearchByWord,
-        SearchByDefinition
-    };
-
 public:
     // constructor
     DataManager();

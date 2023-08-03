@@ -10,9 +10,10 @@ Application::Application()
     mWindow.create(sf::VideoMode(1600, 900), "Dictionary - Group 2", sf::Style::Close, settings);
     mWindow.setPosition(sf::Vector2i(10, 10));
 
-    mDataManager.setDataset(DataManager::Dataset::Slang);
-    mDataManager.setModeSearch(DataManager::ModeSearch::SearchByWord);
+    mDataManager.setDataset(constant::Dataset::Slang);
+    mDataManager.setModeSearch(constant::ModeSearch::SearchByWord);
     mDataManager.loadData();
+    screenfav.changeDir(constant::Dataset::Slang);
 
     mScreen = &mScreenMain;
 }
