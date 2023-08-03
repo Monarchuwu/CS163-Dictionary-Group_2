@@ -6,6 +6,7 @@
 #include "favouriteScreen/FavouriteScreen.h"
 #include "favouriteScreen/historyScreen.h"
 #include "addWordScreen/addWord.h"
+#include "../src/dataManager/DataManager.h"
 using namespace minh;
 
 class Application {
@@ -25,4 +26,6 @@ private:
     minh::ScreenHis screenhis;
     screen_addWord screenAddWord;
     Screen* mScreen;
+
+    DataManager mDataManager;
 };

@@ -10,6 +10,12 @@ Application::Application()
     mWindow.create(sf::VideoMode(1600, 900), "Dictionary - Group 2", sf::Style::Close, settings);
     mWindow.setPosition(sf::Vector2i(10, 10));
 
+    mDataManager.setDataset(constant::Dataset::EngEng);
+    mDataManager.setModeSearch(constant::ModeSearch::SearchByWord);
+    mDataManager.loadData();
+    screenfav.changeDir(constant::Dataset::EngEng);
+    screenhis.changeDir(constant::Dataset::EngEng);
+
     mScreen = &mScreenMain;
 }
 
@@ -37,11 +43,48 @@ void Application::processEvents() {
 }
 
 void Application::update() {
-    mScreen->update();
+    { // handle dataset and mode search
+        if (mScreen->getDataset()) {
+            int dataset = mScreen->getInteger1();
+            mScreen->setDataset(false);
+            if (dataset != mDataManager.getDataset()) {
+                mDataManager.saveData();
+                mDataManager.setDataset(dataset);
+                mDataManager.loadData();
+                screenfav.changeDir(dataset);
+                screenhis.changeDir(dataset);
+                std::cout << "[INFO] Change dataset to " << dataset << std::endl;
+            }
+            return;
+        }
+        if (mScreen->getModeSearch()) {
+            int modeSearch = mScreen->getInteger2();
+            mScreen->setModeSearch(false);
+            if (modeSearch != mDataManager.getModeSearch()) {
+                mDataManager.setModeSearch(modeSearch);
+                std::cout << "[INFO] Change modeSearch to " << modeSearch << std::endl;
+            }
+            return;
+        }
+    }
 
     if (mScreen->getCallHome()) {
         mScreen->setCallHome(false);
         mScreen = &mScreenMain;
+        return;
+    }
+
+    if (mScreen->getCallSearchText()) {
+        std::string word = mScreen->getString1();
+        mScreen->setCallSearchText(false);
+        // go to word screen if word exists
+        Words::Word* cur = mDataManager.searchWord(word);
+        if (cur != nullptr) {
+            std::cout << "Found word\n";
+		}
+        else {
+            std::cout << "Not found word\n";
+        }
         return;
     }
 
@@ -62,7 +105,9 @@ void Application::update() {
         mScreen = &screenhis;
         return;
     }
-    //screenfav.update();
+
+    mScreen->update();
+    // screenfav.update();
     //mScreenMain.update();
 }
 

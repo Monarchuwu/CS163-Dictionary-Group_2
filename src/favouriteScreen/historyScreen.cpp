@@ -115,16 +115,17 @@ namespace minh {
             for (int i = 0; i < 10; i++) {
                 std::string name = "data/" + dic_type + "/history.txt";
                 std::string str  = takeLine(i + 1 + 10 * page, name);
-                for (int j = 0; j < str.size(); j++) {
-                    if (str[j] == '\t') {
-                        std::string word = str.substr(0, j);
-                        std::string def  = str.substr(j + 1);
-                        str              = word + " : " + def;
+                //for (int j = 0; j < str.size(); j++) {
+                //    if (str[j] == '\t') {
+                //        std::string word = str.substr(0, j);
+                //        std::string def  = str.substr(j + 1);
+                //        str              = word + " : " + def;
                    
 
-                        break;
-                    }
-                }
+                //        break;
+                //    }
+                //}
+                //std::string str = "";
                 view[i].setString(str);
             }
             std::string pageNum = std::to_string(page + 1);
@@ -148,16 +149,17 @@ namespace minh {
                     for (int i = 0; i < 10; i++) {
                         std::string name = "data/" + dic_type + "/history.txt";
                         std::string str  = takeLine(i + 1 + 10 * page, name);
-                        for (int j = 0; j < str.size(); j++) {
-                            if (str[j] == '\t') {
-                                std::string word = str.substr(0, j);
-                                std::string def  = str.substr(j + 1);
-                                str              = word + " : " + def;
-                                // std::cout << str << std::endl;
+                        //for (int j = 0; j < str.size(); j++) {
+                        //    if (str[j] == '\t') {
+                        //        std::string word = str.substr(0, j);
+                        //        std::string def  = str.substr(j + 1);
+                        //        str              = word + " : " + def;
+                        //        // std::cout << str << std::endl;
 
-                                break;
-                            }
-                        }
+                        //        break;
+                        //    }
+                        //}
+                        //std::string str = "";
                         view[i].setString(str);
                     }
                     std::string pageNum = std::to_string(page + 1);
@@ -192,6 +194,24 @@ namespace minh {
     
         for (int i = 0; i < 11; i++) {
             favWindow.draw(view[i]);
+        }
+    }
+
+    void ScreenHis::changeDir(int dataset) {
+        switch (dataset) {
+            case constant::Dataset::Slang: {
+                dic_type = "slang";
+                break;
+            }
+
+            case constant::Dataset::Emoji: {
+                dic_type = "emoji";
+                break;
+            }
+
+            default:
+                dic_type = "test";
+                break;
         }
     }
 } // namespace minh

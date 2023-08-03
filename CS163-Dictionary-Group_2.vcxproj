@@ -142,13 +142,14 @@
     <ClCompile Include="src\addWordScreen\function.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Constant.cpp" />
+    <ClCompile Include="src\dataManager\DataManager.cpp" />
+    <ClCompile Include="src\dataManager\TrieWord\TrieWord.cpp" />
     <ClCompile Include="src\favouriteScreen\favou.cpp" />
     <ClCompile Include="src\favouriteScreen\FavouriteScreen.cpp" />
     <ClCompile Include="src\favouriteScreen\fileWork.cpp" />
     <ClCompile Include="src\favouriteScreen\historyScreen.cpp" />
     <ClCompile Include="src\favouriteScreen\myBox.cpp" />
     <ClCompile Include="src\favouriteScreen\myButton.cpp" />
-    <ClCompile Include="src\favouriteScreen\Mytrie.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\mainScreen\Box.cpp" />
     <ClCompile Include="src\mainScreen\Button.cpp" />
@@ -169,17 +170,16 @@
     <ClInclude Include="src\addWordScreen\function.h" />
     <ClInclude Include="src\addWordScreen\Textbox.h" />
     <ClInclude Include="src\addWordScreen\Trie.h" />
-
     <ClInclude Include="src\addWordScreen\Word.h" />
-
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Constant.h" />
+    <ClInclude Include="src\dataManager\DataManager.h" />
+    <ClInclude Include="src\dataManager\TrieWord\TrieWord.h" />
     <ClInclude Include="src\favouriteScreen\FavouriteScreen.h" />
     <ClInclude Include="src\favouriteScreen\fileWork.h" />
     <ClInclude Include="src\favouriteScreen\historyScreen.h" />
     <ClInclude Include="src\favouriteScreen\myBox.h" />
     <ClInclude Include="src\favouriteScreen\myButton.h" />
-    <ClInclude Include="src\favouriteScreen\MyTrie.h" />
     <ClInclude Include="src\mainScreen\Box.h" />
     <ClInclude Include="src\mainScreen\Button.h" />
     <ClInclude Include="src\mainScreen\ButtonSprite.h" />

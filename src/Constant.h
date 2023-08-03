@@ -5,5 +5,18 @@ namespace constant {
     extern sf::Font fontArial;
     extern sf::Font fontOpenSans;
 
-	void loadFont();
+    enum Dataset {
+        EngEng,
+        EngVie,
+        VieEng,
+        Slang,
+        Emoji
+    };
+
+    enum ModeSearch {
+        SearchByWord,
+        SearchByDefinition
+    };
+
+    void loadFont();
 } // namespace constant

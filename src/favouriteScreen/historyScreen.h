@@ -4,6 +4,7 @@
 #include "myBox.h"
 #include <iostream>
 #include "fileWork.h"
+#include "../Constant.h"
 #include "../Screen.h"
 
 namespace minh {
@@ -21,6 +22,9 @@ namespace minh {
 
         // Render - Draw
         void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const override;
+
+        // Set type dictionary
+        void changeDir(int dataset);
 
     private:
         // OBJECT ON THE SCREEN

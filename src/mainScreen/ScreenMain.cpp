@@ -280,6 +280,7 @@ namespace mainScreen {
                 if (event.key.code == sf::Keyboard::Enter) {
                     if (mSearchLine.getPressed()) {
                         mSearchLine.setPressed(false);
+                        mMagnifierIcon.setPressed(true);
                         std::cout << "[INFO] Search line is not selected\n";
                     }
                     std::string text = mSearchLine.getText();
@@ -313,6 +314,7 @@ namespace mainScreen {
         for (int i = 0; i < 5; ++i) {
             if (mDatasetButton[i].getPressed()) {
                 mDatasetButton[i].setFillColor(sf::Color(255, 255, 255, 140));
+                setDataset(true, i);
 
                 mBackground2.setSize(sf::Vector2f(1600, 325));
                 mBackground2.setFillColor(mColorBackground[i][0]);
@@ -327,6 +329,7 @@ namespace mainScreen {
         for (int i = 0; i < 2; ++i) {
             if (mModeButton[i].getPressed()) {
                 mModeButton[i].setFillColor(sf::Color(255, 255, 255, 140));
+                setModeSearch(true, i);
             }
             else mModeButton[i].setFillColor(sf::Color(255, 255, 255, 80));
         }
@@ -366,6 +369,7 @@ namespace mainScreen {
         // update magnifier icon
         if (mMagnifierIcon.getPressed()) {
             std::string text = mSearchLine.getText();
+            setCallSearchText(true, text);
             std::cout << "[CALL] Search text: " << text << "\n";
             mMagnifierIcon.setPressed(false);
         }

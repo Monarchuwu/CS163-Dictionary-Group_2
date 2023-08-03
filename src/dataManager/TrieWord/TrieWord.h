@@ -27,6 +27,8 @@ public:
     Words() {}
 
     void loadFile(std::string nameDict) {
+        v.clear();
+
         std::ifstream fin(nameDict);
         std::string word = "";
         std::string def = "";
@@ -61,6 +63,14 @@ class TrieWord
 		Node* child[128] = { 0 };
 		int id = -1;
 		//std::string str;
+
+        ~Node() {
+            for (int i = 0; i < 128; ++i) {
+                if (child[i] != 0) {
+                    delete child[i];
+                }
+            }
+        }
 	};
 
 private:
@@ -68,36 +78,35 @@ private:
 
 public:
  
-    Words Dic;
-    TrieWord()
-	{
+    TrieWord() {
 		root = new Node;
 	}
+    ~TrieWord() {
+		delete root;
+	}
 	//	void createNode();
-	void addWord(int k);// k is the id in the Words.  Need to read k from Words to do addWord
+	void addWord(std::string str, int k);// k is the id in the Words.  Need to read k from Words to do addWord
 
 	int searchWord(std::string str);// if there is none return -1.
 
-	void addNewWord(std::string str, std::string def);// Use searchWord to know whether it is already in the Trie( Words) or not before using this
+	//void addNewWord(std::string str, std::string def);// Use searchWord to know whether it is already in the Trie( Words) or not before using this
 
 	void deleteWord(std::string str);
 
-    void recursive(TrieWord::Node* cur, std::ofstream& ft) {
-	    for (int i = 0; i < 128; i++) {
-	        if (cur->child[i]) {
-	            if (cur->child[i]->id != -1) {
-	                for (auto j : Dic.v[cur->child[i]->id].definitions) ft << Dic.v[cur->child[i]->id].word << "\t" << j << "\n";
-	            }
-	            recursive(cur->child[i], ft);
-	        }
-	    }
+        void recursive(TrieWord::Node* cur, const Words& Dic, std::ofstream& ft) {
+		for (int i = 0; i < 128; i++) {
+            if (cur->child[i]) {
+                if (cur->child[i]->id != -1) {
+                    for (auto j : Dic.v[cur->child[i]->id].definitions) ft << Dic.v[cur->child[i]->id].word << "\t" << j << "\n";
+                }
+                recursive(cur->child[i], Dic, ft);
+            }
+		}
 	}
 
-	void saveData(std::string nameDict, TrieWord* trie) {
-	    std::ofstream ft(nameDict, std::fstream::app);
+	void saveData(std::string nameDict, const Words& Dic) {
+		std::ofstream ft(nameDict);
 
-	    TrieWord::Node* cur = trie->root;
-
-	    recursive(cur, ft);
+		recursive(root, Dic, ft);
 	}
 };
