@@ -204,6 +204,11 @@ namespace minh {
                 break;
             }
 
+            case constant::Dataset::Emoji: {
+                dic_type = "emoji";
+                break;
+            }
+
             default:
                 dic_type = "test";
                 break;

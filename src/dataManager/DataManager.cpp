@@ -25,8 +25,12 @@ int DataManager::getModeSearch() {
 
 void DataManager::loadData() {
     switch (mDataset) {
-        case constant::Dataset::Slang :
+        case constant::Dataset::Slang:
             loadDatasetInternal("data/slang/data.txt");
+            break;
+
+        case constant::Dataset::Emoji:
+            loadDatasetInternal("data/emoji/data.txt");
             break;
 
         default:
@@ -36,8 +40,12 @@ void DataManager::loadData() {
 }
 void DataManager::saveData() {
     switch (mDataset) {
-        case constant::Dataset::Slang :
+        case constant::Dataset::Slang:
             saveDatasetInternal("data/slang/data.txt");
+            break;
+
+        case constant::Dataset::Emoji:
+            saveDatasetInternal("data/emoji/data.txt");
             break;
 
         default:
@@ -49,6 +57,10 @@ void DataManager::resetData() {
     switch (mDataset) {
         case constant::Dataset::Slang:
             loadDatasetInternal("data/slang/backup.txt");
+            break;
+
+        case constant::Dataset::Emoji:
+            loadDatasetInternal("data/emoji/backup.txt");
             break;
 
         default:

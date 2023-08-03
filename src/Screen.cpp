@@ -1,7 +1,9 @@
 #include "Screen.h"
 
 Screen::Screen()
-    : mCallHome(false),
+    : mDataset(false),
+      mModeSearch(false),
+      mCallHome(false),
       mCallSearchText(false),
       mCallAddWordScreen(false),
 	  mCallFavoriteList(false),
@@ -10,6 +12,14 @@ Screen::Screen()
 
 Screen::~Screen() {}
 
+void Screen::setDataset(bool dataset, int data) {
+    this->mDataset  = dataset;
+    this->mInteger1 = data;
+}
+void Screen::setModeSearch(bool modeSearch, int data) {
+    this->mModeSearch = modeSearch;
+    this->mInteger2   = data;
+}
 void Screen::setCallHome(bool callHome) {
 	mCallHome = callHome;
 }
@@ -27,6 +37,12 @@ void Screen::setCallHistory(bool callHistoryList){
 	mCallHistoryList = callHistoryList;
 }
 
+bool Screen::getDataset() const {
+	return this->mDataset;
+}
+bool Screen::getModeSearch() const {
+	return this->mModeSearch;
+}
 bool Screen::getCallHome() const {
 	return mCallHome;
 }
@@ -44,4 +60,10 @@ bool Screen::getCallHistoryList() const {
 }
 std::string Screen::getString1() const {
 	return mString1;
+}
+int Screen::getInteger1() const {
+	return this->mInteger1;
+}
+int Screen::getInteger2() const {
+	return this->mInteger2;
 }
