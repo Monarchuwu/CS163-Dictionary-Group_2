@@ -80,6 +80,40 @@ namespace minh
         }
     }
 
+    void ScreenFavou::addAWord(std::string word) {
+        std::string fileToAdd = "data/" + dic_type + "/favourite.txt";
+        std::ofstream fout(fileToAdd, std::ios::app);
+        if (!fout.is_open()) {
+        std::cout << "Can not open file" << std::endl;
+        fout.close();
+        return;
+        }
+        fout << word << std::endl;
+        fout.close();
+        return;
+    }
+
+    bool ScreenFavou::inTheFile(std::string word) {
+        std::ifstream fin;
+        std::string fileToCheck = "data/" + dic_type + "/favourite.txt";
+        fin.open(fileToCheck);
+        if (!fin.is_open()) {
+        std::cout << "Can not open file";
+        fin.close();
+        return false;
+        }
+        std::string line;
+        while (std::getline(fin, line))
+        {
+            for (int i = 0; i < word.size();i++)
+            {
+            if (line[i] != word[i]) break;
+                if (i == word.size()) return true;
+            }
+        }
+        return false;
+
+    }
     void ScreenFavou::run()
     {  
         sf::Event evnt;
@@ -224,16 +258,16 @@ namespace minh
                         std::string name = "data/" + dic_type + "/favourite.txt";
                         std::string str = takeLine(i + 1, name);
                         view[i].setString(str);
-                        //for (int j = 0; j < str.size(); j++) {
-                        //    if (str[j] == '\t') {
-                        //        std::string word = str.substr(0, j);
-                        //        std::string def  = str.substr(j + 1);
-                        //        str              = word + " : " + def;
-                        //        // std::cout << str << std::endl;
-                        //        view[i].setString(str);
-                        //        break;
-                        //    }
-                        //}
+                        for (int j = 0; j < str.size(); j++) {
+                            if (str[j] == '\t') {
+                                std::string word = str.substr(0, j);
+                               // std::string def  = str.substr(j + 1);
+                                str              = word ;
+                                // std::cout << str << std::endl;
+                                view[i].setString(str);
+                                break;
+                            }
+                        }
                     }
                 }
                 else if (getBack.isTouching(mousePos))
@@ -261,17 +295,7 @@ namespace minh
                     std::string fileName = "data/" + dic_type + "/favourite.txt";
                     //def_input            = defOfWord(text_input, fileName);
                     //int tu = Tree.searchWord(text_input);
-                    int tu = -1;
-                    if (tu == -1) def_input = "ERROR: Can not find this word";
-                    else {
-                        //def_input = Tree.Dic.v[tu].definitions[0];
-                        //if (defOfWord(text_input, fileName) == "") // Not in the data/favourite.txt yet
-                        //    addToEndOfFile(tu, fileName,Tree.Dic.v);
-                        //else {
-                        //    def_input = "Already in the favourite list";
-                        //    std::cout << "Word already in the favourite list" << std::endl;
-                        //}
-                    }
+                    if(!inTheFile(text_input))addAWord(text_input);
                     option = 0;
                 }
 
@@ -347,4 +371,6 @@ namespace minh
                 break;
         }
     }
+
+    
 } // namespace minh

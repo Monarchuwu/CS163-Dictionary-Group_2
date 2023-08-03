@@ -18,6 +18,11 @@ namespace minh {
         std::string dic_type;
 
         ScreenFavou();
+
+        void addAWord(std::string word);
+
+        bool inTheFile(std::string word);
+
         void run();
 
          // Event Handle
@@ -31,6 +36,8 @@ namespace minh {
 
         // Set type dictionary
         void changeDir(int dataset);
+
+
 
     private:
         //OBJECT ON THE SCREEN
