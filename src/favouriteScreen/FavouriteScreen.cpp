@@ -232,7 +232,7 @@ namespace minh
                     if (str[j] == '\t') {
                         std::string word = str.substr(0, j);
                         std::string def  = str.substr(j + 1);
-                        str              = word + " : " + def;
+                        str              = word ;
                         // std::cout << str << std::endl;
 
                         break;
