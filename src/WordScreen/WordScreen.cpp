@@ -132,6 +132,12 @@ namespace sora{
         pageText.draw(window);
     }
 
+    void WordScreen::handleEvent(const sf::Event &event) {
+    }
+
+    void WordScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const {
+    }
+
     void WordScreen::changeWord(std::string text) {
         wordText.setContent(text);
         int X = constant::appWidth / 2 - WordLabelWidth / 2;

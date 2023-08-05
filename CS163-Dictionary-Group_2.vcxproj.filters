@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="WordScreen">
+      <UniqueIdentifier>{5686b3bb-00a0-49e1-beed-dcb15728826f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WordScreen\Components">
+      <UniqueIdentifier>{77b1fc43-273e-49b4-9df4-9bd81d5560cb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -69,25 +75,70 @@
     <ClCompile Include="src\favouriteScreen\Mytrie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\function.cpp">
+    <ClCompile Include="src\addWordScreen\function.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WordScreen\WordScreen.cpp">
+      <Filter>WordScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WordScreen\Components\Button.cpp">
+      <Filter>WordScreen\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WordScreen\Components\Icon.cpp">
+      <Filter>WordScreen\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WordScreen\Components\Input.cpp">
+      <Filter>WordScreen\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WordScreen\Components\Label.cpp">
+      <Filter>WordScreen\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WordScreen\Components\TextArea.cpp">
+      <Filter>WordScreen\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WordScreen\Components\TextureButton.cpp">
+      <Filter>WordScreen\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\addWord.h">
+    <ClInclude Include="src\addWordScreen\addWord.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Button.h">
+    <ClInclude Include="src\addWordScreen\Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\function.h">
+    <ClInclude Include="src\addWordScreen\function.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Textbox.h">
+    <ClInclude Include="src\addWordScreen\Textbox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Trie.h">
+    <ClInclude Include="src\addWordScreen\Trie.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WordScreen\WordScreen.h">
+      <Filter>WordScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WordScreen\Components\all.h">
+      <Filter>WordScreen\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WordScreen\Components\Button.h">
+      <Filter>WordScreen\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WordScreen\Components\Icon.h">
+      <Filter>WordScreen\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WordScreen\Components\Input.h">
+      <Filter>WordScreen\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WordScreen\Components\Label.h">
+      <Filter>WordScreen\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WordScreen\Components\TextArea.h">
+      <Filter>WordScreen\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WordScreen\Components\TextureButton.h">
+      <Filter>WordScreen\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
