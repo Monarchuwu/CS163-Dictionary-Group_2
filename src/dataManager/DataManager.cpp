@@ -5,9 +5,12 @@ DataManager::DataManager()
     : mDictionary() {
     mDataset = mModeSearch = 0;
     mTrieWord = new TrieWord();
+    mTrieDefinition = new TrieDefinition();
 }
 DataManager::~DataManager() {
     saveData();
+    delete mTrieWord;
+    delete mTrieDefinition;
 }
 
 void DataManager::setDataset(int dataset) {
@@ -82,6 +85,13 @@ void DataManager::loadDatasetInternal(const std::string& dirDataset) {
     }
 
     // build TrieDefinition
+    delete mTrieDefinition;
+    mTrieDefinition = new TrieDefinition();
+    for (int i = 0; i < mDictionary.v.size(); ++i) {
+        for (const std::string& definition : mDictionary.v[i].definitions) {
+			mTrieDefinition->addDefinition(definition, i);
+		}
+    }
 }
 
 void DataManager::saveDatasetInternal(const std::string& dirDataset) {
@@ -99,7 +109,7 @@ Words::Word* DataManager::addWord(const std::string& word) {
     int index = mTrieWord->searchWord(word);
     if (index != -1) return &mDictionary.v[index];
 
-    Words::Word newWord;
+    Words::Word newWord(mDictionary.v.size());
     newWord.word = word;
     mDictionary.v.push_back(newWord);
     mTrieWord->addWord(word, (int)mDictionary.v.size() - 1);
@@ -108,4 +118,19 @@ Words::Word* DataManager::addWord(const std::string& word) {
 }
 void DataManager::removeWord(const std::string& word) {
     mTrieWord->deleteWord(word);
+}
+
+void DataManager::addDefinition(const std::string& definition, int index) {
+    mTrieDefinition->addDefinition(definition, index);
+}
+std::vector<Words::Word*> DataManager::searchDefinition(const std::string& definition) {
+    std::vector<int> list = mTrieDefinition->searchDefinition(definition);
+    std::vector<Words::Word*> res;
+    for (int index : list) {
+		res.push_back(&mDictionary.v[index]);
+	}
+    return res;
+}
+void DataManager::deleteDefinition(const std::string& definition, int index) {
+    mTrieDefinition->deleteDefinition(definition, index);
 }
