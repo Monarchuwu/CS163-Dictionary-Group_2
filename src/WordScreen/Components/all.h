@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Button.h"
+#include "WordButton.h"
 #include "Icon.h"
 #include "Input.h"
 #include "Label.h"

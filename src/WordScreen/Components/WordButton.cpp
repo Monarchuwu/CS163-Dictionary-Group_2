@@ -1,4 +1,4 @@
-#include "./Button.h"
+#include "./WordButton.h"
 
 namespace sora {
     // Content

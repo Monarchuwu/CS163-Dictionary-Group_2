@@ -5,6 +5,8 @@
 #include "mainScreen/ScreenMain.h"
 #include "favouriteScreen/FavouriteScreen.h"
 #include "addWordScreen/addWord.h"
+#include "WordScreen/WordScreen.h"
+
 using namespace minh;
 
 class Application {
@@ -22,5 +24,6 @@ private:
     mainScreen::ScreenMain mScreenMain;
     minh::ScreenFavou screenfav;
     screen_addWord screenAddWord;
+    sora::WordScreen screenWordDef;
     Screen* mScreen;
 };

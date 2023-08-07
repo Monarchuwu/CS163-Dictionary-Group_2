@@ -81,7 +81,7 @@
     <ClCompile Include="src\WordScreen\WordScreen.cpp">
       <Filter>WordScreen</Filter>
     </ClCompile>
-    <ClCompile Include="src\WordScreen\Components\Button.cpp">
+    <ClCompile Include="src\WordScreen\Components\WordButton.cpp">
       <Filter>WordScreen\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\WordScreen\Components\Icon.cpp">
@@ -122,7 +122,7 @@
     <ClInclude Include="src\WordScreen\Components\all.h">
       <Filter>WordScreen\Components</Filter>
     </ClInclude>
-    <ClInclude Include="src\WordScreen\Components\Button.h">
+    <ClInclude Include="src\WordScreen\Components\WordButton.h">
       <Filter>WordScreen\Components</Filter>
     </ClInclude>
     <ClInclude Include="src\WordScreen\Components\Icon.h">

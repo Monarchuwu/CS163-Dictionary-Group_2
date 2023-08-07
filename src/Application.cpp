@@ -56,6 +56,11 @@ void Application::update() {
         mScreen = &screenfav;
         return;
     }
+    
+    if (mScreen->getCallWordDefScreen()) {
+        mScreen->setCallAddWordScreen(false);
+        mScreen = &screenWordDef;
+    }
 
     //screenfav.update();
     //mScreenMain.update();

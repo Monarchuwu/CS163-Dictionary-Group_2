@@ -11,6 +11,8 @@ public:
 
     virtual void update() = 0;
 
+    void draw(sf::RenderWindow& window);
+
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const = 0;
 
     // set call home
@@ -19,6 +21,8 @@ public:
     void setCallAddWordScreen(bool callAddWordScreen);
     // set call favorite list
     void setCallFavoriteList(bool callFavoriteList);
+    // set call word-definition screen
+    void setCallWordDefScreen(bool callWordDefScreen);
 
     // get call home
     bool getCallHome() const;
@@ -26,9 +30,12 @@ public:
     bool getCallAddWordScreen() const;
     // get call favorite list
     bool getCallFavoriteList() const;
+    // get call word-definition screen
+    bool getCallWordDefScreen() const;
 
 private:
     bool mCallHome;
     bool mCallAddWordScreen;
     bool mCallFavoriteList;
+    bool mCallWordDefScreen;
 };

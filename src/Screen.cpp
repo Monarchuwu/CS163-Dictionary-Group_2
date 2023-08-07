@@ -18,6 +18,10 @@ void Screen::setCallFavoriteList(bool callFavoriteList) {
 	mCallFavoriteList = callFavoriteList;
 }
 
+void Screen::setCallWordDefScreen(bool callWordDefScreen) {
+	mCallWordDefScreen = callWordDefScreen;
+}
+
 bool Screen::getCallHome() const {
 	return mCallHome;
 }
@@ -26,4 +30,8 @@ bool Screen::getCallAddWordScreen() const {
 }
 bool Screen::getCallFavoriteList() const {
 	return mCallFavoriteList;
+}
+
+bool Screen::getCallWordDefScreen() const {
+	return mCallWordDefScreen;
 }

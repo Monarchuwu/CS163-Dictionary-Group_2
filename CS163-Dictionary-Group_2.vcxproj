@@ -158,7 +158,7 @@
     <ClCompile Include="src\mainScreen\PressMethod.cpp" />
     <ClCompile Include="src\mainScreen\ScreenMain.cpp" />
     <ClCompile Include="src\Screen.cpp" />
-    <ClCompile Include="src\WordScreen\Components\Button.cpp" />
+    <ClCompile Include="src\WordScreen\Components\WordButton.cpp" />
     <ClCompile Include="src\WordScreen\Components\Icon.cpp" />
     <ClCompile Include="src\WordScreen\Components\Input.cpp" />
     <ClCompile Include="src\WordScreen\Components\Label.cpp" />
@@ -192,7 +192,7 @@
     <ClInclude Include="src\mainScreen\ScreenMain.h" />
     <ClInclude Include="src\Screen.h" />
     <ClInclude Include="src\WordScreen\Components\all.h" />
-    <ClInclude Include="src\WordScreen\Components\Button.h" />
+    <ClInclude Include="src\WordScreen\Components\WordButton.h" />
     <ClInclude Include="src\WordScreen\Components\Icon.h" />
     <ClInclude Include="src\WordScreen\Components\Input.h" />
     <ClInclude Include="src\WordScreen\Components\Label.h" />

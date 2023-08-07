@@ -136,6 +136,7 @@ namespace sora{
     }
 
     void WordScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const {
+
     }
 
     void WordScreen::changeWord(std::string text) {

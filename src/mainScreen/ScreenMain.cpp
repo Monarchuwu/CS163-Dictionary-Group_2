@@ -309,6 +309,7 @@ namespace mainScreen {
         // update magnifier icon
         if (mMagnifierIcon.getPressed()) {
             std::string text = mSearchLine.getText();
+            setCallWordDefScreen(true);
             std::cout << "[CALL] Search text: " << text << "\n";
             mMagnifierIcon.setPressed(false);
         }
