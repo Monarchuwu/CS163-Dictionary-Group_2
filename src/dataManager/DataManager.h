@@ -2,6 +2,7 @@
 #include <string>
 #include "../Constant.h"
 #include "TrieWord/TrieWord.h"
+#include "TrieDefinition/TrieDefinition.h"
 
 class DataManager {
 public:
@@ -42,6 +43,13 @@ public:
     void removeWord(const std::string& word);
 
     /* ----- handle search definition query ----- */
+    // add the definition into the trie (add the word corresponding to)
+    void addDefinition(const std::string& definition, int index);
+    // search the definition in the trie (search the list of words corresponding to)
+    // return vector<Word*> of the word if found, else return empty vector
+    std::vector<Words::Word*> searchDefinition(const std::string& definition);
+    // delete the definition from the trie (delete the word corresponding to)
+    void deleteDefinition(const std::string& definition, int index);
 
 private:
     // load data from file (internal)
@@ -60,4 +68,6 @@ private:
 
     // trie word
     TrieWord* mTrieWord;
+    // trie definition
+    TrieDefinition* mTrieDefinition;
 };
