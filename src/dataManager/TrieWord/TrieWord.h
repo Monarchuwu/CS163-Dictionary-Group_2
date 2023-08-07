@@ -9,16 +9,22 @@ class Words {
 public:
     class Word {
     public:
+        int index;
         std::string word;
         std::vector<std::string> definitions;
-        Word() {}
-        Word(std::string w, std::vector<std::string> d) {
+        Word(int index) { this->index = index; }
+        Word(std::string w, std::vector<std::string> d, int index) {
             this->word = w;
             this->definitions = d;
+            this->index       = index;
         }
-        Word(std::string w, std::string d) {
+        Word(std::string w, std::string d, int index) {
             this->word = w;
             this->definitions.push_back(d);
+            this->index = index;
+        }
+        int getIndex() {
+			return this->index;
         }
     };
 
@@ -41,7 +47,7 @@ public:
 
             if (word == tmp) (v.end() - 1)->definitions.push_back(def);
             else {
-                Word tmp_w = Word(word, def);
+                Word tmp_w = Word(word, def, v.size());
                 v.push_back(tmp_w);
                 tmp = word;
             }

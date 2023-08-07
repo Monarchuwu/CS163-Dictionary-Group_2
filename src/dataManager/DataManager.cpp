@@ -99,7 +99,7 @@ Words::Word* DataManager::addWord(const std::string& word) {
     int index = mTrieWord->searchWord(word);
     if (index != -1) return &mDictionary.v[index];
 
-    Words::Word newWord;
+    Words::Word newWord(mDictionary.v.size());
     newWord.word = word;
     mDictionary.v.push_back(newWord);
     mTrieWord->addWord(word, (int)mDictionary.v.size() - 1);
