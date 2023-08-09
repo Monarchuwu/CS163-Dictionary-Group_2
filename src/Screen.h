@@ -11,8 +11,6 @@ public:
 
     virtual void update() = 0;
 
-    void draw(sf::RenderWindow& window);
-
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const = 0;
 
     // set call home

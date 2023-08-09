@@ -1,4 +1,5 @@
 #include "WordScreen.h"
+#include <typeinfo>
 
 namespace sora{
     const int WordLabelWidth = 500;
@@ -12,7 +13,7 @@ namespace sora{
     const int PageLabelWidth         = 250;
     const int PageLabelHeight        = 75;
 
-    const std::string imagePath         = "data/images/";
+    const std::string imagePath         = "data/images/WordScreen/";
     const std::string FAVORITE_STAR_IMG = "favorite_star.png";
     const std::string STAR_IMG          = "star.png";
     const std::string HOME_IMG          = "home.png";
@@ -75,32 +76,7 @@ namespace sora{
 
     // Event Handler
     void WordScreen::handleEvent(sf::RenderWindow &window, sf::Event &event) {
-        if (!isActive) {
-            return;
-        }
-
-        definitionText.onClick(window, event);
-        definitionText.onType(window, event);
-        if (event.type == sf::Event::TextEntered) {
-            int key = event.text.unicode;
-            if (key == ENTER_KEY) saveNewDefinition();
-        }
-        if (definitionText.isOutClicked(window)) saveNewDefinition();
         
-        if (homeBtn.isClicked(window)) returnHomeScreen();
-
-        if (favoriteBtn.isClicked(window) && isFavorite) toggleFavorite();
-        else if (starBtn.isClicked(window) && !isFavorite) toggleFavorite();
-
-        if (prevBtn.isClicked(window)) prevDefinition();
-
-        if (nextBtn.isClicked(window)) nextDefinition();
-
-        if (wordDeleteButton.isClicked(window)) deleteWord();
-
-        if (addDefBtn.isClicked(window)) addDefinition();
-
-        if (deleteDefBtn.isClicked(window)) deleteDefinition();
 
     }
 
@@ -112,11 +88,42 @@ namespace sora{
     }
 
     // Draw
-    void WordScreen::draw(sf::RenderWindow &window) {
+
+    void WordScreen::handleEvent(const sf::Event &event) {
+        if (!isActive) {
+            return;
+        }
+
+        /*definitionText.onClick(window, event);
+        definitionText.onType(window, event);*/
+        /*if (event.type == sf::Event::TextEntered) {
+            int key = event.text.unicode;
+            if (key == ENTER_KEY) saveNewDefinition();
+        }*/
+        if (definitionText.isOutClicked(event)) saveNewDefinition();
+
+        if (homeBtn.isClicked(event)) returnHomeScreen();
+
+        if (favoriteBtn.isClicked(event) && isFavorite) toggleFavorite();
+        else if (starBtn.isClicked(event) && !isFavorite) toggleFavorite();
+
+        if (prevBtn.isClicked(event)) prevDefinition();
+
+        if (nextBtn.isClicked(event)) nextDefinition();
+
+        if (wordDeleteButton.isClicked(event)) deleteWord();
+
+        if (addDefBtn.isClicked(event)) addDefinition();
+
+        if (deleteDefBtn.isClicked(event)) deleteDefinition();
+    }
+
+    void WordScreen::draw(sf::RenderTarget &window, sf::RenderStates states) const {
         if (!isActive) {
             window.clear(constant::BACKGROUND_COLOR);
             return;
         }
+        window.clear(constant::BACKGROUND_COLOR);
         wordText.draw(window);
         definitionText.draw(window);
         prevBtn.draw(window);
@@ -130,13 +137,6 @@ namespace sora{
         addDefBtn.draw(window);
         deleteDefBtn.draw(window);
         pageText.draw(window);
-    }
-
-    void WordScreen::handleEvent(const sf::Event &event) {
-    }
-
-    void WordScreen::draw(sf::RenderTarget &target, sf::RenderStates states) const {
-
     }
 
     void WordScreen::changeWord(std::string text) {

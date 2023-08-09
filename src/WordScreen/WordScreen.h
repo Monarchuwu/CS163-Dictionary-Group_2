@@ -22,9 +22,6 @@ namespace sora {
         // Update
         void update() override;
 
-        // Draw
-        void draw(sf::RenderWindow &window);
-
         // handle event
         void handleEvent(const sf::Event &event) override;
 

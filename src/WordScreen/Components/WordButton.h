@@ -31,10 +31,9 @@ namespace sora {
         // Position
         void setPosition(int x, int y);
 
-        // Check mouse over
-        bool isHovered(sf::RenderWindow& window);
+        bool isHovered(float mouseX, float mouseY);
 
-        bool isClicked(sf::RenderWindow& window);
+        bool isClicked(const sf::Event& event);
 
     public:
         WordButton();
@@ -42,9 +41,9 @@ namespace sora {
         WordButton(std::string title, int width, int height, int textSize, sf::Font& font, sf::Color bgColor, sf::Color textColor);
 
         // Draw
-        void draw(sf::RenderWindow& window);
+        void draw(sf::RenderTarget& window) const;
 
         // Click event
-        void onClick(sf::RenderWindow& window, void (*handler)());
+        void onClick(const sf::Event& event, void (*handler)());
     };
 } // namespace sora

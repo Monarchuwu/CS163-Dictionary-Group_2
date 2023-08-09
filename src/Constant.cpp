@@ -4,7 +4,7 @@
 namespace constant {
     sf::Font fontArial;
 
-	sf::Color BACKGROUND_COLOR = sf::Color(255, 255, 153);
+	sf::Color BACKGROUND_COLOR = sf::Color(102, 153, 255);
     sf::Color YELLOW           = sf::Color::Yellow;
     sf::Color BLACK            = sf::Color::Black;
     sf::Color WHITE            = sf::Color::White;

@@ -62,15 +62,15 @@ namespace sora {
     }
 
     // Draw
-    void Label::draw(sf::RenderWindow &window) {
+    void Label::draw(sf::RenderTarget &window) const {
         window.draw(box);
         window.draw(textHolder);
     }
 
     // Check mouse over
-    bool Label::isHovered(sf::RenderWindow &window) {
-        float mouseX = sf::Mouse::getPosition(window).x;
-        float mouseY = sf::Mouse::getPosition(window).y;
+    bool Label::isHovered(sf::RenderTarget &window) {
+        float mouseX = sf::Mouse::getPosition().x;
+        float mouseY = sf::Mouse::getPosition().y;
 
         float posX   = box.getPosition().x;
         float posY   = box.getPosition().y;

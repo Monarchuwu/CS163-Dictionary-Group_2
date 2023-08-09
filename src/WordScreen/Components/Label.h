@@ -37,10 +37,10 @@ namespace sora {
 
     public:
         // Draw
-        void draw(sf::RenderWindow &window);
+        void draw(sf::RenderTarget &window) const;
 
         // Check mouse over
-        bool isHovered(sf::RenderWindow &window);
+        bool isHovered(sf::RenderTarget &window);
 
     private:
         sf::RectangleShape box;

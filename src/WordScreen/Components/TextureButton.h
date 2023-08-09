@@ -14,15 +14,15 @@ namespace sora {
         void setPosition(int x, int y);
 
         // Check mouse over
-        bool isHovered(sf::RenderWindow& window);
+        bool isHovered(float mouseX, float mouseY);
 
-        bool isClicked(sf::RenderWindow& window);
+        bool isClicked(const sf::Event& event);
 
         // Draw
-        void draw(sf::RenderWindow& window);
+        void draw(sf::RenderTarget& window) const;
 
         // Click event
-        void onClick(sf::RenderWindow& window, void (*handler)());
+        void onClick(const sf::Event& event, void (*handler)());
 
     public:
         TextureButton();

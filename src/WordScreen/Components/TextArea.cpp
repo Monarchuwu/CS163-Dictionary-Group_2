@@ -120,16 +120,13 @@ namespace sora {
     }
 
     // Draw
-    void TextArea::draw(sf::RenderWindow &window) {
+    void TextArea::draw(sf::RenderTarget &window) const {
         window.draw(box);
         window.draw(textHolder);
     }
 
     // Check mouse over
-    bool TextArea::isHovered(sf::RenderWindow &window) {
-        float mouseX = sf::Mouse::getPosition(window).x;
-        float mouseY = sf::Mouse::getPosition(window).y;
-
+    bool TextArea::isHovered(float mouseX, float mouseY) {
         float posX   = box.getPosition().x;
         float posY   = box.getPosition().y;
         float width  = box.getLocalBounds().width;
@@ -141,10 +138,10 @@ namespace sora {
     bool TextArea::getFocused() { return isFocused; }
 
     // Click event
-    void TextArea::onClick(sf::RenderWindow &window, sf::Event &event) {
+    void TextArea::onClick(const sf::Event &event) {
         if (event.type == sf::Event::MouseButtonPressed) {
             if (event.mouseButton.button == sf::Mouse::Left) {
-                if (isHovered(window)) {
+                if (isHovered(event.mouseButton.x, event.mouseButton.y)) {
                     setFocus(true);
                 }
                 else {
@@ -154,7 +151,7 @@ namespace sora {
         }
     }
 
-    void TextArea::onType(sf::RenderWindow &window, sf::Event &event) {
+    void TextArea::onType(const sf::Event &event) {
         if (!isFocused) return;
         if (event.type == sf::Event::TextEntered) {
             int key = event.text.unicode;
@@ -174,11 +171,15 @@ namespace sora {
         }
     }
 
-    bool TextArea::isClicked(sf::RenderWindow &window) {
-        return (sf::Mouse::isButtonPressed(sf::Mouse::Left) && isHovered(window));
+    bool TextArea::isClicked(const sf::Event &event) {
+        return (event.type == sf::Event::MouseButtonPressed
+                && event.mouseButton.button == sf::Mouse::Left
+                && isHovered(event.mouseButton.x, event.mouseButton.y)); 
     }
 
-    bool TextArea::isOutClicked(sf::RenderWindow &window) {
-        return (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !isHovered(window));
+    bool TextArea::isOutClicked(const sf::Event &event) {
+        return (event.type == sf::Event::MouseButtonPressed
+                && event.mouseButton.button == sf::Mouse::Left
+                && !isHovered(event.mouseButton.x, event.mouseButton.y)); 
     }
 } // namespace sora

@@ -29,9 +29,7 @@ namespace sora {
     }
 
     // Check mouse over
-    bool TextureButton::isHovered(sf::RenderWindow& window) {
-        float mouseX = sf::Mouse::getPosition(window).x;
-        float mouseY = sf::Mouse::getPosition(window).y;
+    bool TextureButton::isHovered(float mouseX, float mouseY) {
 
         float btnPosX   = box.getPosition().x;
         float btnPosY   = box.getPosition().y;
@@ -41,18 +39,20 @@ namespace sora {
             btnPosX < mouseX && mouseX < btnPosX + btnWidth && btnPosY < mouseY && mouseY < btnPosY + btnHeight);
     }
 
-    bool TextureButton::isClicked(sf::RenderWindow& window) {
-        return (sf::Mouse::isButtonPressed(sf::Mouse::Left) && isHovered(window));
+    bool TextureButton::isClicked(const sf::Event& event) {
+        return (event.type == sf::Event::MouseButtonPressed
+                && event.mouseButton.button == sf::Mouse::Left
+                && isHovered(event.mouseButton.x, event.mouseButton.y)); 
     }
 
     // Draw
-    void TextureButton::draw(sf::RenderWindow& window) {
+    void TextureButton::draw(sf::RenderTarget& window) const {
         window.draw(box);
     }
 
     // Click event
-    void TextureButton::onClick(sf::RenderWindow& window, void (*handler)()) {
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && isHovered(window)) {
+    void TextureButton::onClick(const sf::Event& event, void (*handler)()) {
+        if (isClicked(event)) {
             handler();
         }
     }

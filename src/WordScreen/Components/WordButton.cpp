@@ -43,20 +43,19 @@ namespace sora {
     }
 
     // Check mouse over
-    bool WordButton::isHovered(sf::RenderWindow& window) {
-        float mouseX = sf::Mouse::getPosition(window).x;
-        float mouseY = sf::Mouse::getPosition(window).y;
-
+    bool WordButton::isHovered(float mouseX, float mouseY) {
         float btnPosX   = box.getPosition().x;
         float btnPosY   = box.getPosition().y;
-        float btnWidth  = box.getLocalBounds().width;
-        float btnHeight = box.getLocalBounds().height;
+        float btnWidth  = box.getGlobalBounds().width;
+        float btnHeight = box.getGlobalBounds().height;
         return (
             btnPosX < mouseX && mouseX < btnPosX + btnWidth && btnPosY < mouseY && mouseY < btnPosY + btnHeight);
     }
 
-    bool WordButton::isClicked(sf::RenderWindow& window) {
-        return (sf::Mouse::isButtonPressed(sf::Mouse::Left) && isHovered(window));
+    bool WordButton::isClicked(const sf::Event& event) {
+        return (event.type == sf::Event::MouseButtonPressed
+                && event.mouseButton.button == sf::Mouse::Left
+                && isHovered(event.mouseButton.x, event.mouseButton.y)); 
     }
 
     WordButton::WordButton() {}
@@ -72,14 +71,14 @@ namespace sora {
     }
 
     // Draw
-    void WordButton::draw(sf::RenderWindow& window) {
+    void WordButton::draw(sf::RenderTarget& window) const {
         window.draw(box);
         window.draw(text);
     }
 
     // Click event
-    void WordButton::onClick(sf::RenderWindow& window, void (*handler)()) {
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && isHovered(window)) {
+    void WordButton::onClick(const sf::Event& event, void (*handler)()) {
+        if (isClicked(event)) {
             handler();
         }
     }
