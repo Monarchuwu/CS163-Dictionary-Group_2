@@ -152,8 +152,9 @@ namespace sora{
 
     // Return to Home Screen
     void WordScreen::returnHomeScreen() {
+        setCallHome(true);
         std::cout << "Heading back to [HOME SCREEN]...\n";
-        isActive = false;
+        // isActive = false;
     }
 
     void WordScreen::activate() {

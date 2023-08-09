@@ -3,7 +3,8 @@
 Screen::Screen()
 	: mCallHome(false),
       mCallAddWordScreen(false),
-	  mCallFavoriteList(false) {
+	  mCallFavoriteList(false),
+	  mCallWordDefScreen(false) {
 }
 
 Screen::~Screen() {}

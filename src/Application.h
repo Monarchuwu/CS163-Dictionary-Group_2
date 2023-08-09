@@ -21,6 +21,7 @@ private:
 
 private:
     sf::RenderWindow mWindow;
+
     mainScreen::ScreenMain mScreenMain;
     minh::ScreenFavou screenfav;
     screen_addWord screenAddWord;
