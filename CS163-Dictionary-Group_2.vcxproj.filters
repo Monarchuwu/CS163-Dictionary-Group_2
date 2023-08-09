@@ -76,6 +76,11 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\addWordScreen\function.cpp">
+
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\favouriteScreen\historyScreen.cpp">
+
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\WordScreen\WordScreen.cpp">
@@ -102,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\addWordScreen\addWord.h">
+
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\addWordScreen\Button.h">
@@ -114,6 +120,23 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\addWordScreen\Trie.h">
+
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\addWordScreen\Button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\addWordScreen\function.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\addWordScreen\Textbox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\addWordScreen\Trie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\favouriteScreen\historyScreen.h">
+
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\WordScreen\WordScreen.h">

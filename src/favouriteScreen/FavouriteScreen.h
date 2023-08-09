@@ -5,16 +5,26 @@
 #include <iostream>
 #include "fileWork.h"
 #include "../Screen.h"
-#include"myTrie.h"
+#include "../Constant.h"
+#include "../dataManager/DataManager.h" // include to use enum Dataset
+
 namespace minh {
 
     class ScreenFavou : public Screen {
 
     
     public:
-        TrieWord Tree;
+        //TrieWord Tree;
         std::string dic_type;
+
         ScreenFavou();
+
+        void addAWord(std::string word);
+
+        void deleteAWord(std::string word);
+
+        bool inTheFile(std::string word);
+
         void run();
 
          // Event Handle
@@ -26,11 +36,18 @@ namespace minh {
         // Render - Draw
         void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const override;
 
+        // Set type dictionary
+        void changeDir(int dataset);
+
+
+
     private:
         //OBJECT ON THE SCREEN
       
         sf::RenderWindow favWindow;
         sf::RectangleShape Background;
+        sf::RectangleShape subBackground1;
+        sf::RectangleShape subBackground2;
         sf::Color backgroundColor;
         sf::RectangleShape title;
         sf::Font font;
@@ -40,9 +57,11 @@ namespace minh {
         button getBack;
         sf::Texture leftArrow;
         int option;
+        int page;
+        bool isView = 0;
         Box AddBox, DefBox;
         std::string text_input, def_input, headword_input;
-        sf::Text view[10];
+        sf::Text view[11];
         sf::Event evnt;
 
 	};

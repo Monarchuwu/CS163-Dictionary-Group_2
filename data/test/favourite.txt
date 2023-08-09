@@ -3,6 +3,9 @@
 :D	Happy
 :)	Happy
 K	OK
-:(	Unhappy
-:(	Sad
 :')	Crying with joy
+J	Joking
+ASAP	As Soon As Possible
+LOL	Laughing Out Loud
+:'(	Crying
+LK	LOLK
