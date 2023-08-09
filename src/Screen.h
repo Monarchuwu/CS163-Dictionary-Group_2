@@ -29,6 +29,10 @@ public:
     void setCallAddWordScreen(bool callAddWordScreen);
     // set call favorite list
     void setCallFavoriteList(bool callFavoriteList);
+
+    // set call word-definition screen
+    void setCallWordDefScreen(bool callWordDefScreen);
+
     //set call history
     void setCallHistory(bool callHistory);
 
@@ -39,6 +43,7 @@ public:
     // data stored in Integer2
     bool getModeSearch() const;
 
+
     // get call home
     bool getCallHome() const;
     // get call search text
@@ -47,6 +52,10 @@ public:
     bool getCallAddWordScreen() const;
     // get call favorite list
     bool getCallFavoriteList() const;
+
+    // get call word-definition screen
+    bool getCallWordDefScreen() const;
+
     //get call history list
     bool getCallHistoryList() const;
 
@@ -64,8 +73,12 @@ private:
     bool mCallSearchText;
     bool mCallAddWordScreen;
     bool mCallFavoriteList;
+
+    bool mCallWordDefScreen;
+
     bool mCallHistoryList;
     std::string mString1;
     int mInteger1;
     int mInteger2;
+
 };

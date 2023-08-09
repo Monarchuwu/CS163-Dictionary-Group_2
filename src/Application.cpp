@@ -68,6 +68,22 @@ void Application::update() {
         }
     }
 
+    /*if (mScreen == &mScreenMain) {
+        std::cout << "Home Screen\n";
+    }
+
+    if (mScreen == &screenAddWord) {
+        std::cout << "Add Word Screen\n";
+    }
+
+    if (mScreen == &screenfav) {
+        std::cout << "Favorite Screen\n";
+    }
+
+    if (mScreen == &screenWordDef) {
+        std::cout << "Word Definition Screen\n";
+    }*/
+
     if (mScreen->getCallHome()) {
         mScreen->setCallHome(false);
         mScreen = &mScreenMain;
@@ -113,6 +129,12 @@ void Application::update() {
     if (mScreen->getCallFavoriteList()) {
         mScreen->setCallFavoriteList(false);
         mScreen = &screenfav;
+        return;
+    }
+    
+    if (mScreen->getCallWordDefScreen()) {
+        mScreen->setCallWordDefScreen(false);
+        mScreen = &screenWordDef;
         return;
     }
 

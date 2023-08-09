@@ -6,7 +6,12 @@
 #include "favouriteScreen/FavouriteScreen.h"
 #include "favouriteScreen/historyScreen.h"
 #include "addWordScreen/addWord.h"
+
+#include "WordScreen/WordScreen.h"
+
+
 #include "../src/dataManager/DataManager.h"
+
 using namespace minh;
 
 class Application {
@@ -21,10 +26,12 @@ private:
 
 private:
     sf::RenderWindow mWindow;
+
     mainScreen::ScreenMain mScreenMain;
     minh::ScreenFavou screenfav;
     minh::ScreenHis screenhis;
     screen_addWord screenAddWord;
+    sora::WordScreen screenWordDef;
     Screen* mScreen;
 
     DataManager mDataManager;

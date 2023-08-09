@@ -7,7 +7,11 @@ Screen::Screen()
       mCallSearchText(false),
       mCallAddWordScreen(false),
 	  mCallFavoriteList(false),
+
+	  mCallWordDefScreen(false) {
+
 	  mCallHistoryList(false){
+
 }
 
 Screen::~Screen() {}
@@ -37,12 +41,19 @@ void Screen::setCallHistory(bool callHistoryList){
 	mCallHistoryList = callHistoryList;
 }
 
+
+void Screen::setCallWordDefScreen(bool callWordDefScreen) {
+	mCallWordDefScreen = callWordDefScreen;
+}
+
+
 bool Screen::getDataset() const {
 	return this->mDataset;
 }
 bool Screen::getModeSearch() const {
 	return this->mModeSearch;
 }
+
 bool Screen::getCallHome() const {
 	return mCallHome;
 }
@@ -55,6 +66,12 @@ bool Screen::getCallAddWordScreen() const {
 bool Screen::getCallFavoriteList() const {
 	return mCallFavoriteList;
 }
+
+
+bool Screen::getCallWordDefScreen() const {
+	return mCallWordDefScreen;
+}
+
 bool Screen::getCallHistoryList() const {
 	return mCallHistoryList;
 }
@@ -67,3 +84,4 @@ int Screen::getInteger1() const {
 int Screen::getInteger2() const {
 	return this->mInteger2;
 }
+
