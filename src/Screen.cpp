@@ -8,7 +8,7 @@ Screen::Screen()
       mCallAddWordScreen(false),
 	  mCallFavoriteList(false),
 
-	  mCallWordDefScreen(false) {
+	  mCallWordDefScreen(false),
 
 	  mCallHistoryList(false){
 
@@ -39,6 +39,24 @@ void Screen::setCallFavoriteList(bool callFavoriteList) {
 }
 void Screen::setCallHistory(bool callHistoryList){
 	mCallHistoryList = callHistoryList;
+}
+
+/* WORD SCREEN */
+
+void Screen::setAddDefinition(bool addDefinition) {
+	mAddDefinition = addDefinition;
+}
+
+void Screen::setDeleteDefinition(bool deleteDefinition) {
+	mDeleteDefinition = deleteDefinition;
+}
+
+void Screen::setUpdateDefinition(bool updateDefinition) {
+	mUpdateDefinition = updateDefinition;
+}
+
+void Screen::setFavoriteToggled(bool favoriteToggled) {
+	mFavoriteToggled = favoriteToggled;
 }
 
 
@@ -83,5 +101,21 @@ int Screen::getInteger1() const {
 }
 int Screen::getInteger2() const {
 	return this->mInteger2;
+}
+
+bool Screen::getAddDefinition() {
+	return mAddDefinition;
+}
+
+bool Screen::getDeleteDefinition() {
+	return mDeleteDefinition;
+}
+
+bool Screen::getUpdateDefinition() {
+	return mUpdateDefinition;
+}
+
+bool Screen::getFavoriteToggled() {
+	return mFavoriteToggled;
 }
 

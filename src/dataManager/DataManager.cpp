@@ -105,6 +105,7 @@ Words::Word* DataManager::searchWord(const std::string& word) {
     if (index == -1) return nullptr;
     return &mDictionary.v[index];
 }
+
 Words::Word* DataManager::addWord(const std::string& word) {
     int index = mTrieWord->searchWord(word);
     if (index != -1) return &mDictionary.v[index];
@@ -116,6 +117,7 @@ Words::Word* DataManager::addWord(const std::string& word) {
  
     return &mDictionary.v.back();
 }
+
 void DataManager::removeWord(const std::string& word) {
     mTrieWord->deleteWord(word);
 }
@@ -123,6 +125,7 @@ void DataManager::removeWord(const std::string& word) {
 void DataManager::addDefinition(const std::string& definition, int index) {
     mTrieDefinition->addDefinition(definition, index);
 }
+
 std::vector<Words::Word*> DataManager::searchDefinition(const std::string& definition) {
     std::vector<int> list = mTrieDefinition->searchDefinition(definition);
     std::vector<Words::Word*> res;
@@ -131,6 +134,7 @@ std::vector<Words::Word*> DataManager::searchDefinition(const std::string& defin
 	}
     return res;
 }
+
 void DataManager::deleteDefinition(const std::string& definition, int index) {
     mTrieDefinition->deleteDefinition(definition, index);
 }

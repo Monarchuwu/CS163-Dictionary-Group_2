@@ -12,17 +12,21 @@ public:
         int index;
         std::string word;
         std::vector<std::string> definitions;
+
         Word(int index) { this->index = index; }
+
         Word(std::string w, std::vector<std::string> d, int index) {
             this->word = w;
             this->definitions = d;
             this->index       = index;
         }
+
         Word(std::string w, std::string d, int index) {
             this->word = w;
             this->definitions.push_back(d);
             this->index = index;
         }
+
         int getIndex() {
 			return this->index;
         }
@@ -62,6 +66,7 @@ public:
         }
     }
 };
+
 class TrieWord
 {
 	struct Node
@@ -87,9 +92,11 @@ public:
     TrieWord() {
 		root = new Node;
 	}
+
     ~TrieWord() {
 		delete root;
 	}
+
 	//	void createNode();
 	void addWord(std::string str, int k);// k is the id in the Words.  Need to read k from Words to do addWord
 
@@ -99,7 +106,7 @@ public:
 
 	void deleteWord(std::string str);
 
-        void recursive(TrieWord::Node* cur, const Words& Dic, std::ofstream& ft) {
+    void recursive(TrieWord::Node* cur, const Words& Dic, std::ofstream& ft) {
 		for (int i = 0; i < 128; i++) {
             if (cur->child[i]) {
                 if (cur->child[i]->id != -1) {

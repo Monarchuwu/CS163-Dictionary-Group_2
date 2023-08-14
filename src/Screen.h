@@ -36,6 +36,19 @@ public:
     //set call history
     void setCallHistory(bool callHistory);
 
+    /* WORD SCREEN */
+
+    // set add definition
+    void setAddDefinition(bool addDefinition);
+
+    // set delete definition
+    void setDeleteDefinition(bool deleteDefinition);
+
+    // set update definition
+    void setUpdateDefinition(bool updateDefinition);
+
+    void setFavoriteToggled(bool favoriteToggled);
+
     // get dataset
     // data stored in Integer1
     bool getDataset() const;
@@ -66,6 +79,20 @@ public:
     // get integer 2
     int getInteger2() const;
 
+    /* WORD SCREEN */
+
+    // get add definition
+    bool getAddDefinition();
+
+    // get delete definition
+    bool getDeleteDefinition();
+
+    // get update definition
+    bool getUpdateDefinition();
+
+    // get favorite toggle
+    bool getFavoriteToggled();
+
 private:
     bool mDataset;
     bool mModeSearch;
@@ -81,4 +108,9 @@ private:
     int mInteger1;
     int mInteger2;
 
+    /* WORD SCREEN */
+    bool mAddDefinition;
+    bool mDeleteDefinition;
+    bool mUpdateDefinition;
+    bool mFavoriteToggled;
 };

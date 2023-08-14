@@ -93,17 +93,36 @@ void Application::update() {
     if (mScreen->getCallSearchText()) {
         if (mDataManager.getModeSearch() == constant::ModeSearch::SearchByWord) {
 			std::cout << "[INFO] Search by word" << std::endl;
+
             // run search word
             std::string word = mScreen->getString1();
             mScreen->setCallSearchText(false);
+
+            if (word == "") return;
+
             // go to word screen if word exists
             Words::Word* cur = mDataManager.searchWord(word);
             if (cur != nullptr) {
                 std::cout << "Found word\n";
+                std::cout << cur->word << "\n";
+                for (std::string definition : cur->definitions) std::cout << definition << " ";
+                std::cout << "\n";
+
+                bool isFavorite = screenfav.inTheFile(cur->word);
+
+                // Open the Word-Definition screen
+                if (mScreen->getCallWordDefScreen()) {
+                    mScreen->setCallWordDefScreen(false);
+                    mScreen = &screenWordDef;
+
+                    screenWordDef.setWord(cur);
+                    screenWordDef.setFavorite(isFavorite);
+                }
             }
             else {
                 std::cout << "Not found word\n";
             }
+
             return;
         }
 		else {
@@ -131,22 +150,44 @@ void Application::update() {
         mScreen = &screenfav;
         return;
     }
-    
-    if (mScreen->getCallWordDefScreen()) {
-        mScreen->setCallWordDefScreen(false);
-        mScreen = &screenWordDef;
-        return;
-    }
 
     if (mScreen->getCallHistoryList()) {
         mScreen->setCallHistory(false);
         mScreen = &screenhis;
         return;
     }
+    
+    /* WORD SCREEN */
+    if (mScreen->getUpdateDefinition()) {
+        mScreen->setUpdateDefinition(false);
+
+        Words::Word* currentWord  = screenWordDef.getWord();
+        std::string newDefinition = screenWordDef.getCurrentDefinition();
+        std::string oldDefinition = currentWord->definitions[screenWordDef.getCurrentIndex()];
+        std::cout << oldDefinition << " -> " << newDefinition << "\n";
+
+        // replace an old with a new definition
+        mDataManager.deleteDefinition(oldDefinition, currentWord->index);
+        mDataManager.addDefinition(newDefinition, currentWord->index);
+    }
+
+    if (mScreen->getFavoriteToggled()) {
+        mScreen->setFavoriteToggled(false);
+
+        Words::Word* currentWord = screenWordDef.getWord();
+        bool isFavorite          = screenWordDef.getFavorite();
+        if (isFavorite) {
+            screenfav.addAWord(currentWord->word);
+        }
+        else {
+            screenfav.deleteAWord(currentWord->word);
+        }
+    }
 
     mScreen->update();
     // screenfav.update();
     //mScreenMain.update();
+
 }
 
 void Application::render() {

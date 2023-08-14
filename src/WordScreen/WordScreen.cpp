@@ -37,7 +37,7 @@ namespace sora{
 
         definitionText = TextArea(TextAreaWidth, TextAreaHeight, 24, constant::fontArial);
         definitionText.setPosition(constant::appWidth / 2 - TextAreaWidth / 2, 300);
-        definitionText.setContent(definitions[currentId]);
+        definitionText.setContent("Temp");
 
         prevBtn = WordButton("<", ControlButtonHeight, ControlButtonWidth, 24, constant::fontArial, constant::WHITE, constant::BLACK);
         prevBtn.setPosition(constant::appWidth / 2 - TextAreaWidth / 2 - ControlButtonWidth - 30, 300 + TextAreaHeight / 2 - ControlButtonHeight / 2);
@@ -94,13 +94,13 @@ namespace sora{
             return;
         }
 
-        /*definitionText.onClick(window, event);
-        definitionText.onType(window, event);*/
-        /*if (event.type == sf::Event::TextEntered) {
+        definitionText.onClick(event);
+        definitionText.onType(event);
+        if (event.type == sf::Event::TextEntered) {
             int key = event.text.unicode;
-            if (key == ENTER_KEY) saveNewDefinition();
-        }*/
-        if (definitionText.isOutClicked(event)) saveNewDefinition();
+            if (key == ENTER_KEY) updateDefinition();
+        }
+        if (definitionText.isOutClicked(event)) updateDefinition();
 
         if (homeBtn.isClicked(event)) returnHomeScreen();
 
@@ -157,25 +157,22 @@ namespace sora{
         // isActive = false;
     }
 
-    void WordScreen::activate() {
-        std::cout << "[WORD SCREEN] activated...";
-        isActive = true;
-    }
-
     void WordScreen::prevDefinition() {
+        if (!currentWord) return;
         --currentId;
-        if (currentId < 0) currentId += definitions.size();
+        if (currentId < 0) currentId += currentWord->definitions.size();
         setDefinition();
     }
 
     void WordScreen::nextDefinition() {
+        if (!currentWord) return;
         ++currentId;
-        if (currentId == definitions.size()) currentId = 0;
+        if (currentId == currentWord->definitions.size()) currentId = 0;
         setDefinition();
     }
 
     void WordScreen::setDefinition() {
-        changeDefinition(definitions[currentId]);
+        changeDefinition(currentWord->definitions[currentId]);
         setPage();
     }
 
@@ -183,8 +180,13 @@ namespace sora{
         isFavorite = type;
     }
 
+    bool WordScreen::getFavorite() {
+        return isFavorite;
+    }
+
     void WordScreen::toggleFavorite() {
         setFavorite(!isFavorite);
+        setFavoriteToggled(true);
     }
 
     void WordScreen::setPage() {
@@ -192,14 +194,15 @@ namespace sora{
         int Y = 650;
         pageText.setPosition(X, Y);
 
+        if (!currentWord) return;
         std::string page;
-        page = std::to_string(currentId + 1) + "/" + std::to_string(definitions.size());
+        page = std::to_string(currentId + 1) + "/" + std::to_string(currentWord->definitions.size());
         pageText.setContent(page);
     }
 
     void WordScreen::addDefinition() {
-        definitions.push_back("");
-        currentId = definitions.size() - 1;
+        currentWord->definitions.push_back("");
+        currentId = currentWord->definitions.size() - 1;
         setDefinition();
     }
 
@@ -207,15 +210,36 @@ namespace sora{
 
     }
 
+    void WordScreen::setWord(Words::Word *&wordPointer) {
+        currentWord = wordPointer;
+
+        changeWord(currentWord->word);
+        currentId = 0;
+        setDefinition();
+    }
+
+    Words::Word *WordScreen::getWord() {
+        return currentWord;
+    }
+
+    std::string WordScreen::getCurrentDefinition() {
+        return definitionText.getContent();
+    }
+
+    int WordScreen::getCurrentIndex() {
+        return currentId;
+    }
+
     // Database interaction
-    void WordScreen::saveNewDefinition() {
-        std::string content = definitionText.getContent();
-        std::cout << "You have change: " + content << std::endl;
-        definitions[currentId] = definitionText.getContent();
+    void WordScreen::updateDefinition() {
+        if (currentWord->definitions[currentId] != getCurrentDefinition()) {
+            setUpdateDefinition(true);
+        }
     }
 
     void WordScreen::deleteWord() {
-        std::cout << "You have deleted " + word << std::endl;
+        if (!currentWord) return;
+        std::cout << "[WORD SCREEN] You have deleted " + currentWord->word << std::endl;
         returnHomeScreen();
     }
 }

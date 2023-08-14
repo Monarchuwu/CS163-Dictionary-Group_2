@@ -3,6 +3,7 @@
 #include "../Constant.h"
 #include "../Screen.h"
 #include "Components/all.h"
+#include "../dataManager/TrieWord/TrieWord.h"
 
 namespace sora {
 
@@ -39,7 +40,6 @@ namespace sora {
         void returnHomeScreen();
 
         // Open Word Screen
-        void activate();
 
         void prevDefinition();
 
@@ -57,9 +57,19 @@ namespace sora {
 
         void deleteDefinition();
 
+        void setWord(Words::Word *&wordPointer);
+
+        Words::Word* getWord();
+
+        std::string getCurrentDefinition();
+
+        int getCurrentIndex();
+
+        bool getFavorite();
+
     // Database interaction
     public:
-        void saveNewDefinition();
+        void updateDefinition();
 
         void deleteWord();
 
@@ -75,16 +85,7 @@ namespace sora {
         bool isFavorite = false;
         int wordId    = 5;
         int currentId = 0;
-        std::string word   = "Interchangable";
-        std::vector<std::string> definitions{ 
-            "Hello test", 
-            "Hello test 01", 
-            "Hello test 02",
-            "Hello test 03",
-            "Hello test 04",
-            "Hello test 05",
-            "Hello test 06"
 
-        };
+        Words::Word *currentWord = nullptr;
     };
 }
