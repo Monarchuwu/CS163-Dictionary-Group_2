@@ -65,6 +65,7 @@ public:
 
     //constructor
     screen_addWord() : background(sf::Vector2f(1600, 900)) {
+
         //Head
         head.setSize(sf::Vector2f(1600, 80));
         head.setFillColor(sf::Color::Color(247, 251, 250));
