@@ -151,6 +151,7 @@
     <ClCompile Include="src\favouriteScreen\historyScreen.cpp" />
     <ClCompile Include="src\favouriteScreen\myBox.cpp" />
     <ClCompile Include="src\favouriteScreen\myButton.cpp" />
+    <ClCompile Include="src\gameScreen\Gamescreen.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\mainScreen\Box.cpp" />
     <ClCompile Include="src\mainScreen\Button.cpp" />
@@ -182,6 +183,8 @@
     <ClInclude Include="src\favouriteScreen\historyScreen.h" />
     <ClInclude Include="src\favouriteScreen\myBox.h" />
     <ClInclude Include="src\favouriteScreen\myButton.h" />
+    <ClInclude Include="src\gameScreen\Button_game.h" />
+    <ClInclude Include="src\gameScreen\RandomSpace.h" />
     <ClInclude Include="src\mainScreen\Box.h" />
     <ClInclude Include="src\mainScreen\Button.h" />
     <ClInclude Include="src\mainScreen\ButtonSprite.h" />
