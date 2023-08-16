@@ -53,15 +53,14 @@ public:
     std::vector<std::string> nameDict_v = { pathData + "Eng-Eng.txt", pathData + "Eng-Vi.txt", pathData + "Vi-Eng.txt", pathData + "Emoji.txt", pathData + "Slang.txt" };
 
     Textbox* tmp = &textbox1;
-    Trie* root = new Trie();
     sf::Sprite sprite_tmp;
     sf::Color color_tmp;
-    int lr = 0;
     std::string nameDict = pathData+"Eng-Eng.txt";
     sf::Sprite lang1;
     sf::Sprite lang2;
-
     sf::RectangleShape background;
+
+    int dataSet = 0;
 
     //constructor
     screen_addWord() : background(sf::Vector2f(1600, 900)) {
@@ -161,7 +160,7 @@ public:
         recent.specialBtn({ 150,540 });
 
         //Main variables
-        checkAllDict(recentword_v, cnt_v, nameDict_v, root);
+        checkAllDict(recentword_v, cnt_v, nameDict_v);
         total.setContent(std::to_string(cnt_v[0]));
         recent.setContent(recentword_v[0]);
 
@@ -170,42 +169,17 @@ public:
         color_v = { sf::Color::Color(77, 171, 135, 255), sf::Color::Color(253, 99, 190, 255), sf::Color::Color(254,144,83,255), sf::Color::Color(153,142,232,255)
     ,sf::Color::Color(96,13,198,255) };
         sprite_lang_v = { engs, vns };
-        sprite_tmp = sprite_v[0];
-        color_tmp = color_v[0];
+        sprite_tmp = sprite_v[dataSet];
+        color_tmp = color_v[dataSet];
+
         background.setFillColor(color_tmp);
-        changeLang(0, sprite_lang_v, lang1, lang2);
+        changeLang(dataSet, sprite_lang_v, lang1, lang2);
     }
 
     //handle event
     void handleEvent(const sf::Event& event) override {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
             setCallHome(true);
-        }
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-            lr++;
-            if (lr > 4) lr = 0;
-            sprite_tmp = sprite_v[lr];
-            color_tmp  = color_v[lr];
-            background.setFillColor(color_tmp);
-            changeLang(lr, sprite_lang_v, lang1, lang2);
-            changeText(btnWord, lr);
-            nameDict = nameDict_v[lr];
-            total.setContent(std::to_string(cnt_v[lr]));
-            recent.setContent(recentword_v[lr]);
-        }
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-            lr--;
-            if (lr < 0) lr = 4;
-            sprite_tmp = sprite_v[lr];
-            color_tmp  = color_v[lr];
-            background.setFillColor(color_tmp);
-            changeLang(lr, sprite_lang_v, lang1, lang2);
-            changeText(btnWord, lr);
-            nameDict = nameDict_v[lr];
-            total.setContent(std::to_string(cnt_v[lr]));
-            recent.setContent(recentword_v[lr]);
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
@@ -225,9 +199,9 @@ public:
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
-            inputFile(root, nameDict, textbox1.getText(), textbox2.getText(), cnt_v[lr], recentword_v[lr]);
-            total.setContent(std::to_string(cnt_v[lr]));
-            recent.setContent(recentword_v[lr]);
+            inputFile(nameDict, textbox1.getText(), textbox2.getText(), cnt_v[dataSet], recentword_v[dataSet]);
+            total.setContent(std::to_string(cnt_v[dataSet]));
+            recent.setContent(recentword_v[dataSet]);
         }
 
         switch (event.type) {
