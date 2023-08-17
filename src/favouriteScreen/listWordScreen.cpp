@@ -83,8 +83,13 @@ namespace minh {
                     std::cout << "View word at page: " << page + 1 << std::endl;
                 }
             }
-            for (int i = 0; i < 10 && i + 10 * page < listWord.size(); i++) {
-                view[i].setString(listWord[i + 10 * page]);
+            for (int i = 0; i < 10; i++) {
+                if (i + 10 * page < listWord.size()) {
+                    view[i].setString(listWord[i + 10 * page]);
+                }
+                else {
+                    view[i].setString("");
+                }
             }
             std::string pageNum = std::to_string(page + 1);
             view[10].setString("PAGE: " + pageNum + " (Use Right/Left arrow to move between pages)");
@@ -102,8 +107,13 @@ namespace minh {
                     isView = 1;
                     page   = 0;
                     std::cout << "View Word at page 1\n";
-                    for (int i = 0; i < 10 && i + 10 * page < listWord.size(); i++) {
-                        view[i].setString(listWord[i + 10 * page]);
+                    for (int i = 0; i < 10; i++) {
+                        if (i + 10 * page < listWord.size()) {
+                            view[i].setString(listWord[i + 10 * page]);
+                            }
+                        else {
+							view[i].setString("");
+						}
                     }
                     std::string pageNum = std::to_string(page + 1);
                     view[10].setString("PAGE: " + pageNum + " (Use Right/Left arrow to move between pages)");
