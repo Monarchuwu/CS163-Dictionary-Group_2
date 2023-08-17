@@ -77,12 +77,16 @@ void DataManager::loadDatasetInternal(const std::string& dirDataset) {
     // load data from file
     mDictionary.loadFile(dirDataset);
 
+    std::cout << "[INFO] Completely loaded Dictionary List" << std::endl;
+
     // build TrieWord
     delete mTrieWord;
     mTrieWord = new TrieWord();
     for (int i = 0; i < mDictionary.v.size(); ++i) {
         mTrieWord->addWord(mDictionary.v[i].word, i);
     }
+
+    std::cout << "[INFO] Completely loaded TrieWWord" << std::endl;
 
     // build TrieDefinition
     delete mTrieDefinition;
@@ -92,6 +96,8 @@ void DataManager::loadDatasetInternal(const std::string& dirDataset) {
 			mTrieDefinition->addDefinition(definition, i);
 		}
     }
+
+    std::cout << "[INFO] Completely loaded TrieDefinition" << std::endl;
 }
 
 void DataManager::saveDatasetInternal(const std::string& dirDataset) {
@@ -125,6 +131,14 @@ void DataManager::removeWord(const std::string& word) {
 Words::Word* DataManager::getWordByIndex(int index) {
     if (index >= (int)mDictionary.v.size()) return nullptr;
     return &(mDictionary.v[index]);
+}
+
+Words::Word* DataManager::getRandomWord() {
+    int size = mDictionary.v.size();
+    if (size == 0) return nullptr;
+
+    int randomIndex = rand() % size;
+    return &(mDictionary.v[randomIndex]);
 }
 
 void DataManager::addDefinition(const std::string& definition, int index) {

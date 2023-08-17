@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <stdlib.h>
 #include "../Constant.h"
 #include "TrieWord/TrieWord.h"
 #include "TrieDefinition/TrieDefinition.h"
@@ -43,6 +44,9 @@ public:
     void removeWord(const std::string& word);
     // get the word by the index
     Words::Word* getWordByIndex(int index);
+
+    // get random word
+    Words::Word* getRandomWord();
 
     /* ----- handle search definition query ----- */
     // add the definition into the trie (add the word corresponding to)

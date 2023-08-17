@@ -1,5 +1,7 @@
 #include "Application.h"
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 
 Application::Application()
     : mWindow(),
@@ -17,6 +19,9 @@ Application::Application()
     screenhis.changeDir(constant::Dataset::EngEng);
 
     mScreen = &mScreenMain;
+    mScreen->setCallHome(true);
+
+    srand(time(0));
 }
 
 void Application::run() {
@@ -43,7 +48,8 @@ void Application::processEvents() {
 }
 
 void Application::update() {
-    { // handle dataset and mode search
+    // handle dataset and mode search
+    { 
         if (mScreen->getDataset()) {
             int dataset = mScreen->getInteger1();
             mScreen->setDataset(false);
@@ -54,6 +60,7 @@ void Application::update() {
                 screenfav.changeDir(dataset);
                 screenhis.changeDir(dataset);
                 std::cout << "[INFO] Change dataset to " << dataset << std::endl;
+                mScreen->setCallHome(true);
             }
             return;
         }
@@ -68,28 +75,20 @@ void Application::update() {
         }
     }
 
-    /*if (mScreen == &mScreenMain) {
-        std::cout << "Home Screen\n";
-    }
-
-    if (mScreen == &screenAddWord) {
-        std::cout << "Add Word Screen\n";
-    }
-
-    if (mScreen == &screenfav) {
-        std::cout << "Favorite Screen\n";
-    }
-
-    if (mScreen == &screenWordDef) {
-        std::cout << "Word Definition Screen\n";
-    }*/
-
+    // HOME SCREEN CALL
     if (mScreen->getCallHome()) {
         mScreen->setCallHome(false);
         mScreen = &mScreenMain;
+
+        Words::Word* randomWord = mDataManager.getRandomWord();
+        if (randomWord) {
+            std::cout << randomWord->word << "\n";
+            mScreenMain.setFirstGameButton(randomWord);
+        }
         return;
     }
 
+    // SEARCH TEXT -> WORD-DEFINITION SCREEN CALL
     if (mScreen->getCallSearchText()) {
         if (mDataManager.getModeSearch() == constant::ModeSearch::SearchByWord) {
 			std::cout << "[INFO] Search by word" << std::endl;
@@ -136,25 +135,28 @@ void Application::update() {
         }
     }
 
+    //
     if (mScreen->getCallAddWordScreen()) {
         mScreen->setCallAddWordScreen(false);
         mScreen = &screenAddWord;
         return;
     }
 
+    // FAVORITE SCREEN CALL
     if (mScreen->getCallFavoriteList()) {
         mScreen->setCallFavoriteList(false);
         mScreen = &screenfav;
         return;
     }
 
+    // HISTORY SCREEN CALL
     if (mScreen->getCallHistoryList()) {
         mScreen->setCallHistory(false);
         mScreen = &screenhis;
         return;
     }
     
-    /* WORD SCREEN */
+    /* WORD SCREEN EVENT */
     if (mScreen->getUpdateDefinition()) {
         mScreen->setUpdateDefinition(false);
 
@@ -207,6 +209,8 @@ void Application::update() {
             screenfav.deleteAWord(currentWord->word);
         }
     }
+
+    /* --------------------------------------------------- */
 
     mScreen->update();
     // screenfav.update();

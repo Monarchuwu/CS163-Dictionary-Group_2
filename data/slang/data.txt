@@ -8912,6 +8912,7 @@ ZUT	Damn it
 ZZZ	Sleepy
 ZZZ	Bored
 ZZZ	Tired
+ZZZ	I don't wanna do anything!!!
 \M/	Horns
 \M/	Metal salute
 \O	Waving
