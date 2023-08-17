@@ -31,6 +31,8 @@ public:
     void setCallFavoriteList(bool callFavoriteList);
     //set call history
     void setCallHistory(bool callHistory);
+    // set dataset to default
+    void setDefaultDataset(bool callDefaultDataset);
 
     // get dataset
     // data stored in Integer1
@@ -49,6 +51,8 @@ public:
     bool getCallFavoriteList() const;
     //get call history list
     bool getCallHistoryList() const;
+    // get call default dataset
+    bool getCallDefaultDataset() const;
 
     // get string 1
     std::string getString1() const;
@@ -65,6 +69,7 @@ private:
     bool mCallAddWordScreen;
     bool mCallFavoriteList;
     bool mCallHistoryList;
+    bool mCallDefaultDataset;
     std::string mString1;
     int mInteger1;
     int mInteger2;

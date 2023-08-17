@@ -356,6 +356,7 @@ namespace mainScreen {
             // update set default icon
             if (mSetDefaultIcon.getPressed()) {
                 mSetDefaultIcon.setPressed(false);
+                setDefaultDataset(true);
                 std::cout << "[CALL] Run Set default icon feature\n";
             }
         }

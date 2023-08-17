@@ -126,6 +126,12 @@ void Application::update() {
         return;
     }
 
+    if (mScreen->getCallDefaultDataset()) {
+        mScreen->setDefaultDataset(false);
+        mDataManager.resetData();
+        return;
+    }
+
     mScreen->update();
     // screenfav.update();
     //mScreenMain.update();
