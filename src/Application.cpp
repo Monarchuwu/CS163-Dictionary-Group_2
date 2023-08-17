@@ -84,6 +84,7 @@ void Application::update() {
             Words::Word* cur = mDataManager.searchWord(word);
             if (cur != nullptr) {
                 std::cout << "Found word\n";
+                screenhis.addAWord(cur->word);
             }
             else {
                 std::cout << "Not found word\n";

@@ -82,15 +82,41 @@ namespace minh
     }
 
     void ScreenFavou::addAWord(std::string word) {
+        
+
         std::string fileToAdd = "data/" + dic_type + "/favourite.txt";
-        std::ofstream fout(fileToAdd, std::ios::app);
+        std::queue<std::string> lines;
+
+        std::ifstream fin;
+        fin.open(fileToAdd);
+        if (!fin.is_open()) {
+        std::cout << "Can not open file";
+        fin.close();
+        return;
+        }
+        std::string str;
+
+        while (std::getline(fin, str)) {
+        // std::cout << def << std::endl;
+        if (str != word)
+
+            lines.push(str);
+        }
+
+        std::ofstream fout(fileToAdd, std::ios::trunc);
+
         if (!fout.is_open()) {
-        std::cout << "Can not open file" << std::endl;
+        std::cout << "Can not open file";
+        fin.close();
         fout.close();
         return;
         }
         fout << word << std::endl;
-        fout.close();
+        while (lines.size()) {
+        fout << lines.front() << std::endl;
+        lines.pop();
+        }
+        fin.close();
         return;
     }
 
