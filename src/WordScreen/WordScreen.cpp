@@ -176,6 +176,10 @@ namespace sora{
         setPage();
     }
 
+    void WordScreen::setCurrentIndex(int index) {
+        currentId = index;
+    }
+
     void WordScreen::setFavorite(bool type) {
         isFavorite = type;
     }
@@ -201,13 +205,11 @@ namespace sora{
     }
 
     void WordScreen::addDefinition() {
-        currentWord->definitions.push_back("");
-        currentId = currentWord->definitions.size() - 1;
-        setDefinition();
+        setAddDefinition(true);
     }
 
     void WordScreen::deleteDefinition() {
-
+        setDeleteDefinition(true);
     }
 
     void WordScreen::setWord(Words::Word *&wordPointer) {

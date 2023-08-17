@@ -101,21 +101,18 @@ void Application::update() {
             if (word == "") return;
 
             // go to word screen if word exists
-            Words::Word* cur = mDataManager.searchWord(word);
-            if (cur != nullptr) {
-                std::cout << "Found word\n";
-                std::cout << cur->word << "\n";
-                for (std::string definition : cur->definitions) std::cout << definition << " ";
-                std::cout << "\n";
+            Words::Word* currrentWord = mDataManager.searchWord(word);
+            if (currrentWord != nullptr) {
+                std::cout << "[WORD FOUND] " + currrentWord->word << "\n";
 
-                bool isFavorite = screenfav.inTheFile(cur->word);
+                bool isFavorite = screenfav.inTheFile(currrentWord->word);
 
                 // Open the Word-Definition screen
                 if (mScreen->getCallWordDefScreen()) {
                     mScreen->setCallWordDefScreen(false);
                     mScreen = &screenWordDef;
 
-                    screenWordDef.setWord(cur);
+                    screenWordDef.setWord(currrentWord);
                     screenWordDef.setFavorite(isFavorite);
                 }
             }
@@ -162,12 +159,39 @@ void Application::update() {
         mScreen->setUpdateDefinition(false);
 
         Words::Word* currentWord  = screenWordDef.getWord();
-        std::string newDefinition = screenWordDef.getCurrentDefinition();
-        std::string oldDefinition = currentWord->definitions[screenWordDef.getCurrentIndex()];
-        std::cout << oldDefinition << " -> " << newDefinition << "\n";
+        if (currentWord) {
+            std::string newDefinition = screenWordDef.getCurrentDefinition();
+            std::string oldDefinition = currentWord->definitions[screenWordDef.getCurrentIndex()];
+             std::cout << oldDefinition << " -> " << newDefinition << "\n";
 
-        if (oldDefinition != newDefinition) {
-            mDataManager.updateDefinition(oldDefinition, newDefinition, currentWord->index);
+            if (oldDefinition != newDefinition) {
+                mDataManager.updateDefinition(oldDefinition, newDefinition, currentWord->index);
+            }
+        }
+    }
+
+    if (mScreen->getAddDefinition()) {
+        mScreen->setAddDefinition(false);
+
+        Words::Word* currentWord = screenWordDef.getWord();
+        if (currentWord) {
+            mDataManager.addDefinition("", currentWord->index);
+            screenWordDef.setCurrentIndex(currentWord->definitions.size() - 1);
+            screenWordDef.setDefinition();
+        }
+    }
+
+    if (mScreen->getDeleteDefinition()) {
+        mScreen->setDeleteDefinition(false);
+        
+        Words::Word* currentWord = screenWordDef.getWord();
+        if (currentWord) {
+            std::string definition = screenWordDef.getCurrentDefinition();
+            mDataManager.deleteDefinition(definition, currentWord->index);
+            if (screenWordDef.getCurrentIndex() == currentWord->definitions.size()) {
+                screenWordDef.setCurrentIndex(currentWord->definitions.size() - 1);
+            }
+            screenWordDef.setDefinition();
         }
     }
 

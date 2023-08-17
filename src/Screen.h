@@ -47,6 +47,7 @@ public:
     // set update definition
     void setUpdateDefinition(bool updateDefinition);
 
+    // set if favorite button is clicked (toggled)
     void setFavoriteToggled(bool favoriteToggled);
 
     // get dataset

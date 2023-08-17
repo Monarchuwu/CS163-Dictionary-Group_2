@@ -39,13 +39,13 @@ namespace sora {
         // Return to Home Screen
         void returnHomeScreen();
 
-        // Open Word Screen
-
         void prevDefinition();
 
         void nextDefinition();
 
         void setDefinition();
+
+        void setCurrentIndex(int index);
 
         void setFavorite(bool type);
 
