@@ -6,6 +6,7 @@ namespace minh {
         dic_type = "test";
         
         // Initialize Window
+        // Initialize Window
         backgroundColor = sf::Color(113, 114, 115);
         Background.setSize(sf::Vector2f(1600.0f, 900.0f));
         Background.setFillColor(sf::Color::White);
@@ -58,14 +59,38 @@ namespace minh {
     void ScreenHis::addAWord(std::string word)
     {
         std::string fileToAdd = "data/" + dic_type + "/history.txt";
-        std::ofstream fout(fileToAdd, std::ios::app);
+        std::queue<std::string> lines;
+
+        std::ifstream fin;
+        fin.open(fileToAdd);
+        if (!fin.is_open()) {
+            std::cout << "Can not open file";
+            fin.close();
+            return;
+        }
+        std::string str;
+
+        while (std::getline(fin, str)) {
+            // std::cout << def << std::endl;
+            if (str != word)
+
+                lines.push(str);
+        }
+
+        std::ofstream fout(fileToAdd, std::ios::trunc);
+
         if (!fout.is_open()) {
-            std::cout << "Can not open file" << std::endl;
+            std::cout << "Can not open file";
+            fin.close();
             fout.close();
             return;
         }
         fout << word << std::endl;
-        fout.close();
+        while (lines.size()) {
+            fout << lines.front() << std::endl;
+            lines.pop();
+        }
+        fin.close();
         return;
     }
 
