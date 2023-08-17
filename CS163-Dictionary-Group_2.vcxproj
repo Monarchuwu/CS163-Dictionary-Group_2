@@ -149,6 +149,7 @@
     <ClCompile Include="src\favouriteScreen\FavouriteScreen.cpp" />
     <ClCompile Include="src\favouriteScreen\fileWork.cpp" />
     <ClCompile Include="src\favouriteScreen\historyScreen.cpp" />
+    <ClCompile Include="src\favouriteScreen\listWordScreen.cpp" />
     <ClCompile Include="src\favouriteScreen\myBox.cpp" />
     <ClCompile Include="src\favouriteScreen\myButton.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="src\favouriteScreen\FavouriteScreen.h" />
     <ClInclude Include="src\favouriteScreen\fileWork.h" />
     <ClInclude Include="src\favouriteScreen\historyScreen.h" />
+    <ClInclude Include="src\favouriteScreen\listWordScreen.h" />
     <ClInclude Include="src\favouriteScreen\myBox.h" />
     <ClInclude Include="src\favouriteScreen\myButton.h" />
     <ClInclude Include="src\mainScreen\Box.h" />
