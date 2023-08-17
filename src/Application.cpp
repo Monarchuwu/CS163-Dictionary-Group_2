@@ -98,10 +98,13 @@ void Application::update() {
             mScreen->setCallSearchText(false);
             // go to word list screen
             std::vector<Words::Word*> listWord = mDataManager.searchDefinition(word);
+            std::vector<std::string> listWordStr;
             for (Words::Word*& wordPtr : listWord) {
-                std::cout << " ----- " << wordPtr->word << std::endl;
+                listWordStr.push_back(wordPtr->word);
 			}
-            std::cout << " ----- END OF LIST ----- " << std::endl;
+            screenlistword.setListWord(listWordStr);
+            mScreen = &screenlistword;
+			return;
         }
     }
 

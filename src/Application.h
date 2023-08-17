@@ -5,6 +5,7 @@
 #include "mainScreen/ScreenMain.h"
 #include "favouriteScreen/FavouriteScreen.h"
 #include "favouriteScreen/historyScreen.h"
+#include "favouriteScreen/listWordScreen.h"
 #include "addWordScreen/addWord.h"
 #include "../src/dataManager/DataManager.h"
 using namespace minh;
@@ -24,6 +25,7 @@ private:
     mainScreen::ScreenMain mScreenMain;
     minh::ScreenFavou screenfav;
     minh::ScreenHis screenhis;
+    minh::ScreenListWord screenlistword;
     screen_addWord screenAddWord;
     Screen* mScreen;
 
