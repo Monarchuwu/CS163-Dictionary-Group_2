@@ -122,8 +122,17 @@ void DataManager::removeWord(const std::string& word) {
     mTrieWord->deleteWord(word);
 }
 
+Words::Word* DataManager::getWordByIndex(int index) {
+    if (index >= (int)mDictionary.v.size()) return nullptr;
+    return &(mDictionary.v[index]);
+}
+
 void DataManager::addDefinition(const std::string& definition, int index) {
     mTrieDefinition->addDefinition(definition, index);
+
+    Words::Word* temp = getWordByIndex(index);
+    if (!temp) return;
+    temp->definitions.push_back(definition);
 }
 
 std::vector<Words::Word*> DataManager::searchDefinition(const std::string& definition) {
@@ -137,4 +146,38 @@ std::vector<Words::Word*> DataManager::searchDefinition(const std::string& defin
 
 void DataManager::deleteDefinition(const std::string& definition, int index) {
     mTrieDefinition->deleteDefinition(definition, index);
+
+    Words::Word* temp = getWordByIndex(index);
+    if (!temp) return;
+
+    int pos = -1;
+    for (int i = 0; i < (int)temp->definitions.size(); ++i) {
+		if (temp->definitions[i] == definition) {
+			pos = i;
+			break;
+        }
+    }
+    if (pos == -1) return;
+    for (int i = pos; i < (int)temp->definitions.size() - 1; ++i) {
+        temp->definitions[i] = temp->definitions[i + 1];
+    }
+    temp->definitions.pop_back();
+}
+
+void DataManager::updateDefinition(const std::string& oldDefinition, const std::string& newDefinition, int index) {
+    mTrieDefinition->deleteDefinition(oldDefinition, index);
+    mTrieDefinition->addDefinition(newDefinition, index);
+
+    Words::Word* temp = getWordByIndex(index);
+    if (!temp) return;
+
+    int pos = -1;
+    for (int i = 0; i < (int)temp->definitions.size(); ++i) {
+        if (temp->definitions[i] == oldDefinition) {
+			pos = i;
+			break;
+        }
+    }
+    if (pos == -1) return;
+    temp->definitions[pos] = newDefinition;
 }

@@ -59,6 +59,7 @@ namespace sora {
         std::string word;
         std::stringstream ss(content);
 
+       
         while (std::getline(ss, word, ' ')) {
             // store token string in the vector
             text.setString(word);
@@ -74,14 +75,16 @@ namespace sora {
             }
         }
 
-        if (display_text[display_text.size() - 1] == ' ') display_text.pop_back();
-        if (content[content.size() - 1] == ' ') display_text.push_back(' ');
+        if (display_text.size() != 0 && display_text[display_text.size() - 1] == ' ') display_text.pop_back();
+        if (content.size() != 0 && content[content.size() - 1] == ' ') display_text.push_back(' ');
         if (isFocused) {
             if (display_text.empty()) display_text = "_";
             else display_text.push_back('_');
         }
 
+
         textHolder.setString(display_text);
+
     }
 
     // Box

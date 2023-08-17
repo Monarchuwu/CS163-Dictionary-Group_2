@@ -166,9 +166,9 @@ void Application::update() {
         std::string oldDefinition = currentWord->definitions[screenWordDef.getCurrentIndex()];
         std::cout << oldDefinition << " -> " << newDefinition << "\n";
 
-        // replace an old with a new definition
-        mDataManager.deleteDefinition(oldDefinition, currentWord->index);
-        mDataManager.addDefinition(newDefinition, currentWord->index);
+        if (oldDefinition != newDefinition) {
+            mDataManager.updateDefinition(oldDefinition, newDefinition, currentWord->index);
+        }
     }
 
     if (mScreen->getFavoriteToggled()) {
