@@ -59,6 +59,10 @@ void Screen::setFavoriteToggled(bool favoriteToggled) {
 	mFavoriteToggled = favoriteToggled;
 }
 
+void Screen::setDeleteWord(bool deleteWord) {
+	mDeleteWord = deleteWord;
+}
+
 
 void Screen::setCallWordDefScreen(bool callWordDefScreen) {
 	mCallWordDefScreen = callWordDefScreen;
@@ -117,5 +121,9 @@ bool Screen::getUpdateDefinition() {
 
 bool Screen::getFavoriteToggled() {
 	return mFavoriteToggled;
+}
+
+bool Screen::getDeleteWord() {
+	return mDeleteWord;
 }
 

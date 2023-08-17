@@ -50,6 +50,9 @@ public:
     // set if favorite button is clicked (toggled)
     void setFavoriteToggled(bool favoriteToggled);
 
+    // set delete word
+    void setDeleteWord(bool deleteWord);
+
     // get dataset
     // data stored in Integer1
     bool getDataset() const;
@@ -94,6 +97,9 @@ public:
     // get favorite toggle
     bool getFavoriteToggled();
 
+    // get delete word
+    bool getDeleteWord();
+
 private:
     bool mDataset;
     bool mModeSearch;
@@ -114,4 +120,5 @@ private:
     bool mDeleteDefinition;
     bool mUpdateDefinition;
     bool mFavoriteToggled;
+    bool mDeleteWord;
 };

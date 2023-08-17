@@ -241,7 +241,6 @@ namespace sora{
 
     void WordScreen::deleteWord() {
         if (!currentWord) return;
-        std::cout << "[WORD SCREEN] You have deleted " + currentWord->word << std::endl;
-        returnHomeScreen();
+        setDeleteWord(true);
     }
 }

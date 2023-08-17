@@ -126,6 +126,22 @@ Words::Word* DataManager::addWord(const std::string& word) {
 
 void DataManager::removeWord(const std::string& word) {
     mTrieWord->deleteWord(word);
+
+    if (mDictionary.v.size() == 0) return;
+    std::cout << "[DELETE]\n";
+    for (Words::Word temp : mDictionary.v) {
+		std::cout << temp.index << " " << temp.word << '\n';
+    }
+
+    int pos = -1;
+    for (int i = 0; i < mDictionary.v.size(); ++i) {
+        if (mDictionary.v[i].word == word) {
+			pos = i;
+			break;
+        }
+    }
+    if (pos == -1) return;
+    mDictionary.v[pos] = mDictionary.v[mDictionary.v.size() - 1];
 }
 
 Words::Word* DataManager::getWordByIndex(int index) {

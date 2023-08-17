@@ -82,78 +82,71 @@ void Application::update() {
 
         Words::Word* randomWord = mDataManager.getRandomWord();
         if (randomWord) {
-            std::cout << randomWord->word << "\n";
+            // std::cout << randomWord->word << "\n";
             mScreenMain.setFirstGameButton(randomWord);
         }
+    }
+
+    // ADD WORD SCREEN
+    else if (mScreen->getCallAddWordScreen()) {
+        mScreen->setCallAddWordScreen(false);
+        mScreen = &screenAddWord;
+    }
+
+    // FAVORITE SCREEN CALL
+    else if (mScreen->getCallFavoriteList()) {
+        mScreen->setCallFavoriteList(false);
+        mScreen = &screenfav;
+    }
+
+    // HISTORY SCREEN CALL
+    else if (mScreen->getCallHistoryList()) {
+        mScreen->setCallHistory(false);
+        mScreen = &screenhis;
         return;
     }
 
     // SEARCH TEXT -> WORD-DEFINITION SCREEN CALL
-    if (mScreen->getCallSearchText()) {
+    else if (mScreen->getCallSearchText()) {
         if (mDataManager.getModeSearch() == constant::ModeSearch::SearchByWord) {
-			std::cout << "[INFO] Search by word" << std::endl;
+                std::cout << "[INFO] Search by word" << std::endl;
 
-            // run search word
-            std::string word = mScreen->getString1();
-            mScreen->setCallSearchText(false);
+                // run search word
+                std::string word = mScreen->getString1();
+                mScreen->setCallSearchText(false);
 
-            if (word == "") return;
+                // go to word screen if word exists
+                Words::Word* currrentWord = mDataManager.searchWord(word);
+                if (currrentWord != nullptr) {
+                    std::cout << "[WORD FOUND] " + currrentWord->word << "\n";
 
-            // go to word screen if word exists
-            Words::Word* currrentWord = mDataManager.searchWord(word);
-            if (currrentWord != nullptr) {
-                std::cout << "[WORD FOUND] " + currrentWord->word << "\n";
+                    bool isFavorite = screenfav.inTheFile(currrentWord->word);
 
-                bool isFavorite = screenfav.inTheFile(currrentWord->word);
+                    // Open the Word-Definition screen
+                    if (mScreen->getCallWordDefScreen()) {
+                        mScreen->setCallWordDefScreen(false);
+                        mScreen = &screenWordDef;
 
-                // Open the Word-Definition screen
-                if (mScreen->getCallWordDefScreen()) {
-                    mScreen->setCallWordDefScreen(false);
-                    mScreen = &screenWordDef;
-
-                    screenWordDef.setWord(currrentWord);
-                    screenWordDef.setFavorite(isFavorite);
+                        screenWordDef.setWord(currrentWord);
+                        screenWordDef.setFavorite(isFavorite);
+                    }
                 }
-            }
-            else {
-                std::cout << "Not found word\n";
-            }
-
-            return;
+                else {
+                    std::cout << "Not found word\n";
+                }
         }
-		else {
-            std::cout << "[INFO] Search by definition" << std::endl;
-            // run search definition
-            std::string word = mScreen->getString1();
-            mScreen->setCallSearchText(false);
-            // go to word list screen
-            std::vector<Words::Word*> listWord = mDataManager.searchDefinition(word);
-            for (Words::Word*& wordPtr : listWord) {
-                std::cout << " ----- " << wordPtr->word << std::endl;
-			}
-            std::cout << " ----- END OF LIST ----- " << std::endl;
+        else {
+                std::cout << "[INFO] Search by definition" << std::endl;
+                // run search definition
+                std::string word = mScreen->getString1();
+                mScreen->setCallSearchText(false);
+                // go to word list screen
+                std::vector<Words::Word*> listWord = mDataManager.searchDefinition(word);
+                for (Words::Word*& wordPtr : listWord) {
+                    std::cout << " ----- " << wordPtr->word << std::endl;
+                }
+                std::cout << " ----- END OF LIST ----- " << std::endl;
         }
-    }
-
-    //
-    if (mScreen->getCallAddWordScreen()) {
-        mScreen->setCallAddWordScreen(false);
-        mScreen = &screenAddWord;
-        return;
-    }
-
-    // FAVORITE SCREEN CALL
-    if (mScreen->getCallFavoriteList()) {
-        mScreen->setCallFavoriteList(false);
-        mScreen = &screenfav;
-        return;
-    }
-
-    // HISTORY SCREEN CALL
-    if (mScreen->getCallHistoryList()) {
-        mScreen->setCallHistory(false);
-        mScreen = &screenhis;
-        return;
     }
     
     /* WORD SCREEN EVENT */
@@ -208,6 +201,21 @@ void Application::update() {
         else {
             screenfav.deleteAWord(currentWord->word);
         }
+    }
+
+    if (mScreen->getDeleteWord()) {
+        mScreen->setDeleteWord(false);
+        std::cout << "Delete word\n";
+        Words::Word* currentWord = screenWordDef.getWord();
+        if (currentWord) {
+            int index = currentWord->index;
+            for (std::string defintion : currentWord->definitions) {
+                mDataManager.deleteDefinition(defintion, index);
+            }
+            mDataManager.removeWord(currentWord->word);
+        }
+
+        mScreen->setCallHome(true);
     }
 
     /* --------------------------------------------------- */
