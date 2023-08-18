@@ -183,7 +183,12 @@ void Application::update() {
         if (currentWord) {
             std::string definition = screenWordDef.getCurrentDefinition();
             mDataManager.deleteDefinition(definition, currentWord->index);
-            if (screenWordDef.getCurrentIndex() == currentWord->definitions.size()) {
+
+            if (currentWord->definitions.size() == 0) {
+                currentWord->definitions.push_back("");
+            }
+
+            else if (screenWordDef.getCurrentIndex() == currentWord->definitions.size()) {
                 screenWordDef.setCurrentIndex(currentWord->definitions.size() - 1);
             }
             screenWordDef.setDefinition();
