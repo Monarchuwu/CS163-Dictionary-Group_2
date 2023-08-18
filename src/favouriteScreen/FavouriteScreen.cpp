@@ -429,6 +429,21 @@ namespace minh
 
     void ScreenFavou::changeDir(int dataset) {
         switch (dataset) {
+            case constant::Dataset::EngEng: {
+                dic_type = "engeng";
+                break;
+            }
+
+            case constant::Dataset::EngVie: {
+                dic_type = "engvie";
+                break;
+            }
+
+            case constant::Dataset::VieEng: {
+                dic_type = "vieeng";
+                break;
+            }
+
             case constant::Dataset::Slang: {
                 dic_type = "slang";
                 break;

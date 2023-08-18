@@ -28,6 +28,18 @@ int DataManager::getModeSearch() {
 
 void DataManager::loadData() {
     switch (mDataset) {
+        case constant::Dataset::EngEng:
+            loadDatasetInternal("data/engeng/data.txt");
+            break;
+
+        case constant::Dataset::EngVie:
+            loadDatasetInternal("data/engvie/data.txt");
+            break;
+
+        case constant::Dataset::VieEng:
+            loadDatasetInternal("data/vieeng/data.txt");
+            break;
+
         case constant::Dataset::Slang:
             loadDatasetInternal("data/slang/data.txt");
             break;
@@ -43,6 +55,18 @@ void DataManager::loadData() {
 }
 void DataManager::saveData() {
     switch (mDataset) {
+        case constant::Dataset::EngEng:
+            saveDatasetInternal("data/engeng/data.txt");
+            break;
+
+        case constant::Dataset::EngVie:
+            saveDatasetInternal("data/engvie/data.txt");
+            break;
+
+        case constant::Dataset::VieEng:
+            saveDatasetInternal("data/vieeng/data.txt");
+            break;
+
         case constant::Dataset::Slang:
             saveDatasetInternal("data/slang/data.txt");
             break;
@@ -58,6 +82,18 @@ void DataManager::saveData() {
 }
 void DataManager::resetData() {
     switch (mDataset) {
+        case constant::Dataset::EngEng:
+            loadDatasetInternal("data/engeng/backup.txt");
+            break;
+
+        case constant::Dataset::EngVie:
+            loadDatasetInternal("data/engvie/backup.txt");
+            break;
+
+        case constant::Dataset::VieEng:
+            loadDatasetInternal("data/vieeng/backup.txt");
+            break;
+
         case constant::Dataset::Slang:
             loadDatasetInternal("data/slang/backup.txt");
             break;
