@@ -10,17 +10,25 @@ namespace mainScreen {
             mColorBackground[0][0] = sf::Color(113, 114, 115);
             mColorBackground[0][1] = sf::Color(1, 49, 116);
             // EN-VN
-            mColorBackground[1][0] = sf::Color(195, 44, 48);
-            mColorBackground[1][1] = sf::Color(16, 13, 8);
+            mColorBackground[1][0] = sf::Color(113, 114, 115);
+            mColorBackground[1][1] = sf::Color(1, 49, 116);
+            // mColorBackground[1][0] = sf::Color(195, 44, 48);
+            // mColorBackground[1][1] = sf::Color(16, 13, 8);
             // VN-EN
             mColorBackground[2][0] = sf::Color(113, 114, 115);
-            mColorBackground[2][1] = sf::Color(96, 13, 198);
+            mColorBackground[2][1] = sf::Color(1, 49, 116);
+            // mColorBackground[2][0] = sf::Color(113, 114, 115);
+            // mColorBackground[2][1] = sf::Color(96, 13, 198);
             // SLANG
             mColorBackground[3][0] = sf::Color(113, 114, 115);
-            mColorBackground[3][1] = sf::Color(238, 102, 3);
+            mColorBackground[3][1] = sf::Color(1, 49, 116);
+            // mColorBackground[3][0] = sf::Color(113, 114, 115);
+            // mColorBackground[3][1] = sf::Color(238, 102, 3);
             // EMOJI
             mColorBackground[4][0] = sf::Color(113, 114, 115);
-            mColorBackground[4][1] = sf::Color(52, 171, 153);
+            mColorBackground[4][1] = sf::Color(1, 49, 116);
+            // mColorBackground[4][0] = sf::Color(113, 114, 115);
+            // mColorBackground[4][1] = sf::Color(52, 171, 153);
         }
 
         // background
@@ -105,7 +113,7 @@ namespace mainScreen {
             sf::Vector2u size = texture.getSize();
             sf::Vector2f targetSize(50, 50);
             mPlusIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
-            //mPlusIcon.setColor(sf::Color(200, 200, 200));
+            // mPlusIcon.setColor(sf::Color(200, 200, 200));
         }
         // favorite icon button sprite
         {
@@ -117,7 +125,7 @@ namespace mainScreen {
             sf::Vector2u size = texture.getSize();
             sf::Vector2f targetSize(50, 50);
             mFavoriteIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
-            //mFavoriteIcon.setColor(sf::Color(200, 200, 200));
+            // mFavoriteIcon.setColor(sf::Color(200, 200, 200));
         }
         // history icon button sprite
         {
@@ -129,7 +137,7 @@ namespace mainScreen {
             sf::Vector2u size = texture.getSize();
             sf::Vector2f targetSize(50, 50);
             mHistoryIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
-            //mHistoryIcon.setColor(sf::Color(200, 200, 200));
+            // mHistoryIcon.setColor(sf::Color(200, 200, 200));
         }
         // set default icon button sprite
         {
@@ -141,7 +149,7 @@ namespace mainScreen {
             sf::Vector2u size = texture.getSize();
             sf::Vector2f targetSize(50, 50);
             mSetDefaultIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
-            //mSetDefaultIcon.setColor(sf::Color(200, 200, 200));
+            // mSetDefaultIcon.setColor(sf::Color(200, 200, 200));
         }
 
         // search line
@@ -150,7 +158,7 @@ namespace mainScreen {
             mSearchLine.setPosition(sf::Vector2f(550, 150));
             mSearchLine.setFillColor(sf::Color::White);
             mSearchLine.setFont(constant::fontOpenSans);
-            //mSearchLine.setStyle(sf::Text::Bold);
+            // mSearchLine.setStyle(sf::Text::Bold);
             mSearchLine.setCharacterSize(30);
             mSearchLine.setTextColor(sf::Color::Black);
             mSearchLine.setAlignCenter(true);
@@ -166,7 +174,7 @@ namespace mainScreen {
             sf::Vector2u size = texture.getSize();
             sf::Vector2f targetSize(50, 50);
             mMagnifierIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
-            //mMagnifierIcon.setColor(sf::Color(200, 200, 200));
+            // mMagnifierIcon.setColor(sf::Color(200, 200, 200));
         }
 
         // game button
