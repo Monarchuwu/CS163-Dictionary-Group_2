@@ -288,6 +288,12 @@ namespace mainScreen {
                     std::cout << "[INFO] Magnifier icon is selected\n";
                 }
 
+                /* Written by Sora */
+                // change the content of random word when clicked
+                if (mGameButton[0].isContain(mouse.x, mouse.y)) {
+                    setCallHome(true);
+                    std::cout << "[INFO] Random word box is clicked\n";
+                }
                 break;
             }
 

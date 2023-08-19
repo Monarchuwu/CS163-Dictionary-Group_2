@@ -82,7 +82,7 @@ void Application::update() {
 
         Words::Word* randomWord = mDataManager.getRandomWord();
         if (randomWord) {
-            // std::cout << randomWord->word << "\n";
+            //std::cout << randomWord->word << "\n";
             mScreenMain.setFirstGameButton(randomWord);
         }
     }
