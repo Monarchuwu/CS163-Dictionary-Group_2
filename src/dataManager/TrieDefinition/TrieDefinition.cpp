@@ -17,7 +17,7 @@ TrieDefinition::TrieNode::~TrieNode() {
     }
 }
 void TrieDefinition::TrieNode::addIndex(int index) {
-    if (mIndex.size() > 1000) return;
+    if (mIndex.size() > 2000) return;
     std::vector<int>::iterator it = std::lower_bound(mIndex.begin(), mIndex.end(), index);
     if (it == mIndex.end() || *it != index) {
         mIndex.insert(it, index);

@@ -41,7 +41,7 @@ public:
     //// return the class Word pointer of the new word
     Words::Word* addWord(const std::string& word);
     //// remove the word from dictionary
-    void removeWord(const std::string& word);
+    void removeWord(int index);
     // get the word by the index
     Words::Word* getWordByIndex(int index);
 

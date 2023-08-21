@@ -85,39 +85,6 @@ void Application::update() {
         if (randomWord) {
             //std::cout << randomWord->word << "\n";
             mScreenMain.setFirstGameButton(randomWord);
-
-    if (mScreen->getCallSearchText()) {
-        if (mDataManager.getModeSearch() == constant::ModeSearch::SearchByWord) {
-			std::cout << "[INFO] Search by word" << std::endl;
-            // run search word
-            std::string word = mScreen->getString1();
-            mScreen->setCallSearchText(false);
-            // go to word screen if word exists
-            Words::Word* cur = mDataManager.searchWord(word);
-            if (cur != nullptr) {
-                std::cout << "Found word\n";
-                screenhis.addAWord(cur->word);
-            }
-            else {
-                std::cout << "Not found word\n";
-            }
-            return;
-        }
-		else {
-            std::cout << "[INFO] Search by definition" << std::endl;
-            // run search definition
-            std::string word = mScreen->getString1();
-            mScreen->setCallSearchText(false);
-            // go to word list screen
-            std::vector<Words::Word*> listWord = mDataManager.searchDefinition(word);
-            std::vector<std::string> listWordStr;
-            for (Words::Word*& wordPtr : listWord) {
-                listWordStr.push_back(wordPtr->word);
-			}
-            screenlistword.setListWord(listWordStr);
-            mScreen = &screenlistword;
-			return;
-
         }
     }
 
@@ -140,47 +107,50 @@ void Application::update() {
         return;
     }
 
-
     // SEARCH TEXT -> WORD-DEFINITION SCREEN CALL
     else if (mScreen->getCallSearchText()) {
         if (mDataManager.getModeSearch() == constant::ModeSearch::SearchByWord) {
-                std::cout << "[INFO] Search by word" << std::endl;
+			std::cout << "[INFO] Search by word" << std::endl;
 
-                // run search word
-                std::string word = mScreen->getString1();
-                mScreen->setCallSearchText(false);
+			// run search word
+			std::string word = mScreen->getString1();
+			mScreen->setCallSearchText(false);
 
-                // go to word screen if word exists
-                Words::Word* currrentWord = mDataManager.searchWord(word);
-                if (currrentWord != nullptr) {
-                    std::cout << "[WORD FOUND] " + currrentWord->word << "\n";
+			// go to word screen if word exists
+			Words::Word* currrentWord = mDataManager.searchWord(word);
+			if (currrentWord != nullptr) {
+                std::cout << "[WORD FOUND] " + currrentWord->word << "\n";
 
-                    bool isFavorite = screenfav.inTheFile(currrentWord->word);
+                bool isFavorite = screenfav.inTheFile(currrentWord->word);
+                screenhis.addAWord(currrentWord->word);
 
-                    // Open the Word-Definition screen
-                    if (mScreen->getCallWordDefScreen()) {
-                        mScreen->setCallWordDefScreen(false);
-                        mScreen = &screenWordDef;
+                // Open the Word-Definition screen
+                if (mScreen->getCallWordDefScreen()) {
+                    mScreen->setCallWordDefScreen(false);
+                    mScreen = &screenWordDef;
 
-                        screenWordDef.setWord(currrentWord);
-                        screenWordDef.setFavorite(isFavorite);
-                    }
+                    screenWordDef.setWord(currrentWord);
+                    screenWordDef.setFavorite(isFavorite);
                 }
-                else {
-                    std::cout << "Not found word\n";
-                }
+			}
+			else {
+                std::cout << "Not found word\n";
+			}
         }
         else {
-                std::cout << "[INFO] Search by definition" << std::endl;
-                // run search definition
-                std::string word = mScreen->getString1();
-                mScreen->setCallSearchText(false);
-                // go to word list screen
-                std::vector<Words::Word*> listWord = mDataManager.searchDefinition(word);
-                for (Words::Word*& wordPtr : listWord) {
-                    std::cout << " ----- " << wordPtr->word << std::endl;
-                }
-                std::cout << " ----- END OF LIST ----- " << std::endl;
+			std::cout << "[INFO] Search by definition" << std::endl;
+			// run search definition
+			std::string word = mScreen->getString1();
+			mScreen->setCallSearchText(false);
+			// go to word list screen
+			std::vector<Words::Word*> listWord = mDataManager.searchDefinition(word);
+			std::vector<std::string> listWordStr;
+			for (Words::Word*& wordPtr : listWord) {
+                listWordStr.push_back(wordPtr->word);
+			}
+			screenlistword.setListWord(listWordStr);
+			mScreen = &screenlistword;
+			return;
         }
     }
     
@@ -252,7 +222,7 @@ void Application::update() {
             for (std::string defintion : currentWord->definitions) {
                 mDataManager.deleteDefinition(defintion, index);
             }
-            mDataManager.removeWord(currentWord->word);
+            mDataManager.removeWord(currentWord->getIndex());
         }
 
         mScreen->setCallHome(true);

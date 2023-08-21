@@ -160,24 +160,12 @@ Words::Word* DataManager::addWord(const std::string& word) {
     return &mDictionary.v.back();
 }
 
-void DataManager::removeWord(const std::string& word) {
-    mTrieWord->deleteWord(word);
-
-    if (mDictionary.v.size() == 0) return;
-    std::cout << "[DELETE]\n";
-    for (Words::Word temp : mDictionary.v) {
-		std::cout << temp.index << " " << temp.word << '\n';
-    }
-
-    int pos = -1;
-    for (int i = 0; i < mDictionary.v.size(); ++i) {
-        if (mDictionary.v[i].word == word) {
-			pos = i;
-			break;
-        }
-    }
-    if (pos == -1) return;
-    mDictionary.v[pos] = mDictionary.v[mDictionary.v.size() - 1];
+void DataManager::removeWord(int index) {
+    Words::Word* word = getWordByIndex(index);
+    mTrieWord->deleteWord(word->word);
+    for (const std::string& definition : word->definitions) {
+		mTrieDefinition->deleteDefinition(definition, index);
+	}
 }
 
 Words::Word* DataManager::getWordByIndex(int index) {

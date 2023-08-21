@@ -6,12 +6,18 @@ Screen::Screen()
       mCallHome(false),
       mCallSearchText(false),
       mCallAddWordScreen(false),
-	  mCallFavoriteList(false),
+      mCallFavoriteList(false),
 
-	  mCallWordDefScreen(false),
+      mCallWordDefScreen(false),
 
-	  mCallHistoryList(false)
-	  mCallDefaultDataset(false){
+      mCallHistoryList(false),
+      mCallDefaultDataset(false),
+
+      mAddDefinition(false),
+      mDeleteDefinition(false),
+      mUpdateDefinition(false),
+      mFavoriteToggled(false),
+      mDeleteWord(false) {
 }
 
 Screen::~Screen() {}
