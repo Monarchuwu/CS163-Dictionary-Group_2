@@ -106,11 +106,12 @@ namespace minh
         std::ofstream fout(fileToAdd, std::ios::trunc);
 
         if (!fout.is_open()) {
-        std::cout << "Can not open file";
-        fin.close();
-        fout.close();
-        return;
+          std::cout << "Can not open file";
+          fin.close();
+          fout.close();
+          return;
         }
+      
         fout << word << std::endl;
         while (lines.size()) {
         fout << lines.front() << std::endl;
@@ -128,9 +129,9 @@ namespace minh
         std::ifstream fin;
         fin.open(fileToDelete);
         if (!fin.is_open()) {
-        std::cout << "Can not open file";
-        fin.close();
-        return;
+            std::cout << "Can not open file";
+            fin.close();
+            return;
         }
         std::string str;
 
@@ -139,7 +140,7 @@ namespace minh
         // std::cout << def << std::endl;
         if (str != word)
         
-         lines.push(str);
+            lines.push(str);
         }
 
         std::ofstream fout(fileToDelete, std::ios::trunc);
@@ -164,14 +165,14 @@ namespace minh
         std::string fileToCheck = "data/" + dic_type + "/favourite.txt";
         fin.open(fileToCheck);
         if (!fin.is_open()) {
-        std::cout << "Can not open file";
-        fin.close();
-        return false;
+            std::cout << "Can not open file";
+            fin.close();
+            return false;
         }
         std::string line;
         while (std::getline(fin, line))
         {
-        if (line == word) return true; 
+            if (line == word) return true; 
         }
         return false;
     }

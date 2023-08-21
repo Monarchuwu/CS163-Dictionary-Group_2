@@ -1,6 +1,5 @@
 #1	Number one
-$	Dollar
-$	Money
+$	
 $_$	Has money
 %)	Drunk
 %)	Giddy

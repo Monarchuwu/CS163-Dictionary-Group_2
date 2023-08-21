@@ -113,12 +113,16 @@ void DataManager::loadDatasetInternal(const std::string& dirDataset) {
     // load data from file
     mDictionary.loadFile(dirDataset);
 
+    std::cout << "[INFO] Completely loaded Dictionary List" << std::endl;
+
     // build TrieWord
     delete mTrieWord;
     mTrieWord = new TrieWord();
     for (int i = 0; i < mDictionary.v.size(); ++i) {
         mTrieWord->addWord(mDictionary.v[i].word, i);
     }
+
+    std::cout << "[INFO] Completely loaded TrieWWord" << std::endl;
 
     // build TrieDefinition
     delete mTrieDefinition;
@@ -128,6 +132,8 @@ void DataManager::loadDatasetInternal(const std::string& dirDataset) {
 			mTrieDefinition->addDefinition(definition, i);
 		}
     }
+
+    std::cout << "[INFO] Completely loaded TrieDefinition" << std::endl;
 }
 
 void DataManager::saveDatasetInternal(const std::string& dirDataset) {
@@ -141,6 +147,7 @@ Words::Word* DataManager::searchWord(const std::string& word) {
     if (index == -1) return nullptr;
     return &mDictionary.v[index];
 }
+
 Words::Word* DataManager::addWord(const std::string& word) {
     int index = mTrieWord->searchWord(word);
     if (index != -1) return &mDictionary.v[index];
@@ -152,13 +159,36 @@ Words::Word* DataManager::addWord(const std::string& word) {
  
     return &mDictionary.v.back();
 }
-void DataManager::removeWord(const std::string& word) {
-    mTrieWord->deleteWord(word);
+
+void DataManager::removeWord(int index) {
+    Words::Word* word = getWordByIndex(index);
+    mTrieWord->deleteWord(word->word);
+    for (const std::string& definition : word->definitions) {
+		mTrieDefinition->deleteDefinition(definition, index);
+	}
+}
+
+Words::Word* DataManager::getWordByIndex(int index) {
+    if (index >= (int)mDictionary.v.size()) return nullptr;
+    return &(mDictionary.v[index]);
+}
+
+Words::Word* DataManager::getRandomWord() {
+    int size = mDictionary.v.size();
+    if (size == 0) return nullptr;
+
+    int randomIndex = rand() % size;
+    return &(mDictionary.v[randomIndex]);
 }
 
 void DataManager::addDefinition(const std::string& definition, int index) {
     mTrieDefinition->addDefinition(definition, index);
+
+    Words::Word* temp = getWordByIndex(index);
+    if (!temp) return;
+    temp->definitions.push_back(definition);
 }
+
 std::vector<Words::Word*> DataManager::searchDefinition(const std::string& definition) {
     std::vector<int> list = mTrieDefinition->searchDefinition(definition);
     std::vector<Words::Word*> res;
@@ -167,6 +197,41 @@ std::vector<Words::Word*> DataManager::searchDefinition(const std::string& defin
 	}
     return res;
 }
+
 void DataManager::deleteDefinition(const std::string& definition, int index) {
     mTrieDefinition->deleteDefinition(definition, index);
+
+    Words::Word* temp = getWordByIndex(index);
+    if (!temp) return;
+
+    int pos = -1;
+    for (int i = 0; i < (int)temp->definitions.size(); ++i) {
+		if (temp->definitions[i] == definition) {
+			pos = i;
+			break;
+        }
+    }
+    if (pos == -1) return;
+    for (int i = pos; i < (int)temp->definitions.size() - 1; ++i) {
+        temp->definitions[i] = temp->definitions[i + 1];
+    }
+    temp->definitions.pop_back();
+}
+
+void DataManager::updateDefinition(const std::string& oldDefinition, const std::string& newDefinition, int index) {
+    mTrieDefinition->deleteDefinition(oldDefinition, index);
+    mTrieDefinition->addDefinition(newDefinition, index);
+
+    Words::Word* temp = getWordByIndex(index);
+    if (!temp) return;
+
+    int pos = -1;
+    for (int i = 0; i < (int)temp->definitions.size(); ++i) {
+        if (temp->definitions[i] == oldDefinition) {
+			pos = i;
+			break;
+        }
+    }
+    if (pos == -1) return;
+    temp->definitions[pos] = newDefinition;
 }

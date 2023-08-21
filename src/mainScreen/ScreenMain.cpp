@@ -188,11 +188,36 @@ namespace mainScreen {
                 mGameButton[i].setCharacterSize(40);
                 mGameButton[i].setTextColor(sf::Color::White);
                 mGameButton[i].setAlignCenter(true);
-                mGameButton[i].setText("Game");
+                // mGameButton[i].setText("Game");
             }
             mGameButton[0].setPosition(sf::Vector2f(150, 375));
             mGameButton[1].setPosition(sf::Vector2f(600, 375));
             mGameButton[2].setPosition(sf::Vector2f(1050, 375));
+        }
+
+        /* Written by Sora */
+        // random word boxes
+        {
+            mRandomWordText.setSize(sf::Vector2f(300, 75));
+            mRandomWordText.setFillColor(sf::Color::Transparent);
+            mRandomWordText.setFont(constant::fontOpenSans);
+            mRandomWordText.setStyle(sf::Text::Bold);
+            mRandomWordText.setCharacterSize(40);
+            mRandomWordText.setTextColor(sf::Color::Black);
+            mRandomWordText.setAlignCenter(true);
+            mRandomWordText.setPosition(200, 400);
+            mRandomWordText.setText("Game");
+
+            mRandomWordDefinition.setSize(sf::Vector2f(350, 300));
+            mRandomWordDefinition.setFillColor(sf::Color::Transparent);
+            mRandomWordDefinition.setFont(constant::fontOpenSans);
+            mRandomWordDefinition.setStyle(sf::Text::Bold);
+            mRandomWordDefinition.setCharacterSize(25);
+            mRandomWordDefinition.setTextColor(sf::Color::Black);
+            mRandomWordDefinition.setAlignCenter(true);
+            mRandomWordDefinition.setPosition(175, 500);
+            mRandomWordDefinition.setText("Let's go try something new...");
+
         }
     }
 
@@ -271,6 +296,12 @@ namespace mainScreen {
                     std::cout << "[INFO] Magnifier icon is selected\n";
                 }
 
+                /* Written by Sora */
+                // change the content of random word when clicked
+                if (mGameButton[0].isContain(mouse.x, mouse.y)) {
+                    setCallHome(true);
+                    std::cout << "[INFO] Random word box is clicked\n";
+                }
                 break;
             }
 
@@ -378,7 +409,11 @@ namespace mainScreen {
         // update magnifier icon
         if (mMagnifierIcon.getPressed()) {
             std::string text = mSearchLine.getText();
+
+            setCallWordDefScreen(true);
+
             setCallSearchText(true, text);
+
             std::cout << "[CALL] Search text: " << text << "\n";
             mMagnifierIcon.setPressed(false);
         }
@@ -420,5 +455,36 @@ namespace mainScreen {
         // game button
         for (int i = 0; i < 3; ++i)
             target.draw(mGameButton[i]);
+
+        // Random word
+        target.draw(mRandomWordText);
+        target.draw(mRandomWordDefinition);
+    }
+    void ScreenMain::setFirstGameButton(Words::Word* currentWord) {
+        std::string word = currentWord->word;
+        mRandomWordText.setText(word);
+
+        std::string definition  = currentWord->definitions[0];
+        std::string displayText = "";
+
+        int charCount = 0;
+        std::string text;
+        std::stringstream ss(definition);
+
+        while (std::getline(ss, word, ' ')) {
+            // store token string in the vector
+            if (charCount + word.size() <= 25) {
+                charCount += word.size();
+            }
+            else {
+                charCount = 0;
+                displayText += '\n';
+            }
+            displayText += word;
+            displayText += ' ';
+            ++charCount;
+        }
+        mRandomWordDefinition.setText(displayText);
+
     }
 } // namespace mainScreen

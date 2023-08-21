@@ -6,9 +6,18 @@ Screen::Screen()
       mCallHome(false),
       mCallSearchText(false),
       mCallAddWordScreen(false),
-	  mCallFavoriteList(false),
-	  mCallHistoryList(false),
-	  mCallDefaultDataset(false){
+      mCallFavoriteList(false),
+
+      mCallWordDefScreen(false),
+
+      mCallHistoryList(false),
+      mCallDefaultDataset(false),
+
+      mAddDefinition(false),
+      mDeleteDefinition(false),
+      mUpdateDefinition(false),
+      mFavoriteToggled(false),
+      mDeleteWord(false) {
 }
 
 Screen::~Screen() {}
@@ -41,12 +50,41 @@ void Screen::setDefaultDataset(bool callDefaultDataset) {
 	mCallDefaultDataset = callDefaultDataset;
 }
 
+/* WORD SCREEN */
+
+void Screen::setAddDefinition(bool addDefinition) {
+	mAddDefinition = addDefinition;
+}
+
+void Screen::setDeleteDefinition(bool deleteDefinition) {
+	mDeleteDefinition = deleteDefinition;
+}
+
+void Screen::setUpdateDefinition(bool updateDefinition) {
+	mUpdateDefinition = updateDefinition;
+}
+
+void Screen::setFavoriteToggled(bool favoriteToggled) {
+	mFavoriteToggled = favoriteToggled;
+}
+
+void Screen::setDeleteWord(bool deleteWord) {
+	mDeleteWord = deleteWord;
+}
+
+
+void Screen::setCallWordDefScreen(bool callWordDefScreen) {
+	mCallWordDefScreen = callWordDefScreen;
+}
+
+
 bool Screen::getDataset() const {
 	return this->mDataset;
 }
 bool Screen::getModeSearch() const {
 	return this->mModeSearch;
 }
+
 bool Screen::getCallHome() const {
 	return mCallHome;
 }
@@ -59,6 +97,12 @@ bool Screen::getCallAddWordScreen() const {
 bool Screen::getCallFavoriteList() const {
 	return mCallFavoriteList;
 }
+
+
+bool Screen::getCallWordDefScreen() const {
+	return mCallWordDefScreen;
+}
+
 bool Screen::getCallHistoryList() const {
 	return mCallHistoryList;
 }
@@ -75,3 +119,24 @@ int Screen::getInteger1() const {
 int Screen::getInteger2() const {
 	return this->mInteger2;
 }
+
+bool Screen::getAddDefinition() {
+	return mAddDefinition;
+}
+
+bool Screen::getDeleteDefinition() {
+	return mDeleteDefinition;
+}
+
+bool Screen::getUpdateDefinition() {
+	return mUpdateDefinition;
+}
+
+bool Screen::getFavoriteToggled() {
+	return mFavoriteToggled;
+}
+
+bool Screen::getDeleteWord() {
+	return mDeleteWord;
+}
+
