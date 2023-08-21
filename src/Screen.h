@@ -35,6 +35,8 @@ public:
 
     //set call history
     void setCallHistory(bool callHistory);
+    // set dataset to default
+    void setDefaultDataset(bool callDefaultDataset);
 
     /* WORD SCREEN */
 
@@ -75,6 +77,8 @@ public:
 
     //get call history list
     bool getCallHistoryList() const;
+    // get call default dataset
+    bool getCallDefaultDataset() const;
 
     // get string 1
     std::string getString1() const;
@@ -111,6 +115,7 @@ private:
     bool mCallWordDefScreen;
 
     bool mCallHistoryList;
+    bool mCallDefaultDataset;
     std::string mString1;
     int mInteger1;
     int mInteger2;

@@ -80,10 +80,44 @@ void Application::update() {
         mScreen->setCallHome(false);
         mScreen = &mScreenMain;
 
+
         Words::Word* randomWord = mDataManager.getRandomWord();
         if (randomWord) {
             //std::cout << randomWord->word << "\n";
             mScreenMain.setFirstGameButton(randomWord);
+
+    if (mScreen->getCallSearchText()) {
+        if (mDataManager.getModeSearch() == constant::ModeSearch::SearchByWord) {
+			std::cout << "[INFO] Search by word" << std::endl;
+            // run search word
+            std::string word = mScreen->getString1();
+            mScreen->setCallSearchText(false);
+            // go to word screen if word exists
+            Words::Word* cur = mDataManager.searchWord(word);
+            if (cur != nullptr) {
+                std::cout << "Found word\n";
+                screenhis.addAWord(cur->word);
+            }
+            else {
+                std::cout << "Not found word\n";
+            }
+            return;
+        }
+		else {
+            std::cout << "[INFO] Search by definition" << std::endl;
+            // run search definition
+            std::string word = mScreen->getString1();
+            mScreen->setCallSearchText(false);
+            // go to word list screen
+            std::vector<Words::Word*> listWord = mDataManager.searchDefinition(word);
+            std::vector<std::string> listWordStr;
+            for (Words::Word*& wordPtr : listWord) {
+                listWordStr.push_back(wordPtr->word);
+			}
+            screenlistword.setListWord(listWordStr);
+            mScreen = &screenlistword;
+			return;
+
         }
     }
 
@@ -105,6 +139,7 @@ void Application::update() {
         mScreen = &screenhis;
         return;
     }
+
 
     // SEARCH TEXT -> WORD-DEFINITION SCREEN CALL
     else if (mScreen->getCallSearchText()) {
@@ -224,6 +259,12 @@ void Application::update() {
     }
 
     /* --------------------------------------------------- */
+
+    if (mScreen->getCallDefaultDataset()) {
+        mScreen->setDefaultDataset(false);
+        mDataManager.resetData();
+        return;
+    }
 
     mScreen->update();
     // screenfav.update();

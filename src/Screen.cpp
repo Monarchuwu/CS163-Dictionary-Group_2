@@ -10,8 +10,8 @@ Screen::Screen()
 
 	  mCallWordDefScreen(false),
 
-	  mCallHistoryList(false){
-
+	  mCallHistoryList(false)
+	  mCallDefaultDataset(false){
 }
 
 Screen::~Screen() {}
@@ -39,6 +39,9 @@ void Screen::setCallFavoriteList(bool callFavoriteList) {
 }
 void Screen::setCallHistory(bool callHistoryList){
 	mCallHistoryList = callHistoryList;
+}
+void Screen::setDefaultDataset(bool callDefaultDataset) {
+	mCallDefaultDataset = callDefaultDataset;
 }
 
 /* WORD SCREEN */
@@ -97,6 +100,10 @@ bool Screen::getCallWordDefScreen() const {
 bool Screen::getCallHistoryList() const {
 	return mCallHistoryList;
 }
+bool Screen::getCallDefaultDataset() const {
+	return mCallDefaultDataset;
+}
+
 std::string Screen::getString1() const {
 	return mString1;
 }
