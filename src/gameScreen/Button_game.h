@@ -5,9 +5,9 @@
 #include <string>
 #include <sstream>
 
-class Button {
+class Button_game {
 public:
-    Button() {}
+    Button_game() {}
 
     void create(sf::String t, sf::Vector2f size, sf::Color bgColor, sf::Color textColor, sf::Vector2f pos, sf::Font& font, int charSize) {
         button.setSize(size);
