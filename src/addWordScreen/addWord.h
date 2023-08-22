@@ -179,12 +179,12 @@ public:
     }
 
     //function
-    void setData(int i) {
-        dataSet = i;
+    void setDataSet(int dataSet) {
+        this->dataSet = dataSet;
+        setScreen();
     }
 
     void setScreen() {
-        dataSet    = getDataset();
 
         sprite_tmp = sprite_v[dataSet];
         color_tmp  = color_v[dataSet];
@@ -247,6 +247,7 @@ public:
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
             if (textbox1.getText() != lastput[dataSet][0] || textbox2.getText() != lastput[dataSet][1]) {
                 inputFile(nameDict, textbox1.getText(), textbox2.getText(), cnt_v[dataSet], recentword_v[dataSet], lastput, dataSet);
+                setCallAddWord(true, textbox1.getText(), textbox2.getText());
                 total.setContent(std::to_string(cnt_v[dataSet]));
                 recent.setContent(recentword_v[dataSet]);
             }
