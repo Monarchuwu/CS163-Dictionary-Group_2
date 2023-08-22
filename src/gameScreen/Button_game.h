@@ -101,7 +101,7 @@ public:
         button.setSize(size);
     }
 
-    void drawTo(sf::RenderWindow& window) {
+    void drawTo(sf::RenderTarget& window) const {
         window.draw(underlay);
         window.draw(button);
         window.draw(text);
