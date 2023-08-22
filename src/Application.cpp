@@ -107,6 +107,22 @@ void Application::update() {
     if (mScreen->getCallAddWordScreen()) {
         mScreen->setCallAddWordScreen(false);
         mScreen = &screenAddWord;
+        screenAddWord.setDataSet(mDataManager.getDataset());
+        return;
+    }
+
+    if (mScreen->getCallGameScreen()) {
+        mScreen->setCallGameScreen(false);
+        mScreen = &screenGame;
+        return;
+    }
+
+    if (mScreen->getCallAddWord()) {      
+        std::string word = mScreen->getString1();
+        std::string def  = mScreen->getString2();
+        Words::Word* w   = mDataManager.addWord(word);
+        mDataManager.addDefinition(def, w->getIndex());
+        mScreen->setCallAddWord(false);
         return;
     }
 
