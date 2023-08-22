@@ -7,7 +7,7 @@
 
 class GameScreen : public Screen {
 public:
-    sf::RenderWindow window;
+    //sf::RenderWindow window;
     sf::Font feather;
 
     //TrieWord tree = TrieWord();
@@ -24,23 +24,23 @@ public:
     bool isQuit = 0;
     bool active = 1;
 
-    std::string dataFile = ".\\File\\tmp2.txt";
+    //std::string dataFile = ".\\File\\tmp2.txt";
 
     sf::Text live;
     sf::Text showResult;
     sf::Text quote;
 
     //Textbox
-    Button nothing1;
-    Button nothing2;
+    Button_game nothing1;
+    Button_game nothing2;
 
-    Button cancel;
-    Button qbox;
-    Button word;
-    Button A;
-    Button B;
-    Button C;
-    Button D;
+    Button_game cancel;
+    Button_game qbox;
+    Button_game word;
+    Button_game A;
+    Button_game B;
+    Button_game C;
+    Button_game D;
     
     //Texture
     sf::Texture humpback;
@@ -95,15 +95,16 @@ public:
     //std::vector<sf::Color> color = { sf::Color(254, 254, 254), sf::Color(254, 254, 254), sf::Color(254, 254, 254) };
     std::vector<sf::Sprite> image;
     std::vector< std::vector<sf::Vector2f> > posi;
-    std::vector<Button*> ansButton;
+    std::vector<Button_game*> ansButton;
 
     sf::Vector2f mousePos;
 
     GameScreen() {
-        window.create(sf::VideoMode(1200, 900), "SFML works!");
 
         //Font
-        if (!feather.loadFromFile("feather.ttf")) std::cout << "False";
+        if (!feather.loadFromFile("data/fonts/feather.ttf")) std::cout << "False";
+
+        const std::string pathImage = ".\\data\\images\\";
 
         //Text
         //live
@@ -174,109 +175,109 @@ public:
 
         //Image
         //humpbacks
-        if (!humpback.loadFromFile(".\\Image\\Humpback.PNG")) std::cout << "False";
+        if (!humpback.loadFromFile(pathImage  + "Humpback.PNG")) std::cout << "False";
         humpbacks.setTexture(humpback);
         humpbacks.setScale(sf::Vector2f(0.2f, 0.2f));
         humpbacks.setPosition(sf::Vector2f(12.f, 55.f));
 
         //feriens
-        if (!ferien.loadFromFile(".\\Image\\Ferien.PNG")) std::cout << "False";
+        if (!ferien.loadFromFile(pathImage + "Ferien.PNG")) std::cout << "False";
         feriens.setTexture(ferien);
         feriens.setScale(sf::Vector2f(0.2f, 0.2f));
         feriens.setPosition(sf::Vector2f(15.f, 58.f));
 
         //books
-        if (!book.loadFromFile(".\\Image\\Book.PNG")) std::cout << "False";
+        if (!book.loadFromFile(pathImage + "Book.PNG")) std::cout << "False";
         books.setTexture(book);
         books.setScale(sf::Vector2f(0.2f, 0.2f));
         books.setPosition(sf::Vector2f(15.f, 58.f));
 
         //diamonds
-        if (!diamond.loadFromFile(".\\Image\\Diamond.PNG")) std::cout << "False";
+        if (!diamond.loadFromFile(pathImage + "Diamond.PNG")) std::cout << "False";
         diamonds.setTexture(diamond);
         diamonds.setScale(sf::Vector2f(0.17f, 0.17f));
         diamonds.setPosition(sf::Vector2f(900.f, 58.f));
 
         //ufos
-        if (!ufo.loadFromFile(".\\Image\\UFO.PNG")) std::cout << "False";
+        if (!ufo.loadFromFile(pathImage + "UFO.PNG")) std::cout << "False";
         ufos.setTexture(ufo);
         ufos.setScale(sf::Vector2f(0.2f, 0.2f));
         ufos.setPosition(sf::Vector2f(800.f, 60.f));
 
         //hearts
-        if (!heart.loadFromFile(".\\Image\\Heart.PNG")) std::cout << "False";
+        if (!heart.loadFromFile(pathImage + "Heart.PNG")) std::cout << "False";
         hearts.setTexture(heart);
         hearts.setScale(sf::Vector2f(0.15f, 0.15f));
         hearts.setPosition(sf::Vector2f(1050.f, 22.f));
 
         //fishs
-        if (!fish.loadFromFile(".\\Image\\Fish.PNG")) std::cout << "False";
+        if (!fish.loadFromFile(pathImage + "Fish.PNG")) std::cout << "False";
         fishs.setTexture(fish);
         fishs.setScale(sf::Vector2f(0.5f, 0.5f));
         fishs.setPosition(sf::Vector2f(820.f, 52.f));
 
         //fires
-        if (!fire.loadFromFile(".\\Image\\Fire.PNG")) std::cout << "False";
+        if (!fire.loadFromFile(pathImage + "Fire.PNG")) std::cout << "False";
         fires.setTexture(fire);
         fires.setScale(sf::Vector2f(0.19f, 0.19f));
         fires.setPosition(sf::Vector2f(15.f, 41.f));
 
         //naps
-        if (!nap.loadFromFile(".\\Image\\Nap.PNG")) std::cout << "False";
+        if (!nap.loadFromFile(pathImage + "Nap.PNG")) std::cout << "False";
         naps.setTexture(nap);
         naps.setScale(sf::Vector2f(0.25f, 0.25f));
         naps.setPosition(sf::Vector2f(850.f, 60.f));
 
         //homes
-        if (!home.loadFromFile(".\\Image\\Home_x.PNG")) std::cout << "False";
+        if (!home.loadFromFile(pathImage + "Home_x.PNG")) std::cout << "False";
         homes.setTexture(home);
         homes.setScale(sf::Vector2f(0.12f, 0.12f));
         homes.setPosition(sf::Vector2f(15.f, 15.f));
 
         //quits
-        if (!quit.loadFromFile(".\\Image\\Quit.PNG")) std::cout << "False";
+        if (!quit.loadFromFile(pathImage + "Quit.PNG")) std::cout << "False";
         quits.setTexture(quit);
         quits.setScale(sf::Vector2f(0.5f, 0.5f));
         quits.setPosition(sf::Vector2f(400.f, 550.f));
         
         //ends
-        if (!end.loadFromFile(".\\Image\\End.png")) std::cout << "False";
+        if (!end.loadFromFile(pathImage + "End.png")) std::cout << "False";
         ends.setTexture(end);
         ends.setScale(sf::Vector2f(0.32f, 0.32f));
         ends.setPosition(sf::Vector2f(120.f, 620.f));
 
         //keeps
-        if (!keep.loadFromFile(".\\Image\\Keep.png")) std::cout << "False";
+        if (!keep.loadFromFile(pathImage + "Keep.png")) std::cout << "False";
         keeps.setTexture(keep);
         keeps.setScale(sf::Vector2f(0.53f, 0.53f));
         keeps.setPosition(sf::Vector2f(740.f, 620.f));
 
         //conts
-        if (!cont.loadFromFile(".\\Image\\Cont.png")) std::cout << "False";
+        if (!cont.loadFromFile(pathImage + "Cont.png")) std::cout << "False";
         conts.setTexture(cont);
         conts.setScale(sf::Vector2f(0.7f, 0.7f));
         conts.setPosition(sf::Vector2f(360.f, 765.f));
 
         //gotits
-        if (!gotit.loadFromFile(".\\Image\\Gotit.png")) std::cout << "False";
+        if (!gotit.loadFromFile(pathImage + "Gotit.png")) std::cout << "False";
         gotits.setTexture(gotit);
         gotits.setScale(sf::Vector2f(0.7f, 0.7f));
         gotits.setPosition(sf::Vector2f(350.f, 765.f));
 
         //sads
-        if (!sad.loadFromFile(".\\Image\\Sad.png")) std::cout << "False";
+        if (!sad.loadFromFile(pathImage + "Sad.png")) std::cout << "False";
         sads.setTexture(sad);
         sads.setScale(sf::Vector2f(0.42f, 0.42f));
         sads.setPosition(sf::Vector2f(280.f, 180.f));
 
         //contblues
-        if (!contblue.loadFromFile(".\\Image\\Cont_blue.png")) std::cout << "False";
+        if (!contblue.loadFromFile(pathImage + "Cont_blue.png")) std::cout << "False";
         contblues.setTexture(contblue);
         contblues.setScale(sf::Vector2f(0.6f, 0.6f));
         contblues.setPosition(sf::Vector2f(350.f, 700.f));
 
         //happys
-        if (!happy.loadFromFile(".\\Image\\Happy.png")) std::cout << "False";
+        if (!happy.loadFromFile(pathImage + "Happy.png")) std::cout << "False";
         happys.setTexture(happy);
         happys.setScale(sf::Vector2f(0.4f, 0.4f));
         happys.setPosition(sf::Vector2f(325.f, 160.f));
@@ -293,14 +294,14 @@ public:
         }
 
         //RandomSpace
-        rd.readFile(".\\File\\gamebank.txt");
+        rd.readFile(".\\data\\datas\\tmp.txt");
         loadQues();
 
         //File
         readRecord();
     }
 
-    std::vector<sf::Vector2f> getPosiButton(Button tmp) {
+    std::vector<sf::Vector2f> getPosiButton(Button_game tmp) {
         float x = tmp.button.getPosition().x;
         float y = tmp.button.getPosition().y;
 
@@ -311,9 +312,12 @@ public:
     }
 
     //Functions
+    void setDataSet(int dataSet) {
+        this->dataSet = dataSet; 
+    }
     //with files
     void readRecord() {
-        std::ifstream fin(".\\File\\Record.txt");
+        std::ifstream fin(".\\data\\datas\\Record.txt");
 
         std::string tmp;
         fin >> tmp;
@@ -356,7 +360,7 @@ public:
         return spriteBound.contains(sf::Vector2f(mousePos));
     }
 
-    bool isTouching_button(Button tmp) {
+    bool isTouching_button(Button_game tmp) {
         sf::FloatRect spriteBound = tmp.button.getGlobalBounds();
         return spriteBound.contains(sf::Vector2f(mousePos));
     }
@@ -393,11 +397,11 @@ public:
     }
 
     void isTouching_cont() {
-        if (isTouching(nth2s)) window.close(); 
+        if (isTouching(nth2s)) setCallHome(true);
     }
 
     void isTouching_end() {
-        if (isTouching(nth2s)) window.close();
+        if (isTouching(nth2s)) setCallHome(true);
     }
 
     //with UI
@@ -523,68 +527,57 @@ public:
     }
 
     //handle event
-    void handleEvent() {
-        sf::Event event;
-        while (window.isOpen()) {
-            changeColor();
-            while (window.pollEvent(event)) {
-                if (event.type == sf::Event::MouseButtonPressed) {
-                    sf::Vector2f mousePos_tmp(event.mouseButton.x, event.mouseButton.y);
-                    mousePos = mousePos_tmp;
-                    if (event.mouseButton.button == sf::Mouse::Left) {
- 
-                        if (!active) isTouching_cont();
-                        if (liveleft == 0) endGame();
-                        if (active) isTouching_home();
+    void handleEvent(const sf::Event& event) override {
+        // sf::Event event;
+        if (event.type == sf::Event::MouseButtonPressed) {
+            sf::Vector2f mousePos_tmp(event.mouseButton.x, event.mouseButton.y);
+            mousePos = mousePos_tmp;
+            if (event.mouseButton.button == sf::Mouse::Left) {
+                if (!active) isTouching_cont();
+                if (liveleft == 0) endGame();
+                if (active) isTouching_home();
 
-                        for (int i = 0; i < 4; i++) {
-                            if (isTouching_button(*ansButton[i]) && !ansYet && !isQuit && active) {
-                                checkAns(i);
-                                 ansYet = 1;
-                                 break;
-                            }
-                        }
-
-                        if (isQuit && active) {
-                             isTouching_keep();
-                             isTouching_end();
-                        }
-
-                        if (ansYet && !isQuit && active) isTouching_yesno();
+                for (int i = 0; i < 4; i++) {
+                    if (isTouching_button(*ansButton[i]) && !ansYet && !isQuit && active) {
+                        checkAns(i);
+                        ansYet = 1;
+                        break;
                     }
                 }
+
+                if (isQuit && active) {
+                    isTouching_keep();
+                    isTouching_end();
+                }
+
+                if (ansYet && !isQuit && active) isTouching_yesno();
             }
-                /*
-                if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-                    if (!active) isClick_cont();
-                    if (liveleft == 0) endGame();
-                    if (active) isClick_home();
+        }
+        /*
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            if (!active) isClick_cont();
+            if (liveleft == 0) endGame();
+            if (active) isClick_home();
 
-                    for (int i = 0; i < 4;i++) { 
-                        if (isClick_button(*ansButton[i]) && !ansYet && !isQuit && active) {
-                            checkAns(i);
-                            ansYet = 1;
-                            break;
-                        }
-                    }
-
-                    if (isQuit && active) {
-                        isClick_keep();
-                        isClick_end();
-                    }
-
-                    if (ansYet && !isQuit && active) isClick_yesno();
-                    
-                }
-                */
-                switch (event.type) {
-                case sf::Event::Closed:
-                    window.close();
+            for (int i = 0; i < 4;i++) {
+                if (isClick_button(*ansButton[i]) && !ansYet && !isQuit && active) {
+                    checkAns(i);
+                    ansYet = 1;
                     break;
                 }
-                //draw();
             }
 
+            if (isQuit && active) {
+                isClick_keep();
+                isClick_end();
+            }
+
+            if (ansYet && !isQuit && active) isClick_yesno();
+
+        }
+        */
+     
+        // draw();
     }
 
     void update() override {}
