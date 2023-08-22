@@ -369,6 +369,14 @@ public:
         }
     }
 
+    void isClick_cont() {
+        if (isClick(nth2s)) window.close(); 
+    }
+
+    void isClick_end() {
+        if (isClick(nth2s)) window.close();
+    }
+
     void changeColor () {
         if (page > image.size()-1) page = 0;
         if (page < 0) page = image.size()-1;
@@ -498,6 +506,7 @@ public:
             changeColor();
             while (window.pollEvent(event)) {
                 if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                    if (!active) isClick_cont();
                     if (liveleft == 0) endGame();
                     if (active) isClick_home();
 
@@ -509,7 +518,10 @@ public:
                         }
                     }
 
-                    if (isQuit && active) isClick_keep();
+                    if (isQuit && active) {
+                        isClick_keep();
+                        isClick_end();
+                    }
 
                     if (ansYet && !isQuit && active) isClick_yesno();
                     
