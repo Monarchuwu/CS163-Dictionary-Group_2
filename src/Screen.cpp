@@ -7,7 +7,9 @@ Screen::Screen()
       mCallSearchText(false),
       mCallAddWordScreen(false),
 	  mCallFavoriteList(false),
-	  mCallHistoryList(false){
+	  mCallHistoryList(false),
+      mCallAddWord(false),
+      mCallGameScreen(false) {
 }
 
 Screen::~Screen() {}
@@ -36,6 +38,14 @@ void Screen::setCallFavoriteList(bool callFavoriteList) {
 void Screen::setCallHistory(bool callHistoryList){
 	mCallHistoryList = callHistoryList;
 }
+void Screen::setCallAddWord(bool callAddWord, const std::string& w, const std::string& d) {
+    mCallAddWord = callAddWord;
+    mString1     = w;
+    mString2     = d;
+}
+void Screen::setCallGameScreen(bool callGameScreen) {
+    mCallGameScreen = callGameScreen;
+}
 
 bool Screen::getDataset() const {
 	return this->mDataset;
@@ -58,8 +68,17 @@ bool Screen::getCallFavoriteList() const {
 bool Screen::getCallHistoryList() const {
 	return mCallHistoryList;
 }
+bool Screen::getCallAddWord() const {
+    return mCallAddWord;
+}
+bool Screen::getCallGameScreen() const {
+    return mCallGameScreen;
+}
 std::string Screen::getString1() const {
 	return mString1;
+}
+std::string Screen::getString2() const {
+    return mString2;
 }
 int Screen::getInteger1() const {
 	return this->mInteger1;

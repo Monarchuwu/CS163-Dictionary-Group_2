@@ -31,6 +31,10 @@ public:
     void setCallFavoriteList(bool callFavoriteList);
     //set call history
     void setCallHistory(bool callHistory);
+    //set call add word
+    void setCallAddWord(bool callAddWord, const std::string& w = "", const std::string& d = "");
+    //set call game screen
+    void setCallGameScreen(bool callGameScreen);
 
     // get dataset
     // data stored in Integer1
@@ -49,9 +53,15 @@ public:
     bool getCallFavoriteList() const;
     //get call history list
     bool getCallHistoryList() const;
+    //get call add word
+    bool getCallAddWord() const;
+    //get call screen game
+    bool getCallGameScreen() const;
 
     // get string 1
     std::string getString1() const;
+    // get string 2
+    std::string getString2() const;
     // get integer 1
     int getInteger1() const;
     // get integer 2
@@ -65,7 +75,10 @@ private:
     bool mCallAddWordScreen;
     bool mCallFavoriteList;
     bool mCallHistoryList;
+    bool mCallAddWord;
+    bool mCallGameScreen;
     std::string mString1;
+    std::string mString2;
     int mInteger1;
     int mInteger2;
 };

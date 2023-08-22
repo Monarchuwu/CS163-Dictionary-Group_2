@@ -81,9 +81,6 @@
     <ClCompile Include="src\dataManager\TrieWord\TrieWord.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\gameScreen\Gamescreen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\addWordScreen\addWord.h">
@@ -120,6 +117,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\gameScreen\RandomSpace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gameScreen\Gamescreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

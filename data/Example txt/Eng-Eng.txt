@@ -11,3 +11,7 @@ CS	Computer Scienc
 C	Computer Scienc
 C	Computer Scien
 C	Computer Scie
+mth	Math
+mth	Maths
+word	defi
+w	d
