@@ -1,22 +1,29 @@
+#pragma once
 #include "Button_game.h"
 #include <SFML/Graphics.hpp>
 #include "RandomSpace.h"
+#include "..\dataManager\DataManager.h"
+#include "..\Screen.h"
 
-class GameScreen {
+class GameScreen : public Screen {
 public:
     sf::RenderWindow window;
     sf::Font feather;
 
     //TrieWord tree = TrieWord();
     randomSpace rd = randomSpace();
+
+    int dataSet;
     int page = 0;
     int ind = 0;
     int liveleft = 2;
     int record = 0;
     int result = 0;
+
     bool ansYet = 0;
     bool isQuit = 0;
     bool active = 1;
+
     std::string dataFile = ".\\File\\tmp2.txt";
 
     sf::Text live;
@@ -89,6 +96,8 @@ public:
     std::vector<sf::Sprite> image;
     std::vector< std::vector<sf::Vector2f> > posi;
     std::vector<Button*> ansButton;
+
+    sf::Vector2f mousePos;
 
     GameScreen() {
         window.create(sf::VideoMode(1200, 900), "SFML works!");
@@ -283,7 +292,7 @@ public:
             *(posi.end() - 1) = getPosiButton(*ansButton[i]);
         }
 
-        //Random
+        //RandomSpace
         rd.readFile(".\\File\\gamebank.txt");
         loadQues();
 
@@ -301,6 +310,8 @@ public:
         return { {x,y},{xwidth, yheight} };
     }
 
+    //Functions
+    //with files
     void readRecord() {
         std::ifstream fin(".\\File\\Record.txt");
 
@@ -309,7 +320,7 @@ public:
         record = std::stoi(tmp);
         fin.close();
     }
-
+    /*
     bool isClick(sf::Sprite tmp) {
         float mouseX = sf::Mouse::getPosition(window).x;
         float mouseY = sf::Mouse::getPosition(window).y;
@@ -337,9 +348,21 @@ public:
         if (mouseX > x && mouseX <xwidth && mouseY >y && mouseY < yheight) return 1;
         return 0;
     }
+    */
 
-    void isClick_home() {
-        if (isClick(homes)) {
+    //with Button, Sprite
+    bool isTouching(sf::Sprite tmp) {
+        sf::FloatRect spriteBound = tmp.getGlobalBounds();
+        return spriteBound.contains(sf::Vector2f(mousePos));
+    }
+
+    bool isTouching_button(Button tmp) {
+        sf::FloatRect spriteBound = tmp.button.getGlobalBounds();
+        return spriteBound.contains(sf::Vector2f(mousePos));
+    }
+
+    void isTouching_home() {
+        if (isTouching(homes)) {
             isQuit = 1;
             nothing1 = cancel;
             nth1s = quits;
@@ -348,8 +371,8 @@ public:
         }
     }
 
-    void isClick_keep() {
-        if (isClick(keeps)) {
+    void isTouching_keep() {
+        if (isTouching(keeps)) {
             isQuit = 0;
             nothing1 = nothing2;
             nth1s = nth4s;
@@ -358,8 +381,8 @@ public:
         }
     }
 
-    void isClick_yesno() {
-        if (isClick(yesnos)) {
+    void isTouching_yesno() {
+        if (isTouching(yesnos)) {
             yesnos = nth4s;
             ansYet = 0;
             ind++;
@@ -369,14 +392,15 @@ public:
         }
     }
 
-    void isClick_cont() {
-        if (isClick(nth2s)) window.close(); 
+    void isTouching_cont() {
+        if (isTouching(nth2s)) window.close(); 
     }
 
-    void isClick_end() {
-        if (isClick(nth2s)) window.close();
+    void isTouching_end() {
+        if (isTouching(nth2s)) window.close();
     }
 
+    //with UI
     void changeColor () {
         if (page > image.size()-1) page = 0;
         if (page < 0) page = image.size()-1;
@@ -423,7 +447,6 @@ public:
         }
         */
   }
-
 
     void loadQues() {
         if (ind >= rd.listAns.size()) ind = 0;
@@ -505,6 +528,33 @@ public:
         while (window.isOpen()) {
             changeColor();
             while (window.pollEvent(event)) {
+                if (event.type == sf::Event::MouseButtonPressed) {
+                    sf::Vector2f mousePos_tmp(event.mouseButton.x, event.mouseButton.y);
+                    mousePos = mousePos_tmp;
+                    if (event.mouseButton.button == sf::Mouse::Left) {
+ 
+                        if (!active) isTouching_cont();
+                        if (liveleft == 0) endGame();
+                        if (active) isTouching_home();
+
+                        for (int i = 0; i < 4; i++) {
+                            if (isTouching_button(*ansButton[i]) && !ansYet && !isQuit && active) {
+                                checkAns(i);
+                                 ansYet = 1;
+                                 break;
+                            }
+                        }
+
+                        if (isQuit && active) {
+                             isTouching_keep();
+                             isTouching_end();
+                        }
+
+                        if (ansYet && !isQuit && active) isTouching_yesno();
+                    }
+                }
+            }
+                /*
                 if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                     if (!active) isClick_cont();
                     if (liveleft == 0) endGame();
@@ -526,41 +576,43 @@ public:
                     if (ansYet && !isQuit && active) isClick_yesno();
                     
                 }
-
+                */
                 switch (event.type) {
                 case sf::Event::Closed:
                     window.close();
                     break;
                 }
-                draw();
+                //draw();
             }
-        }
+
     }
 
-    void draw() {
-        window.clear(sf::Color(254, 254, 254));
+    void update() override {}
 
-        window.draw(image1);
-        window.draw(hearts);
-        window.draw(homes);
-        window.draw(live);
-        window.draw(yesnos);
+    void draw(sf::RenderTarget& target, sf::RenderStates states = sf::RenderStates::Default) const override {
+        target.clear(sf::Color(254, 254, 254));
 
-        A.drawTo(window);
-        B.drawTo(window);
-        C.drawTo(window);
-        D.drawTo(window);
-        word.drawTo(window);
-        qbox.drawTo(window);
+        target.draw(image1);
+        target.draw(hearts);
+        target.draw(homes);
+        target.draw(live);
+        target.draw(yesnos);
 
-        nothing1.drawTo(window);
-        window.draw(nth1s);
-        window.draw(nth2s);
-        window.draw(nth3s);
-        window.draw(showResult);
-        window.draw(quote);
+        A.drawTo(target);
+        B.drawTo(target);
+        C.drawTo(target);
+        D.drawTo(target);
+        word.drawTo(target);
+        qbox.drawTo(target);
+
+        nothing1.drawTo(target);
+        target.draw(nth1s);
+        target.draw(nth2s);
+        target.draw(nth3s);
+        target.draw(showResult);
+        target.draw(quote);
         
-        window.display();
+        //target.display();
     }
 };
 
