@@ -1,5 +1,13 @@
-sfml; c;
-ghjjudddeeertgg; sjjs;
-aah; ccc;
-CS; Computer Science;
 
+abc	alphabet
+abc	alphabet
+a	abc
+a	abc
+eng	English
+eng	English
+mth212	Math
+CS	Computer Science
+CS	Computer Scienc
+C	Computer Scienc
+C	Computer Scien
+C	Computer Scie
