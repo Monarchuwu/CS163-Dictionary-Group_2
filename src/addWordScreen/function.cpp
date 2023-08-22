@@ -8,7 +8,7 @@ bool check(std::string t) {
 	return 1;
 }
 
-bool inputFile(std::string& nameDict, std::string word, std::string def, int& cnt, std::string& recentword) {
+bool inputFile(std::string& nameDict, std::string word, std::string def, int& cnt, std::string& recentword, std::vector<std::vector<std::string> > & lastput, int dataSet) {
 	if (word.length() == 0 || def.length() < 1 || !check(word) || !check(def)) return 0;
 
 	std::ofstream ft(nameDict, std::fstream::app);
@@ -17,10 +17,12 @@ bool inputFile(std::string& nameDict, std::string word, std::string def, int& cn
 
 	cnt++;
 	recentword = word;
+	lastput[dataSet][0] = word;
+	lastput[dataSet][1] = def;
 	return 1;
 }
 
-void outputFile(std::string& nameDict, int& cnt, std::string& recentword) {
+void outputFile(std::string& nameDict, int& cnt, std::string& recentword, std::vector<std::string>& lastput) {
 	std::ifstream fin(nameDict);
 	std::string word = "";
 	std::string def = "";
@@ -33,6 +35,8 @@ void outputFile(std::string& nameDict, int& cnt, std::string& recentword) {
 
 		cnt++;
 		recentword = word; 
+		lastput[0] = word;
+		lastput[1] = def;
 		word = "";
 		def = "";
 	}
@@ -70,12 +74,15 @@ void changeText(Button& btn, int dataSet) {
 	else btn.content.setString("Word");
 }
 
-void checkAllDict(std::vector<std::string>& recentword_v, std::vector<int>& cnt_v, std::vector<std::string>& nameDict_v) {
+void checkAllDict(std::vector<std::string>& recentword_v, std::vector<int>& cnt_v, std::vector<std::string>& nameDict_v, std::vector<std::vector<std::string> > & lastput) {
 	for (int i = 0; i < 5; i++) {
 		std::string recentword = "";
+	    std::vector<std::string> tmp = { "wprd", "def" };
 		int cnt = 0;
-		outputFile(nameDict_v[i], cnt, recentword);
+		outputFile(nameDict_v[i], cnt, recentword, tmp);
+		lastput.push_back(tmp);
 		recentword_v.push_back(recentword);
 		cnt_v.push_back(cnt);
 	}
 }
+
