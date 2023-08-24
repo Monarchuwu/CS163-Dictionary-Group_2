@@ -15,3 +15,14 @@ mth	Math
 mth	Maths
 word	defi
 w	d
+word	definition
+word	definition
+word	defi nition
+apcs	advanced program in cs
+apcs	advanced program in cs
+word	word def
+word	word def d
+word	word def d d
+word 	ddd
+word 	ddd d
+word 	ddd d d
