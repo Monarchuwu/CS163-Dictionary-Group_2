@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <stdlib.h>
 #include "../Constant.h"
 #include "TrieWord/TrieWord.h"
 #include "TrieDefinition/TrieDefinition.h"
@@ -40,7 +41,12 @@ public:
     //// return the class Word pointer of the new word
     Words::Word* addWord(const std::string& word);
     //// remove the word from dictionary
-    void removeWord(const std::string& word);
+    void removeWord(int index);
+    // get the word by the index
+    Words::Word* getWordByIndex(int index);
+
+    // get random word
+    Words::Word* getRandomWord();
 
     /* ----- handle search definition query ----- */
     // add the definition into the trie (add the word corresponding to)
@@ -50,6 +56,9 @@ public:
     std::vector<Words::Word*> searchDefinition(const std::string& definition);
     // delete the definition from the trie (delete the word corresponding to)
     void deleteDefinition(const std::string& definition, int index);
+
+    // update the definition from oldDefinition to newDefintion (update the word corresponding to index)
+    void updateDefinition(const std::string& oldDefinition, const std::string& newDefinition, int index);
 
 private:
     // load data from file (internal)

@@ -10,17 +10,25 @@ namespace mainScreen {
             mColorBackground[0][0] = sf::Color(113, 114, 115);
             mColorBackground[0][1] = sf::Color(1, 49, 116);
             // EN-VN
-            mColorBackground[1][0] = sf::Color(195, 44, 48);
-            mColorBackground[1][1] = sf::Color(16, 13, 8);
+            mColorBackground[1][0] = sf::Color(113, 114, 115);
+            mColorBackground[1][1] = sf::Color(1, 49, 116);
+            // mColorBackground[1][0] = sf::Color(195, 44, 48);
+            // mColorBackground[1][1] = sf::Color(16, 13, 8);
             // VN-EN
             mColorBackground[2][0] = sf::Color(113, 114, 115);
-            mColorBackground[2][1] = sf::Color(96, 13, 198);
+            mColorBackground[2][1] = sf::Color(1, 49, 116);
+            // mColorBackground[2][0] = sf::Color(113, 114, 115);
+            // mColorBackground[2][1] = sf::Color(96, 13, 198);
             // SLANG
             mColorBackground[3][0] = sf::Color(113, 114, 115);
-            mColorBackground[3][1] = sf::Color(238, 102, 3);
+            mColorBackground[3][1] = sf::Color(1, 49, 116);
+            // mColorBackground[3][0] = sf::Color(113, 114, 115);
+            // mColorBackground[3][1] = sf::Color(238, 102, 3);
             // EMOJI
             mColorBackground[4][0] = sf::Color(113, 114, 115);
-            mColorBackground[4][1] = sf::Color(52, 171, 153);
+            mColorBackground[4][1] = sf::Color(1, 49, 116);
+            // mColorBackground[4][0] = sf::Color(113, 114, 115);
+            // mColorBackground[4][1] = sf::Color(52, 171, 153);
         }
 
         // background
@@ -105,7 +113,7 @@ namespace mainScreen {
             sf::Vector2u size = texture.getSize();
             sf::Vector2f targetSize(50, 50);
             mPlusIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
-            //mPlusIcon.setColor(sf::Color(200, 200, 200));
+            // mPlusIcon.setColor(sf::Color(200, 200, 200));
         }
         // favorite icon button sprite
         {
@@ -117,7 +125,7 @@ namespace mainScreen {
             sf::Vector2u size = texture.getSize();
             sf::Vector2f targetSize(50, 50);
             mFavoriteIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
-            //mFavoriteIcon.setColor(sf::Color(200, 200, 200));
+            // mFavoriteIcon.setColor(sf::Color(200, 200, 200));
         }
         // history icon button sprite
         {
@@ -129,7 +137,7 @@ namespace mainScreen {
             sf::Vector2u size = texture.getSize();
             sf::Vector2f targetSize(50, 50);
             mHistoryIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
-            //mHistoryIcon.setColor(sf::Color(200, 200, 200));
+            // mHistoryIcon.setColor(sf::Color(200, 200, 200));
         }
         // set default icon button sprite
         {
@@ -141,7 +149,7 @@ namespace mainScreen {
             sf::Vector2u size = texture.getSize();
             sf::Vector2f targetSize(50, 50);
             mSetDefaultIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
-            //mSetDefaultIcon.setColor(sf::Color(200, 200, 200));
+            // mSetDefaultIcon.setColor(sf::Color(200, 200, 200));
         }
 
         // search line
@@ -150,7 +158,7 @@ namespace mainScreen {
             mSearchLine.setPosition(sf::Vector2f(550, 150));
             mSearchLine.setFillColor(sf::Color::White);
             mSearchLine.setFont(constant::fontOpenSans);
-            //mSearchLine.setStyle(sf::Text::Bold);
+            // mSearchLine.setStyle(sf::Text::Bold);
             mSearchLine.setCharacterSize(30);
             mSearchLine.setTextColor(sf::Color::Black);
             mSearchLine.setAlignCenter(true);
@@ -166,7 +174,7 @@ namespace mainScreen {
             sf::Vector2u size = texture.getSize();
             sf::Vector2f targetSize(50, 50);
             mMagnifierIcon.setScale(targetSize.x / size.x, targetSize.y / size.y);
-            //mMagnifierIcon.setColor(sf::Color(200, 200, 200));
+            // mMagnifierIcon.setColor(sf::Color(200, 200, 200));
         }
 
         // game button
@@ -180,11 +188,36 @@ namespace mainScreen {
                 mGameButton[i].setCharacterSize(40);
                 mGameButton[i].setTextColor(sf::Color::White);
                 mGameButton[i].setAlignCenter(true);
-                mGameButton[i].setText("Game");
+                // mGameButton[i].setText("Game");
             }
             mGameButton[0].setPosition(sf::Vector2f(150, 375));
             mGameButton[1].setPosition(sf::Vector2f(600, 375));
             mGameButton[2].setPosition(sf::Vector2f(1050, 375));
+        }
+
+        /* Written by Sora */
+        // random word boxes
+        {
+            mRandomWordText.setSize(sf::Vector2f(300, 75));
+            mRandomWordText.setFillColor(sf::Color::Transparent);
+            mRandomWordText.setFont(constant::fontOpenSans);
+            mRandomWordText.setStyle(sf::Text::Bold);
+            mRandomWordText.setCharacterSize(40);
+            mRandomWordText.setTextColor(sf::Color::Black);
+            mRandomWordText.setAlignCenter(true);
+            mRandomWordText.setPosition(200, 400);
+            mRandomWordText.setText("Game");
+
+            mRandomWordDefinition.setSize(sf::Vector2f(350, 300));
+            mRandomWordDefinition.setFillColor(sf::Color::Transparent);
+            mRandomWordDefinition.setFont(constant::fontOpenSans);
+            mRandomWordDefinition.setStyle(sf::Text::Bold);
+            mRandomWordDefinition.setCharacterSize(25);
+            mRandomWordDefinition.setTextColor(sf::Color::Black);
+            mRandomWordDefinition.setAlignCenter(true);
+            mRandomWordDefinition.setPosition(175, 500);
+            mRandomWordDefinition.setText("Let's go try something new...");
+
         }
     }
 
@@ -261,6 +294,13 @@ namespace mainScreen {
                 if (mMagnifierIcon.isContain(mouse.x, mouse.y)) {
                     mMagnifierIcon.setPressed(true);
                     std::cout << "[INFO] Magnifier icon is selected\n";
+                }
+
+                /* Written by Sora */
+                // change the content of random word when clicked
+                if (mGameButton[0].isContain(mouse.x, mouse.y)) {
+                    setCallHome(true);
+                    std::cout << "[INFO] Random word box is clicked\n";
                 }
 
                 if (mGameButton[1].isContain(mouse.x, mouse.y)) {
@@ -366,6 +406,7 @@ namespace mainScreen {
             // update set default icon
             if (mSetDefaultIcon.getPressed()) {
                 mSetDefaultIcon.setPressed(false);
+                setDefaultDataset(true);
                 std::cout << "[CALL] Run Set default icon feature\n";
             }
         }
@@ -379,7 +420,11 @@ namespace mainScreen {
         // update magnifier icon
         if (mMagnifierIcon.getPressed()) {
             std::string text = mSearchLine.getText();
+
+            setCallWordDefScreen(true);
+
             setCallSearchText(true, text);
+
             std::cout << "[CALL] Search text: " << text << "\n";
             mMagnifierIcon.setPressed(false);
         }
@@ -432,5 +477,36 @@ namespace mainScreen {
         // game button
         for (int i = 0; i < 3; ++i)
             target.draw(mGameButton[i]);
+
+        // Random word
+        target.draw(mRandomWordText);
+        target.draw(mRandomWordDefinition);
+    }
+    void ScreenMain::setFirstGameButton(Words::Word* currentWord) {
+        std::string word = currentWord->word;
+        mRandomWordText.setText(word);
+
+        std::string definition  = currentWord->definitions[0];
+        std::string displayText = "";
+
+        int charCount = 0;
+        std::string text;
+        std::stringstream ss(definition);
+
+        while (std::getline(ss, word, ' ')) {
+            // store token string in the vector
+            if (charCount + word.size() <= 25) {
+                charCount += word.size();
+            }
+            else {
+                charCount = 0;
+                displayText += '\n';
+            }
+            displayText += word;
+            displayText += ' ';
+            ++charCount;
+        }
+        mRandomWordDefinition.setText(displayText);
+
     }
 } // namespace mainScreen

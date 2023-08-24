@@ -17,7 +17,7 @@ TrieDefinition::TrieNode::~TrieNode() {
     }
 }
 void TrieDefinition::TrieNode::addIndex(int index) {
-    if (mIndex.size() > 200) return;
+    if (mIndex.size() > 2000) return;
     std::vector<int>::iterator it = std::lower_bound(mIndex.begin(), mIndex.end(), index);
     if (it == mIndex.end() || *it != index) {
         mIndex.insert(it, index);
@@ -61,15 +61,38 @@ void TrieDefinition::addDefinition(const std::string& definition, int index) {
         addPartDefinition(parts[i], index);
     }
 }
+
+void mergeAND(const std::vector<int> &a, const std::vector<int> &b, std::vector<int> &res) {
+    std::vector<int>::const_iterator ita = a.begin();
+	std::vector<int>::const_iterator itb = b.begin();
+    while (ita != a.end() && itb != b.end()) {
+        if (*ita == *itb) {
+			res.push_back(*ita);
+			++ita;
+			++itb;
+		}
+        else if (*ita < *itb) {
+			++ita;
+		}
+        else {
+			++itb;
+		}
+	}
+}
 std::vector<int> TrieDefinition::searchDefinition(const std::string& definition) {
     std::vector<std::string> parts = splitDefinition(definition);
 	std::vector<int> res;
     for (int i = 0; i < parts.size(); ++i) {
         std::vector<int> partRes = searchPartDefinition(parts[i]);
-        // merge res and partRes
-        std::vector<int> tmp;
-        std::merge(res.begin(), res.end(), partRes.begin(), partRes.end(), std::back_inserter(tmp));
-        res.swap(tmp);
+		if (i == 0) {
+			res.swap(partRes);
+		}
+		else {
+			// mergeAND res and partRes
+			std::vector<int> tmp;
+			mergeAND(res, partRes, tmp);
+			res.swap(tmp);
+		}
     }
 	return res;
 }

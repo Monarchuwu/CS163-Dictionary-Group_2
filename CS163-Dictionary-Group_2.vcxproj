@@ -149,6 +149,7 @@
     <ClCompile Include="src\favouriteScreen\FavouriteScreen.cpp" />
     <ClCompile Include="src\favouriteScreen\fileWork.cpp" />
     <ClCompile Include="src\favouriteScreen\historyScreen.cpp" />
+    <ClCompile Include="src\favouriteScreen\listWordScreen.cpp" />
     <ClCompile Include="src\favouriteScreen\myBox.cpp" />
     <ClCompile Include="src\favouriteScreen\myButton.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -161,6 +162,13 @@
     <ClCompile Include="src\mainScreen\PressMethod.cpp" />
     <ClCompile Include="src\mainScreen\ScreenMain.cpp" />
     <ClCompile Include="src\Screen.cpp" />
+    <ClCompile Include="src\WordScreen\Components\WordButton.cpp" />
+    <ClCompile Include="src\WordScreen\Components\Icon.cpp" />
+    <ClCompile Include="src\WordScreen\Components\Input.cpp" />
+    <ClCompile Include="src\WordScreen\Components\Label.cpp" />
+    <ClCompile Include="src\WordScreen\Components\TextArea.cpp" />
+    <ClCompile Include="src\WordScreen\Components\TextureButton.cpp" />
+    <ClCompile Include="src\WordScreen\WordScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="data\fonts\arial.ttf" />
@@ -171,7 +179,9 @@
     <ClInclude Include="src\addWordScreen\function.h" />
     <ClInclude Include="src\addWordScreen\Textbox.h" />
     <ClInclude Include="src\addWordScreen\Trie.h" />
+
     <ClInclude Include="src\addWordScreen\Word.h" />
+
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Constant.h" />
     <ClInclude Include="src\dataManager\DataManager.h" />
@@ -180,6 +190,7 @@
     <ClInclude Include="src\favouriteScreen\FavouriteScreen.h" />
     <ClInclude Include="src\favouriteScreen\fileWork.h" />
     <ClInclude Include="src\favouriteScreen\historyScreen.h" />
+    <ClInclude Include="src\favouriteScreen\listWordScreen.h" />
     <ClInclude Include="src\favouriteScreen\myBox.h" />
     <ClInclude Include="src\favouriteScreen\myButton.h" />
     <ClInclude Include="src\gameScreen\Button_game.h" />
@@ -194,6 +205,14 @@
     <ClInclude Include="src\mainScreen\PressMethod.h" />
     <ClInclude Include="src\mainScreen\ScreenMain.h" />
     <ClInclude Include="src\Screen.h" />
+    <ClInclude Include="src\WordScreen\Components\all.h" />
+    <ClInclude Include="src\WordScreen\Components\WordButton.h" />
+    <ClInclude Include="src\WordScreen\Components\Icon.h" />
+    <ClInclude Include="src\WordScreen\Components\Input.h" />
+    <ClInclude Include="src\WordScreen\Components\Label.h" />
+    <ClInclude Include="src\WordScreen\Components\TextArea.h" />
+    <ClInclude Include="src\WordScreen\Components\TextureButton.h" />
+    <ClInclude Include="src\WordScreen\WordScreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

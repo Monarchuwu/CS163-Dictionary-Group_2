@@ -29,13 +29,35 @@ public:
     void setCallAddWordScreen(bool callAddWordScreen);
     // set call favorite list
     void setCallFavoriteList(bool callFavoriteList);
-    //set call history
+
+    // set call word-definition screen
+    void setCallWordDefScreen(bool callWordDefScreen);
+    // set call history
     void setCallHistory(bool callHistory);
-    //set call add word
+    // set call add word
     void setCallAddWord(bool callAddWord, const std::string& w = "", const std::string& d = "");
-    //set call game screen
+    // set call game screen
     void setCallGameScreen(bool callGameScreen);
     void setCallGameScreen2(bool callGameScreen);
+    // set dataset to default
+    void setDefaultDataset(bool callDefaultDataset);
+
+    /* WORD SCREEN */
+
+    // set add definition
+    void setAddDefinition(bool addDefinition);
+
+    // set delete definition
+    void setDeleteDefinition(bool deleteDefinition);
+
+    // set update definition
+    void setUpdateDefinition(bool updateDefinition);
+
+    // set if favorite button is clicked (toggled)
+    void setFavoriteToggled(bool favoriteToggled);
+
+    // set delete word
+    void setDeleteWord(bool deleteWord);
 
     // get dataset
     // data stored in Integer1
@@ -43,6 +65,7 @@ public:
     // get modeSearch
     // data stored in Integer2
     bool getModeSearch() const;
+
 
     // get call home
     bool getCallHome() const;
@@ -52,13 +75,19 @@ public:
     bool getCallAddWordScreen() const;
     // get call favorite list
     bool getCallFavoriteList() const;
+
+    // get call word-definition screen
+    bool getCallWordDefScreen() const;
+
     //get call history list
     bool getCallHistoryList() const;
-    //get call add word
+    // get call add word
     bool getCallAddWord() const;
-    //get call screen game
+    // get call screen game
     bool getCallGameScreen() const;
     bool getCallGameScreen2() const;
+    // get call default dataset
+    bool getCallDefaultDataset() const;
 
     // get string 1
     std::string getString1() const;
@@ -69,6 +98,23 @@ public:
     // get integer 2
     int getInteger2() const;
 
+    /* WORD SCREEN */
+
+    // get add definition
+    bool getAddDefinition();
+
+    // get delete definition
+    bool getDeleteDefinition();
+
+    // get update definition
+    bool getUpdateDefinition();
+
+    // get favorite toggle
+    bool getFavoriteToggled();
+
+    // get delete word
+    bool getDeleteWord();
+
 private:
     bool mDataset;
     bool mModeSearch;
@@ -76,12 +122,24 @@ private:
     bool mCallSearchText;
     bool mCallAddWordScreen;
     bool mCallFavoriteList;
+
+    bool mCallWordDefScreen;
     bool mCallHistoryList;
+
     bool mCallAddWord;
     bool mCallGameScreen;
     bool mCallGameScreen2;
+    bool mCallDefaultDataset;
+
     std::string mString1;
     std::string mString2;
     int mInteger1;
     int mInteger2;
+
+    /* WORD SCREEN */
+    bool mAddDefinition;
+    bool mDeleteDefinition;
+    bool mUpdateDefinition;
+    bool mFavoriteToggled;
+    bool mDeleteWord;
 };

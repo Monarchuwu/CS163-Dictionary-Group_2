@@ -82,15 +82,42 @@ namespace minh
     }
 
     void ScreenFavou::addAWord(std::string word) {
+        
+
         std::string fileToAdd = "data/" + dic_type + "/favourite.txt";
-        std::ofstream fout(fileToAdd, std::ios::app);
-        if (!fout.is_open()) {
-        std::cout << "Can not open file" << std::endl;
-        fout.close();
+        std::queue<std::string> lines;
+
+        std::ifstream fin;
+        fin.open(fileToAdd);
+        if (!fin.is_open()) {
+        std::cout << "Can not open file";
+        fin.close();
         return;
         }
+        std::string str;
+
+        while (std::getline(fin, str)) {
+        // std::cout << def << std::endl;
+        if (str != word)
+
+            lines.push(str);
+        }
+
+        std::ofstream fout(fileToAdd, std::ios::trunc);
+
+        if (!fout.is_open()) {
+          std::cout << "Can not open file";
+          fin.close();
+          fout.close();
+          return;
+        }
+      
         fout << word << std::endl;
-        fout.close();
+        while (lines.size()) {
+        fout << lines.front() << std::endl;
+        lines.pop();
+        }
+        fin.close();
         return;
     }
 
@@ -102,9 +129,9 @@ namespace minh
         std::ifstream fin;
         fin.open(fileToDelete);
         if (!fin.is_open()) {
-        std::cout << "Can not open file";
-        fin.close();
-        return;
+            std::cout << "Can not open file";
+            fin.close();
+            return;
         }
         std::string str;
 
@@ -113,7 +140,7 @@ namespace minh
         // std::cout << def << std::endl;
         if (str != word)
         
-         lines.push(str);
+            lines.push(str);
         }
 
         std::ofstream fout(fileToDelete, std::ios::trunc);
@@ -138,14 +165,14 @@ namespace minh
         std::string fileToCheck = "data/" + dic_type + "/favourite.txt";
         fin.open(fileToCheck);
         if (!fin.is_open()) {
-        std::cout << "Can not open file";
-        fin.close();
-        return false;
+            std::cout << "Can not open file";
+            fin.close();
+            return false;
         }
         std::string line;
         while (std::getline(fin, line))
         {
-        if (line == word) return true; 
+            if (line == word) return true; 
         }
         return false;
     }
@@ -403,6 +430,21 @@ namespace minh
 
     void ScreenFavou::changeDir(int dataset) {
         switch (dataset) {
+            case constant::Dataset::EngEng: {
+                dic_type = "engeng";
+                break;
+            }
+
+            case constant::Dataset::EngVie: {
+                dic_type = "engvie";
+                break;
+            }
+
+            case constant::Dataset::VieEng: {
+                dic_type = "vieeng";
+                break;
+            }
+
             case constant::Dataset::Slang: {
                 dic_type = "slang";
                 break;
