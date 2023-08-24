@@ -185,6 +185,10 @@ public:
     }
 
     void setScreen() {
+        if (dataSet == 3) btnWord.content.setString("Emoji");
+        else if (dataSet == 4) btnWord.content.setString("Slang");
+        else btnWord.content.setString("Word");
+
         sprite_tmp = sprite_v[dataSet];
         color_tmp  = color_v[dataSet];
 
@@ -194,6 +198,7 @@ public:
         textbox2.textbox.setString("_");
         textbox1.text.str("");
         textbox2.text.str("");
+
         background.setFillColor(color_tmp);
         changeLang(dataSet, sprite_lang_v, lang1, lang2);
     }

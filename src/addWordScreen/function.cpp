@@ -1,7 +1,7 @@
 #include "function.h"
 
 bool check(std::string t) {
-	std::string tmp = "0123456789abcdefghiklmnopqrstuvwyzABCDEFGHIKLMNOPQRSTUVWYZ'-! ";
+	std::string tmp = "0123456789abcdefghiklmnopqrstuvwyzABCDEFGHIKLMNOPQRSTUVWYZ'-! <>?@#$%^&*()|+/_`~";
 	for (int i = 0; i < t.length(); i++) {
 		if (tmp.find(t[i]) == std::string::npos) return 0;
 	}
