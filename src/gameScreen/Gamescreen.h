@@ -299,6 +299,9 @@ public:
 
         //File
         readRecord();
+
+        //UI
+        changeColor();
     }
 
     std::vector<sf::Vector2f> getPosiButton(Button_game tmp) {
