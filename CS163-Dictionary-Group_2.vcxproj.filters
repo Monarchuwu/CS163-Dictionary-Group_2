@@ -73,11 +73,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\addWordScreen\function.cpp">
-
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\favouriteScreen\historyScreen.cpp">
-
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\dataManager\DataManager.cpp">
@@ -88,6 +86,7 @@
     </ClCompile>
     <ClCompile Include="src\dataManager\TrieWord\TrieWord.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="src\WordScreen\WordScreen.cpp">
       <Filter>WordScreen</Filter>
     </ClCompile>
@@ -112,7 +111,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\addWordScreen\addWord.h">
-
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\addWordScreen\Button.h">
@@ -125,7 +123,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\addWordScreen\Trie.h">
-
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\addWordScreen\Button.h">
@@ -141,7 +138,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\favouriteScreen\historyScreen.h">
-
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\addWordScreen\Word.h">
@@ -164,6 +160,7 @@
     </ClInclude>
     <ClInclude Include="src\gameScreen\Gamescreen.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="src\WordScreen\WordScreen.h">
       <Filter>WordScreen</Filter>
     </ClInclude>
