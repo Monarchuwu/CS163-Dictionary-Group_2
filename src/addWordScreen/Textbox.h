@@ -120,7 +120,7 @@ public:
         return 0;
     }
 
-private:
+public:
     sf::Text textbox;
     sf::Sprite sprite;
     std::ostringstream text;

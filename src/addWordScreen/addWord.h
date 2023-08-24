@@ -185,10 +185,15 @@ public:
     }
 
     void setScreen() {
-
         sprite_tmp = sprite_v[dataSet];
         color_tmp  = color_v[dataSet];
 
+        total.setContent(std::to_string(cnt_v[dataSet]));
+        recent.setContent(recentword_v[dataSet]);
+        textbox1.textbox.setString("_");
+        textbox2.textbox.setString("_");
+        textbox1.text.str("");
+        textbox2.text.str("");
         background.setFillColor(color_tmp);
         changeLang(dataSet, sprite_lang_v, lang1, lang2);
     }
