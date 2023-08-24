@@ -268,6 +268,11 @@ namespace mainScreen {
                     std::cout << "[INFO] Game icon is selected\n";
                 }
 
+                if (mGameButton[2].isContain(mouse.x, mouse.y)) {
+                    mGameButton[2].setPressed(true);
+                    std::cout << "[INFO] Game icon is selected\n";
+                }
+
                 break;
             }
 
@@ -379,10 +384,15 @@ namespace mainScreen {
             mMagnifierIcon.setPressed(false);
         }
 
-        //update game icon
+        // update game icon
         if (mGameButton[1].getPressed()) {
             setCallGameScreen(true);
             mGameButton[1].setPressed(false);
+        }
+
+        if (mGameButton[2].getPressed()) {
+            setCallGameScreen2(true);
+            mGameButton[2].setPressed(false);
         }
     }
 

@@ -114,7 +114,14 @@ void Application::update() {
     if (mScreen->getCallGameScreen()) {
         mScreen->setCallGameScreen(false);
         mScreen = &screenGame;
-        screenGame.setDataSet(mDataManager.getDataset());
+        screenGame.setDataSet(mDataManager.getDataset(), 0);
+        return;
+    }
+
+    if (mScreen->getCallGameScreen2()) {
+        mScreen->setCallGameScreen2(false);
+        mScreen = &screenGame;
+        screenGame.setDataSet(mDataManager.getDataset(), 1);
         return;
     }
 

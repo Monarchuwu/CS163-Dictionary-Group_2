@@ -46,6 +46,9 @@ void Screen::setCallAddWord(bool callAddWord, const std::string& w, const std::s
 void Screen::setCallGameScreen(bool callGameScreen) {
     mCallGameScreen = callGameScreen;
 }
+void Screen::setCallGameScreen2(bool callGameScreen) {
+    mCallGameScreen2 = callGameScreen;
+}
 
 bool Screen::getDataset() const {
 	return this->mDataset;
@@ -73,6 +76,9 @@ bool Screen::getCallAddWord() const {
 }
 bool Screen::getCallGameScreen() const {
     return mCallGameScreen;
+}
+bool Screen::getCallGameScreen2() const {
+    return mCallGameScreen2;
 }
 std::string Screen::getString1() const {
 	return mString1;
