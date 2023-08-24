@@ -14,7 +14,7 @@ public:
     std::vector<std::vector<std::string> > listChoice;
     std::vector<int> listAns;
     Words* Dic;
-
+    int ranInt = rand()%29;
 
     randomSpace() {
         //this->Dic = &root->Dic;
@@ -92,5 +92,15 @@ public:
             getline(fin, tmp, '\n');
             listAns.push_back(std::stoi(tmp));
         }
+    }
+
+    void resetFile() {
+        std::vector<std::string> nthQues;
+        std::vector<std::vector<std::string>> nthChoice;
+        std::vector<int> nthAns;
+
+        listQues = nthQues;
+        listChoice = nthChoice;
+        listAns    = nthAns;
     }
 };
