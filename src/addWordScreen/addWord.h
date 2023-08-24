@@ -5,6 +5,7 @@
 #include "Textbox.h"
 #include "function.h"
 #include "..\dataManager\DataManager.h"
+#include "..\Constant.h"
 
 #define DELETE_KEY 8
 #define ENTER_KEY 13
@@ -185,8 +186,8 @@ public:
     }
 
     void setScreen() {
-        if (dataSet == 3) btnWord.content.setString("Emoji");
-        else if (dataSet == 4) btnWord.content.setString("Slang");
+        if (dataSet == constant::Dataset::Emoji) btnWord.content.setString("Emoji");
+        else if (dataSet == constant::Dataset::Slang) btnWord.content.setString("Slang");
         else btnWord.content.setString("Word");
 
         sprite_tmp = sprite_v[dataSet];

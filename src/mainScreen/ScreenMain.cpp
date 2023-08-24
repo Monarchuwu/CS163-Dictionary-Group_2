@@ -193,6 +193,33 @@ namespace mainScreen {
             mGameButton[0].setPosition(sf::Vector2f(150, 375));
             mGameButton[1].setPosition(sf::Vector2f(600, 375));
             mGameButton[2].setPosition(sf::Vector2f(1050, 375));
+
+            { // setup image for game button
+                sf::Texture texture;
+
+                // game 0
+                texture.loadFromFile("data/images/Game0.png");
+                mGameImage[0].setTexture(texture);
+                mGameImage[0].setPosition(mGameButton[0].getPosition());
+
+                // game 1
+                texture.loadFromFile("data/images/Game1.png");
+                mGameImage[1].setTexture(texture);
+                mGameImage[1].setPosition(mGameButton[1].getPosition());
+
+                sf::Vector2u size = texture.getSize();
+                sf::Vector2f targetSize(mGameButton[1].getSize());
+                mGameImage[1].setScale(targetSize.x / size.x, targetSize.y / size.y);
+
+                // game 2
+                texture.loadFromFile("data/images/Game2.png");
+                mGameImage[2].setTexture(texture);
+                mGameImage[2].setPosition(mGameButton[2].getPosition());
+
+                size = texture.getSize();
+                targetSize = mGameButton[2].getSize();
+                mGameImage[2].setScale(targetSize.x / size.x, targetSize.y / size.y);
+            }
         }
 
         /* Written by Sora */
@@ -203,7 +230,7 @@ namespace mainScreen {
             mRandomWordText.setFont(constant::fontOpenSans);
             mRandomWordText.setStyle(sf::Text::Bold);
             mRandomWordText.setCharacterSize(40);
-            mRandomWordText.setTextColor(sf::Color::Black);
+            mRandomWordText.setTextColor(sf::Color::White);
             mRandomWordText.setAlignCenter(true);
             mRandomWordText.setPosition(200, 400);
             mRandomWordText.setText("Game");
@@ -213,7 +240,7 @@ namespace mainScreen {
             mRandomWordDefinition.setFont(constant::fontOpenSans);
             mRandomWordDefinition.setStyle(sf::Text::Bold);
             mRandomWordDefinition.setCharacterSize(25);
-            mRandomWordDefinition.setTextColor(sf::Color::Black);
+            mRandomWordDefinition.setTextColor(sf::Color::White);
             mRandomWordDefinition.setAlignCenter(true);
             mRandomWordDefinition.setPosition(175, 500);
             mRandomWordDefinition.setText("Let's go try something new...");
@@ -477,6 +504,8 @@ namespace mainScreen {
         // game button
         for (int i = 0; i < 3; ++i)
             target.draw(mGameButton[i]);
+        for (int i = 0; i < 3; ++i)
+			target.draw(mGameImage[i]);
 
         // Random word
         target.draw(mRandomWordText);

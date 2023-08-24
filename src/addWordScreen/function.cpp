@@ -1,9 +1,11 @@
 #include "function.h"
 
 bool check(std::string t) {
-	std::string tmp = "0123456789abcdefghiklmnopqrstuvwyzABCDEFGHIKLMNOPQRSTUVWYZ'-! <>?@#$%^&*()|+/_`~";
+	// std::string tmp = "0123456789abcdefghiklmnopqrstuvwyzABCDEFGHIKLMNOPQRSTUVWYZ'-! <>?@#$%^&*()|+/_`~";
 	for (int i = 0; i < t.length(); i++) {
-		if (tmp.find(t[i]) == std::string::npos) return 0;
+		// if (tmp.find(t[i]) == std::string::npos) return 0;
+	    if (32 <= t[i] && t[i] <= 126) continue;
+		return 0;
 	}
 	return 1;
 }

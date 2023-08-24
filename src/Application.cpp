@@ -89,10 +89,11 @@ void Application::update() {
     }
 
     // ADD WORD SCREEN
-    else if (mScreen->getCallAddWordScreen()) {
-        mScreen->setCallAddWordScreen(false);
-        mScreen = &screenAddWord;
-    }
+    // This screen is handled below
+    //else if (mScreen->getCallAddWordScreen()) {
+    //    mScreen->setCallAddWordScreen(false);
+    //    mScreen = &screenAddWord;
+    //}
 
     // FAVORITE SCREEN CALL
     else if (mScreen->getCallFavoriteList()) {
