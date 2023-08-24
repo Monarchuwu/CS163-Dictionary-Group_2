@@ -3,29 +3,27 @@
 
 
 void TrieWord::addWord(std::string word, int k) {
-	Node* cur = root;
-	for (int i = 0; i < word.size(); i++)
-	{
-		int index = word[i];
-		if (!cur->child[index])
-		{
-			cur->child[index] = new Node;
-		}
-		cur = cur->child[index];
-	}
-	cur->id = k;
+    Node* cur = root;
+    for (int i = 0; i < word.size(); i++) {
+        for (int index : { (word[i] - 32) / 10, (word[i] - 32) % 10 }) {
+            if (!cur->child[index]) {
+                cur->child[index] = new Node;
+            }
+            cur = cur->child[index];
+        }
+    }
+    cur->id = k;
 }
 
 int TrieWord::searchWord(std::string str) {
 	Node* cur = root;
-	for (int i = 0; i < str.size(); i++)
-	{
-		int index = str[i];
-		if (!cur->child[index])
-		{
-			return -1;
-		}
-		cur = cur->child[index];
+	for (int i = 0; i < str.size(); i++) {
+	    for (int index : { (str[i] - 32) / 10, (str[i] - 32) % 10 }) {
+	        if (!cur->child[index]) {
+	            return -1;
+	        }
+	        cur = cur->child[index];
+	    }
 	}
 	return cur->id;
 }
@@ -42,14 +40,13 @@ int TrieWord::searchWord(std::string str) {
 
 void TrieWord::deleteWord(std::string str) {
 	Node* cur = root;
-	for (int i = 0; i < str.size(); i++)
-	{
-		int index = str[i];
-		if (!cur->child[index])
-		{
-			return;
-		}
-		cur = cur->child[index];
+	for (int i = 0; i < str.size(); i++) {
+	    for (int index : { (str[i] - 32) / 10, (str[i] - 32) % 10 }) {
+	        if (!cur->child[index]) {
+	            return;
+	        }
+	        cur = cur->child[index];
+	    }
 	}
 	cur->id = -1;
 }

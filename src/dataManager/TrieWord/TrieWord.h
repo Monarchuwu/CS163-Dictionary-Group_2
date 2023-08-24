@@ -71,12 +71,12 @@ class TrieWord
 {
 	struct Node
 	{
-		Node* child[128] = { 0 };
+		Node* child[10] = { 0 };
 		int id = -1;
 		//std::string str;
 
         ~Node() {
-            for (int i = 0; i < 128; ++i) {
+            for (int i = 0; i < 10; ++i) {
                 if (child[i] != 0) {
                     delete child[i];
                 }
@@ -113,7 +113,7 @@ public:
 	}
 
     void recursive(TrieWord::Node* cur, const Words& Dic, std::ofstream& ft) {
-		for (int i = 0; i < 128; i++) {
+		for (int i = 0; i < 10; i++) {
             if (cur->child[i]) {
                 if (cur->child[i]->id != -1) for (auto j : Dic.v[cur->child[i]->id].definitions) ft << Dic.v[cur->child[i]->id].word << "\t" << j << "\n";
                 recursive(cur->child[i], Dic, ft);
