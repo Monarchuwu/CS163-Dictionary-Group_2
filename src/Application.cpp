@@ -114,6 +114,7 @@ void Application::update() {
     if (mScreen->getCallGameScreen()) {
         mScreen->setCallGameScreen(false);
         mScreen = &screenGame;
+        screenGame.setDataSet(mDataManager.getDataset());
         return;
     }
 

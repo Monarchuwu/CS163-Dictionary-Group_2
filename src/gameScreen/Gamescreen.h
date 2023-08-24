@@ -16,7 +16,7 @@ public:
     int dataSet;
     int page = 0;
     int ind = 0;
-    int liveleft = 2;
+    int liveleft = 3;
     int record = 0;
     int result = 0;
 
@@ -89,6 +89,7 @@ public:
     sf::Sprite contblues;
     sf::Sprite happys;
 
+    sf::RectangleShape blackspace;
     //vector
     std::vector<sf::Color> pagewhite = { sf::Color(225, 236, 241, 255) ,sf::Color(54,92,113,255)};
     //std::vector<sf::Color> pagenotwhite = { sf::Color(240, 240, 240), sf::Color(119, 119, 119) };
@@ -293,6 +294,11 @@ public:
             *(posi.end() - 1) = getPosiButton(*ansButton[i]);
         }
 
+        //Rectangle shape
+        blackspace.setPosition({ 1200, 0 });
+        blackspace.setFillColor(sf::Color::Black);
+        blackspace.setSize({ 800, 900 });
+
         //RandomSpace
         rd.readFile(".\\data\\datas\\tmp.txt");
         loadQues();
@@ -317,7 +323,30 @@ public:
     //Functions
     void setDataSet(int dataSet) {
         this->dataSet = dataSet; 
+        setGame();
     }
+
+    void setGame() {
+        page     = 0;
+        ind      = 0;
+        liveleft = 3;
+        result   = 0;
+
+        ansYet = 0;
+        isQuit = 0;
+        active = 1;
+
+        nothing1 = nothing2;
+        nth1s    = nth4s;
+        nth2s    = nth4s;
+        nth3s    = nth4s;
+
+        showResult.setString("");
+        quote.setString("");
+
+        loadQues();
+    }
+
     //with files
     void readRecord() {
         std::ifstream fin(".\\data\\datas\\Record.txt");
@@ -471,6 +500,7 @@ public:
             ansButton[i]->setBackColor(pagewhite[0]);
             ansButton[i]->settextColor(pagewhite[1]);
         }
+        live.setString(std::to_string(liveleft));
         /*
         A.text.setString(rd.listChoice[ind][0]);
         B.text.setString(rd.listChoice[ind][1]);
@@ -607,6 +637,7 @@ public:
         target.draw(nth3s);
         target.draw(showResult);
         target.draw(quote);
+        target.draw(blackspace);
         
         //target.display();
     }
