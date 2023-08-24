@@ -14,6 +14,8 @@ public:
     randomSpace rd = randomSpace();
 
     int dataSet;
+    int typeGame = 1;
+    int ranQues  = rd.ranInt;
     int page = 0;
     int ind = 0;
     int liveleft = 3;
@@ -23,6 +25,10 @@ public:
     bool ansYet = 0;
     bool isQuit = 0;
     bool active = 1;
+
+    //dir
+    const std::string pathImage = ".\\data\\images\\";
+    const std::string pathGame  = ".\\data\\datas\\Gamebank\\";
 
     //std::string dataFile = ".\\File\\tmp2.txt";
 
@@ -97,6 +103,10 @@ public:
     std::vector<sf::Sprite> image;
     std::vector< std::vector<sf::Vector2f> > posi;
     std::vector<Button_game*> ansButton;
+    std::vector<std::vector<std::string>> fileGame = {
+        {"word0.txt", "word1.txt", "word2.txt", "word3.txt", "word4.txt"},
+        { "def0.txt",  "def1.txt",  "def2.txt",  "def3.txt",  "def4.txt"}
+    };
 
     sf::Vector2f mousePos;
 
@@ -105,7 +115,7 @@ public:
         //Font
         if (!feather.loadFromFile("data/fonts/feather.ttf")) std::cout << "False";
 
-        const std::string pathImage = ".\\data\\images\\";
+
 
         //Text
         //live
@@ -300,8 +310,8 @@ public:
         blackspace.setSize({ 800, 900 });
 
         //RandomSpace
-        rd.readFile(".\\data\\datas\\tmp.txt");
-        loadQues();
+        //rd.readFile(pathGame + fileGame[0][dataSet]);
+        //loadQues();
 
         //File
         readRecord();
@@ -321,8 +331,9 @@ public:
     }
 
     //Functions
-    void setDataSet(int dataSet) {
+    void setDataSet(int dataSet, int typeGame) {
         this->dataSet = dataSet; 
+        this->typeGame = typeGame;
         setGame();
     }
 
@@ -340,10 +351,15 @@ public:
         nth1s    = nth4s;
         nth2s    = nth4s;
         nth3s    = nth4s;
+        yesnos    = nth4s;
 
         showResult.setString("");
         quote.setString("");
 
+        rd.resetFile();
+        rd.readFile(pathGame + fileGame[typeGame][dataSet]);
+        rd.ranInt = rand() % 29;
+        ranQues   = rd.ranInt;
         loadQues();
     }
 
@@ -355,6 +371,14 @@ public:
         fin >> tmp;
         record = std::stoi(tmp);
         fin.close();
+    }
+
+    void saveRecord() {
+        std::ofstream ft(".\\data\\datas\\Record.txt");
+        
+        ft << result;
+        record = result;
+        ft.close();
     }
     /*
     bool isClick(sf::Sprite tmp) {
@@ -422,6 +446,7 @@ public:
             yesnos = nth4s;
             ansYet = 0;
             ind++;
+            ranQues++;
             loadQues();
             page++;
             changeColor();
@@ -485,8 +510,9 @@ public:
   }
 
     void loadQues() {
-        if (ind >= rd.listAns.size()) ind = 0;
-        word.content.setString(rd.listQues[ind]);
+        if (ranQues >= rd.listAns.size()) ranQues = 0;
+        word.content.setString(rd.listQues[ranQues]);
+        if (typeGame == 1) word.setLengthContent();
 
         float xPos = (word.button.getPosition().x + word.button.getLocalBounds().width / 2) - (word.content.getLocalBounds().width / 2);
         float yPos = (word.button.getPosition().y + word.button.getLocalBounds().height / 2) - (word.content.getLocalBounds().height / 2);
@@ -556,6 +582,7 @@ public:
             showResult.setPosition(420, 580);
             quote.setString("Awesome!");
             quote.setPosition(500, 650);
+            saveRecord();
         }
     }
 
