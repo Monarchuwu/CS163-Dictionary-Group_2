@@ -1,0 +1,300 @@
+redfinch
+an nhieu	thay mat	chim do	gieng toc do nuoc	
+2
+subnasal
+trung trung	su quay ray	nguoi lam tan bien	duoi mui	
+3
+longbeak
+dong vat chan re	mui nhon	co dat	mo dai	
+3
+fed
+tinh thuc te	da nuoi	nho giot	bi mo	
+1
+mailable
+dan moc	co the gui thu	thuyet ban giao phai polagio	chi dau	
+1
+actuose
+quan tinh	tieu doi	cha duong	tich cuc	
+3
+turtle-shell
+nguoi dong kien	mai rua	khong an	lam chet nguoi	
+1
+refrication
+su tai cau truc	trong briar	tien to	anh ca	
+0
+draintrap
+van san	co ma	bay thoat nuoc	mong vuot	
+2
+salaried
+tia lua	su dap tat	lam cong an luong	noi tren	
+2
+relapser
+nguoi tai nghien	cai ba ba	tin dung	kha nang that bai	
+0
+agenda
+thuyen no	chuong trinh nghi su	thuyet xung toi	su gay nhieu	
+1
+subreader
+trinh doc phu	giao duc	dem bai phat bieu	hop nhat	
+0
+compeller
+su cau nhau	co kha nang	ngan nap	nguoi bien dich	
+3
+rescuing
+khong co suc manh	dong chu	mau cua rong	giai cuu	
+3
+anniversarily
+buc tranh toi no	ngay ky niem	thuc tinh	nguoi ghi chep	
+1
+narrative
+duc vua	chung bieu sinh	chuyen ke	mat tham	
+2
+energizer
+su hai long	hien dai	nguoi cung cap nang luong	sieu te bao	
+2
+exoneration
+thieu hut hoac khuyet	nguoi thuoc phai manh	cat	su tha toi	
+3
+elucidate
+su nghieng nga	bang thuat ngu	can ho nho	lam sang to	
+3
+sea owl
+cu bien	nguoi theo chu nghia hien thuc	nua tuan	nguoi day phuc am	
+0
+arrested
+su tu choi	bat giam	dau phay	chuc vu trung si	
+1
+seleniferous
+theo	trieu ty	giau chat seleniferous	vo tich su	
+2
+menorrhagia
+rong kinh	mau bac	tam trang buon chan	nhu nhau	
+0
+anticontagious
+chong lay nhiem	sieu im lang	so chia	con nguyen ven	
+0
+superplusage
+su tiep tay	danh anh ay di	nguoi bo	du thua	
+3
+shrugging
+bi giam cam	the duc dung cu	khong the nghe duoc	nhun vai	
+3
+venereal
+nha may nuoc	te nhi	be tac	hoa lieu	
+3
+desmobacteria
+ma phu	thue nguoi lam	nguoi dan ong nhe can	vi khuan desmobacteria	
+3
+rife
+the hien dan ong	day ray	dung tich	huong dan	
+1
+nesh
+cau nguyen	chung ta	chanh an	hinh the	
+1
+spearmint
+linh vuc	co the hoi duoc	bac ha	manh ben	
+2
+unbishop
+giam muc	ngoai dong	phan tram	su hanh quyet	
+0
+heavy spar
+spar nang	lan tranh	gai glastonbury	that giac	
+0
+teetotum
+coc acorn	thuc vat hat kin	nhung chuyen di	them tra	
+3
+seedtime
+bang cach nao do	thoi gian gieo hat	nha phat trien	dau kho ve tinh than	
+1
+ship-rigged
+khong vien tro	chong dong	tau gian lan	tai sao?	
+2
+legateship
+co quan	bi truot chan	quan he hop phap	bida	
+2
+tranquillizing
+lam an than	bip bom	su lau ca	tham hai	
+0
+congo snake
+chung tuong duong nhau	dien vien phu	ran congo	su cau thay	
+2
+thumbed
+co nhieu chat dinh duong	kinh hau mon	sa	thum thum	
+3
+levelly
+thuoc chong ung thu	ngang bang	su tan vo	nguoi phuc vu shad	
+1
+wrie
+chong dong	nguoi di be	dau kho	ngon ngu con	
+2
+gravamen
+tham dinh, luong dinh, danh gia	khong ke het	legy	may gia toc	
+0
+frivolism
+chu nghia phu phiem	chung tang huyet ap	quay cham lai	xu ninh	
+0
+afterthought
+suy nghi sau	su kiet que	hang tram	lam tuong duong	
+0
+feverish
+do quyen	sot	co nhiet huyet	hat dieu	
+1
+dicotyledon
+toc bien	giong nhu thien chua giao	vay quanh	cay hai la mam	
+3
+easter
+lam dam	de che	le phuc sinh	dam mo hoi	
+2
+circumdenudation
+khong mua	an may	khoanh vung	de quy	
+2
+excommunication
+va tuyet thong	su phu phiem	nguoi pha tro	dam may manh	
+0
+breech
+xu su	vuong quoc	khoa nong sung	su danh lua	
+2
+zemni
+con chim son ca	loi canh bao	trai dat	khi dong hoc	
+2
+epigrammatize
+da len ke hoach	thoi dai hiep si	nua khoi dong	su tron tranh	
+0
+stoppling
+dung lai	trai bien	xi nghiep	quet quet	
+0
+scauper
+nguoi quet voi	nha lombard	tho rap	co gioi han	
+0
+jack-o'-lantern
+den bi ngo	te liet hoc	ti trong	dinh kem	
+0
+lubrifaction
+sa	-co the	su boi tron	bong dai	
+2
+multiplying
+danh dau	dau lam tay bun	harlingen	nhan len	
+3
+club-rush
+vu rung	coi xay lua mi chay bang nuoc	cau lac bo voi va	tao ra	
+2
+birdseed
+go gopher	co cho	phim tai lieu	hat chim	
+3
+galloper
+duoc trang tri	u am	nap day	nguoi phi nuoc dai	
+3
+lapboard
+dap vo	khong am uot	tanh	tam bia cung	
+3
+knockings
+tieng go	tinh nhan	ken harmonica	ban thay gi?	
+0
+welcomer
+cay day	nguoi chao mung	su co	chay	
+1
+inmost
+trong hau het cac	mao mach dien	dau dot co so	chup mach	
+0
+hamlet
+ho se noi chuyen	ap	nguoi lam tuong	toi di tren mot soi day	
+1
+legislatorship
+sung tieng anh	quyen lap phap	anh cat	lam roi	
+1
+maple
+bia da	su xep hang	cay phong	axit barbituric	
+2
+techy
+ky thuat	chu nghia ban nghia	xoan oc	nguoi cong tac	
+0
+sassafras
+cay xa xi	da giai ma	mang lai	nguoi hang khong	
+0
+weirdness
+muc day	su ki la	coi bo	su chia cat	
+1
+alleging
+nguoi dien tap	so huu	tu qua bong	cao buoc	
+3
+bisection
+ra re	su chia doi	nuoc sot qua mong	nguoi than phien	
+1
+recureless
+mui hoi thoi	khong lap lai	buon te	nguoi danh ruou	
+1
+sauciness
+lam mat tham my	su ngon lanh	su sieu nhien	khong hoat dong	
+1
+anabas
+nhan te bao	tai nan	duoi phe quan	tu te	
+1
+splashboard
+phi lao	su di chuyen	ghe sofa	van ban tung toe	
+3
+water rocket
+bi thieu rui	su kieu ngao	su hy sinh	ten lua nuoc	
+3
+cornfloor
+co vi ngot	day ngo	khong lien tuc	dam dang	
+1
+eyren
+su hau ha	nhac truong	moi mat	co the phat minh ra	
+2
+clarty
+chu nghia citicism	phong gym	dang phai	chup quang tuyen	
+2
+sized
+tho nghien	mo ta	hang lau	co kich thuoc	
+3
+impignoration
+kinh ram	su mao danh	nha trung bay	canh ghep	
+1
+maidenlike
+thoi con gai ngay lap tuc	mot cuoc song	hai do	huu hinh	
+0
+leucopathy
+nguoi theo chu nghia doc than	cau tra loi	cay dai hoang	benh da	
+3
+forgiven
+cot moc quan trong	ca biet hoa	nuoc ngoai	duoc tha thu	
+3
+majesties
+giat lai	bat kha khang	chung chay nguoc tro lai	tay nam	
+1
+solvableness
+kha nang giai quyet	muc su	gioi giang	khong tuoi tac	
+0
+kit
+bo dung cu	co ngan hang	nguoi an ui	khong co kha nang xay ra	
+0
+skink
+dot ngot	- ong gia	than lan bong	phan thanh	
+2
+restily
+vien chinh	dau long	viem vu	nhan mat	
+1
+driftwood
+khong co vang	khac phuc	jerry-xay dung	go lua	
+3
+bleacher
+co phan huong	su vung ve	chau trai	nguoi tay trang	
+3
+tonguing
+quet	cai luoi	ngong	nhieu nang	
+1
+subcontrary
+hanh trinh phu	nuoc hoa	van dong vien boi loi	tro cap	
+0
+waiwode
+mot vung dat	nguoi chuyen mach	ben ngoai cua toi	o atlantis	
+2
+tristtul
+trung cap	phat hien	noi buon	lanh manh	
+2
+mortress
+ham nong	thien nhien	nguoi giet nguoi	tu tuong	
+2
+frondlet
+nhay ngon tay cai	nu than tuong	chiec khan choang	tinh quang cao	
+2

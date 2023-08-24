@@ -89,10 +89,11 @@ void Application::update() {
     }
 
     // ADD WORD SCREEN
-    else if (mScreen->getCallAddWordScreen()) {
-        mScreen->setCallAddWordScreen(false);
-        mScreen = &screenAddWord;
-    }
+    // This screen is handled below
+    //else if (mScreen->getCallAddWordScreen()) {
+    //    mScreen->setCallAddWordScreen(false);
+    //    mScreen = &screenAddWord;
+    //}
 
     // FAVORITE SCREEN CALL
     else if (mScreen->getCallFavoriteList()) {
@@ -233,6 +234,36 @@ void Application::update() {
     if (mScreen->getCallDefaultDataset()) {
         mScreen->setDefaultDataset(false);
         mDataManager.resetData();
+        return;
+    }
+    
+    if (mScreen->getCallAddWordScreen()) {
+        mScreen->setCallAddWordScreen(false);
+        mScreen = &screenAddWord;
+        screenAddWord.setDataSet(mDataManager.getDataset());
+        return;
+    }
+
+    if (mScreen->getCallAddWord()) {      
+        std::string word = mScreen->getString1();
+        std::string def  = mScreen->getString2();
+        Words::Word* w   = mDataManager.addWord(word);
+        mDataManager.addDefinition(def, w->getIndex());
+        mScreen->setCallAddWord(false);
+        return;
+    }
+
+    if (mScreen->getCallGameScreen()) {
+        mScreen->setCallGameScreen(false);
+        mScreen = &screenGame;
+        screenGame.setDataSet(mDataManager.getDataset(), 0);
+        return;
+    }
+
+    if (mScreen->getCallGameScreen2()) {
+        mScreen->setCallGameScreen2(false);
+        mScreen = &screenGame;
+        screenGame.setDataSet(mDataManager.getDataset(), 1);
         return;
     }
 

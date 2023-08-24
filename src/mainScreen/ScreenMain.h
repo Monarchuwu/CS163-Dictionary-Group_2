@@ -63,6 +63,7 @@ namespace mainScreen {
 
         // game buttons
         Button mGameButton[3];
+        ButtonSprite mGameImage[3];
 
         /* Written by Sora */
         Box mRandomWordText;

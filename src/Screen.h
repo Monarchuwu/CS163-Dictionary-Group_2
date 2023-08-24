@@ -32,9 +32,13 @@ public:
 
     // set call word-definition screen
     void setCallWordDefScreen(bool callWordDefScreen);
-
-    //set call history
+    // set call history
     void setCallHistory(bool callHistory);
+    // set call add word
+    void setCallAddWord(bool callAddWord, const std::string& w = "", const std::string& d = "");
+    // set call game screen
+    void setCallGameScreen(bool callGameScreen);
+    void setCallGameScreen2(bool callGameScreen);
     // set dataset to default
     void setDefaultDataset(bool callDefaultDataset);
 
@@ -77,11 +81,18 @@ public:
 
     //get call history list
     bool getCallHistoryList() const;
+    // get call add word
+    bool getCallAddWord() const;
+    // get call screen game
+    bool getCallGameScreen() const;
+    bool getCallGameScreen2() const;
     // get call default dataset
     bool getCallDefaultDataset() const;
 
     // get string 1
     std::string getString1() const;
+    // get string 2
+    std::string getString2() const;
     // get integer 1
     int getInteger1() const;
     // get integer 2
@@ -113,10 +124,15 @@ private:
     bool mCallFavoriteList;
 
     bool mCallWordDefScreen;
-
     bool mCallHistoryList;
+
+    bool mCallAddWord;
+    bool mCallGameScreen;
+    bool mCallGameScreen2;
     bool mCallDefaultDataset;
+
     std::string mString1;
+    std::string mString2;
     int mInteger1;
     int mInteger2;
 

@@ -7,17 +7,16 @@ Screen::Screen()
       mCallSearchText(false),
       mCallAddWordScreen(false),
       mCallFavoriteList(false),
-
       mCallWordDefScreen(false),
-
       mCallHistoryList(false),
       mCallDefaultDataset(false),
-
       mAddDefinition(false),
       mDeleteDefinition(false),
       mUpdateDefinition(false),
       mFavoriteToggled(false),
-      mDeleteWord(false) {
+      mDeleteWord(false),
+      mCallAddWord(false),
+      mCallGameScreen(false) {
 }
 
 Screen::~Screen() {}
@@ -46,6 +45,17 @@ void Screen::setCallFavoriteList(bool callFavoriteList) {
 void Screen::setCallHistory(bool callHistoryList){
 	mCallHistoryList = callHistoryList;
 }
+void Screen::setCallAddWord(bool callAddWord, const std::string& w, const std::string& d) {
+    mCallAddWord = callAddWord;
+    mString1     = w;
+    mString2     = d;
+}
+void Screen::setCallGameScreen(bool callGameScreen) {
+    mCallGameScreen = callGameScreen;
+}
+void Screen::setCallGameScreen2(bool callGameScreen) {
+    mCallGameScreen2 = callGameScreen;
+}
 void Screen::setDefaultDataset(bool callDefaultDataset) {
 	mCallDefaultDataset = callDefaultDataset;
 }
@@ -55,28 +65,21 @@ void Screen::setDefaultDataset(bool callDefaultDataset) {
 void Screen::setAddDefinition(bool addDefinition) {
 	mAddDefinition = addDefinition;
 }
-
 void Screen::setDeleteDefinition(bool deleteDefinition) {
 	mDeleteDefinition = deleteDefinition;
 }
-
 void Screen::setUpdateDefinition(bool updateDefinition) {
 	mUpdateDefinition = updateDefinition;
 }
-
 void Screen::setFavoriteToggled(bool favoriteToggled) {
 	mFavoriteToggled = favoriteToggled;
 }
-
 void Screen::setDeleteWord(bool deleteWord) {
 	mDeleteWord = deleteWord;
 }
-
-
 void Screen::setCallWordDefScreen(bool callWordDefScreen) {
 	mCallWordDefScreen = callWordDefScreen;
 }
-
 
 bool Screen::getDataset() const {
 	return this->mDataset;
@@ -97,14 +100,20 @@ bool Screen::getCallAddWordScreen() const {
 bool Screen::getCallFavoriteList() const {
 	return mCallFavoriteList;
 }
-
-
 bool Screen::getCallWordDefScreen() const {
 	return mCallWordDefScreen;
 }
-
 bool Screen::getCallHistoryList() const {
 	return mCallHistoryList;
+}
+bool Screen::getCallAddWord() const {
+    return mCallAddWord;
+}
+bool Screen::getCallGameScreen() const {
+    return mCallGameScreen;
+}
+bool Screen::getCallGameScreen2() const {
+    return mCallGameScreen2;
 }
 bool Screen::getCallDefaultDataset() const {
 	return mCallDefaultDataset;
@@ -112,6 +121,9 @@ bool Screen::getCallDefaultDataset() const {
 
 std::string Screen::getString1() const {
 	return mString1;
+}
+std::string Screen::getString2() const {
+    return mString2;
 }
 int Screen::getInteger1() const {
 	return this->mInteger1;
