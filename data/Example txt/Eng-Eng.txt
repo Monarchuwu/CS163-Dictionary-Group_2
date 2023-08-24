@@ -26,3 +26,5 @@ word	word def d d
 word 	ddd
 word 	ddd d
 word 	ddd d d
+slang	common used word 
+slang	common us

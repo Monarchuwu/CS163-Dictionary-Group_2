@@ -35,6 +35,7 @@ public:
     void setCallAddWord(bool callAddWord, const std::string& w = "", const std::string& d = "");
     //set call game screen
     void setCallGameScreen(bool callGameScreen);
+    void setCallGameScreen2(bool callGameScreen);
 
     // get dataset
     // data stored in Integer1
@@ -57,6 +58,7 @@ public:
     bool getCallAddWord() const;
     //get call screen game
     bool getCallGameScreen() const;
+    bool getCallGameScreen2() const;
 
     // get string 1
     std::string getString1() const;
@@ -77,6 +79,7 @@ private:
     bool mCallHistoryList;
     bool mCallAddWord;
     bool mCallGameScreen;
+    bool mCallGameScreen2;
     std::string mString1;
     std::string mString2;
     int mInteger1;
