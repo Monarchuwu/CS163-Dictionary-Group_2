@@ -52,6 +52,23 @@ public:
         text.setPosition(xPos + 12, yPos - 8);
     }
 
+    void setLengthContent() {
+        std::string s = content.getString();
+
+        std::string tmp;
+        std::string f = "";
+        std::stringstream ss(s);
+
+        for (int i = 0; i < 4; i++) {
+            ss >> tmp;
+            f += tmp + " ";
+            if (ss.tellg() == -1) break;
+            if (i == 3 && ss.tellg() != -1) f += "...";
+        }
+
+        content.setString(f);
+    }
+
     void setunderlay() {
         underlay.setSize(button.getSize());
         underlay.setFillColor(sf::Color(75, 75, 75, 60));
