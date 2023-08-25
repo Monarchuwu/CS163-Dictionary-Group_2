@@ -521,7 +521,7 @@ public:
         qbox.content.setString("Question " + std::to_string(ind + 1));
 
         for (int i = 0; i < 4; i++) {
-            ansButton[i]->text.setString(rd.listChoice[ind][i]);
+            ansButton[i]->text.setString(rd.listChoice[ranQues][i]);
             ansButton[i]->setSpecial();
             ansButton[i]->setBackColor(pagewhite[0]);
             ansButton[i]->settextColor(pagewhite[1]);
@@ -541,7 +541,7 @@ public:
  }
 
     void checkAns(int ans) {
-        if (ans == rd.listAns[ind]) {
+        if (ans == rd.listAns[ranQues]) {
            ansButton[ans]->setBackColor(sf::Color(214, 255, 184));
            ansButton[ans]->settextColor(sf::Color(87, 167, 0));
            yesnos = conts;
@@ -551,8 +551,8 @@ public:
 
         ansButton[ans]->setBackColor(sf::Color(255, 223, 223));
         ansButton[ans]->settextColor(sf::Color(234, 42, 42));
-        ansButton[rd.listAns[ind]]->setBackColor(sf::Color(sf::Color(214, 255, 184)));
-        ansButton[rd.listAns[ind]]->settextColor(sf::Color(87, 167, 0));
+        ansButton[rd.listAns[ranQues]]->setBackColor(sf::Color(sf::Color(214, 255, 184)));
+        ansButton[rd.listAns[ranQues]]->settextColor(sf::Color(87, 167, 0));
         yesnos = gotits;
         liveleft--;
         live.setString(std::to_string(liveleft));
