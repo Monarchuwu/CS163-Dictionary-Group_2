@@ -28,3 +28,4 @@ word 	ddd d
 word 	ddd d d
 slang	common used word 
 slang	common us
+word	defi nition

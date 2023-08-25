@@ -31245,6 +31245,7 @@ woolward-going	di len
 woon	truc tiep
 woosy	co tieng keu tham thiet
 wopen	huy hieu
+word	defi nition
 word-catcher	nguoi bat chu
 wordbook	sach tu
 worded	loi noi
